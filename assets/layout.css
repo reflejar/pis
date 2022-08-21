@@ -1,0 +1,25 @@
+#navbar {
+    background-color: rgb(247, 232, 181)!important;
+}
+
+#hero {
+    height: 100vh;
+    padding-top: 20vh;
+    padding-left: 10vh;
+}
+.bg-image {
+    background-image: url('https://images.ecestaticos.com/4Rxz8qv8v9s6_02PjXEAw7DuVgw=/0x109:2118x1300/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F742%2F741%2F8b0%2F7427418b00efb7ce70a0295e3e627b18.jpg');
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
