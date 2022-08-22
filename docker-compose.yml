@@ -1,0 +1,13 @@
+version: '3'
+
+
+services:
+  web: &web
+    build:
+      context: .
+    image: anopa/pis_web:latest
+    volumes:
+      - .:/app    
+    ports:
+      - "8050:8050"
+    command: /usr/local/bin/gunicorn main:app.server --bind 0.0.0.0:8050 --chdir=/app --timeout 1800
