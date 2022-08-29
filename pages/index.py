@@ -1,7 +1,6 @@
 import dash
 from dash import html
 from .sections import (
-    Navbar, 
     Hero,
     QueEs,
     Involucrate
