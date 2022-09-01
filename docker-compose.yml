@@ -5,7 +5,7 @@ services:
   web: &web
     build:
       context: .
-    image: anopa/pis_web:latest
+    image: anopa/pis:latest
     volumes:
       - .:/app    
     ports:
