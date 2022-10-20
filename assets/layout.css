@@ -1,19 +1,16 @@
 #navbar {
-    background-color: rgb(247, 232, 181)!important;
+    background-color: rgba(0, 0, 0, 0.51)!important;
 }
 
 #hero {
-    /* height: calc(100vh - 93.8667px); */
-    height: calc(100vh - 56px);
-    padding-top: 20vh;
-    padding-left: 10vh;
+    font-weight: bold;
 }
 
 .bg-image {
     position: relative;
 }
 .bg-image::before {
-    background-image: url('https://images.ecestaticos.com/4Rxz8qv8v9s6_02PjXEAw7DuVgw=/0x109:2118x1300/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F742%2F741%2F8b0%2F7427418b00efb7ce70a0295e3e627b18.jpg');
+    background-image: url('img/pis-web-2073x858.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,35 +18,48 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
     z-index: -1;
-    opacity: 0.5;
-    z-index: -1;    
 }
-.hero-inside {
-    /* This will make it stack on top of the ::before */
-    position: relative;
+
+.text-primary {
+    color: #FFA929!important
 }
+
+.bg-primary {
+    background-color: #FFA929!important;
+}
+
+.border-primary {
+    border-color : #FFA929!important;
+}
+
+.text-secondary {
+    color: rgba(0, 0, 0, 0.51) !important
+}
+
+.bg-secondary {
+    background-color: rgba(0, 0, 0, 0.51) !important
+}
+
+.border-secondary {
+    border-color : rgba(0, 0, 0, 0.51) !important
+}
+
 .hero-title {
-    color: black; 
-    font-weight: 900;
-}
-.hero-subtitle {
-    color: white; 
     font-weight: 900;
 }
 
-#que_es {
-    height: 100vh;
-    padding-top: 10vh;
-    padding-left: 20vh;
-    padding-right: 20vh;
+#footer {
+    padding-top: 3vh;
+    padding-bottom: 2vh;
 }
-#involucrate {
-    height: 100vh;
-    padding-top: 10vh;
-    padding-left: 20vh;
-    padding-right: 20vh;
-    background-color: rgb(254, 206, 46)!important;
+
+.section-title {
+    padding-top: 5vh; 
+}
+
+.active {
+    background-color: rgb(185, 185, 185)!important;
+    color: white!important;
+    border-radius: 15px;
 }

@@ -4,7 +4,7 @@ from dash import html
 
 top_card = dbc.Card(
     [
-        dbc.CardImg(src="/images/lab.png", top=True),
+        dbc.CardImg(src="assets/img/involucrate/lab.png", top=True),
         dbc.CardBody(
             [
                 html.I(className="bi bi-info-circle-fill me-2 card-title"),
@@ -18,7 +18,7 @@ top_card = dbc.Card(
 
 bottom_card = dbc.Card(
     [
-        dbc.CardImg(src="/images/lab.png", bottom=True),
+        dbc.CardImg(src="assets/img/involucrate/salud.png", bottom=True),
         dbc.CardBody(
             [
                 html.I(className="bi bi-info-circle-fill me-2 card-title"),
