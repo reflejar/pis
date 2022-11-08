@@ -59,8 +59,8 @@ Footer = html.Footer(dbc.Container([
             dbc.Col(
                 html.Div(
                     [
-                        html.A(html.Img(src=PIS_ISOLOGOTIPO, height="100px"), target="_blank", href="https://mundosur.org"),
-                        html.Hr(),
+                        # html.A(html.Img(src=PIS_ISOLOGOTIPO, height="100px"), target="_blank", href="https://pis.org.ar"),
+                        # html.Hr(),
                         html.Div(
                             [
                                 html.A(html.I(className="bi bi-instagram"), href="https://www.instagram.com/mundosur_org",target="_blank", className="btn btn-outline-white btn-sm btn-floating"),
@@ -90,14 +90,14 @@ Footer = html.Footer(dbc.Container([
             md=3,
             ),
         ]),
-        html.Hr(),
-        dbc.Row(
-            dbc.Col(html.P([
-                "Desarrollado por ",
-                html.Img(src=REFLEJAR_LOGOTIPO, height="18px"),
-                
-            ]))
-        )
+        #html.Hr(),
+        #dbc.Row(
+        #    dbc.Col(html.P([
+        #        "Desarrollado por ",
+        #        html.Img(src=REFLEJAR_LOGOTIPO, height="18px"),
+        #        
+        #    ]))
+        #)
     ]),
     className="text-white bg-primary",
     id="footer"
