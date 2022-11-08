@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 
 PIS_ISOTIPO = "assets/img/pis_isotipo.png"
-MUNDO_SUR_ISOLOGOTIPO = "assets/img/pis_isologotipo.png"
+PIS_ISOLOGOTIPO = "assets/img/pis_isologotipo.png"
 REFLEJAR_LOGOTIPO = "assets/img/reflejar_logotipo.png"
 
 
@@ -11,18 +11,20 @@ Navbar = dbc.Navbar(
     dbc.Container(
         [
             html.A(
-                html.Img(src=PIS_ISOTIPO, height="50px"),
+                html.Strong("P.I.S."),
                 href="/",
+                className="text-white",
             ),
-            html.Strong("P.I.S."),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 dbc.Nav([
-                        dbc.NavItem(dbc.NavLink("Campaña", active="exact", class_name="text-white mx-3", href="/campana")),
-                        dbc.NavItem(dbc.NavLink("Botiquín", active="exact", class_name="text-white mx-3", href="/botiquin")),
-                        dbc.NavItem(dbc.NavLink("FAQS", active="exact", class_name="text-white mx-3", href="/faqs")),
-                        dbc.NavItem(dbc.NavLink("Acerca de", active="exact", class_name="text-white mx-3", href="/acerca-de")),          
-                        dbc.NavItem(dbc.NavLink("Donar", active="exact", class_name="text-white mx-3", href="/donar")),          
+                        dbc.NavItem(dbc.NavLink("Mapa resultados", active="exact", class_name="text-white mx-3", href="/mapa")),
+                        dbc.NavItem(dbc.NavLink("Ranking Municipal", active="exact", class_name="text-white mx-3", href="/ranking")),
+                        dbc.NavItem(dbc.NavLink("Proyección GIS", active="exact", class_name="text-white mx-3", href="/resultados")),
+                        dbc.NavItem(dbc.NavLink("Digesto", active="exact", class_name="text-white mx-3", href="/digesto")),          
+                        dbc.NavItem(dbc.NavLink("Doctrinario", active="exact", class_name="text-white mx-3", href="/doctrinario")),          
+                        dbc.NavItem(dbc.NavLink("Caja herramientas", active="exact", class_name="text-white mx-3", href="/herramientas")),   
+                        dbc.NavItem(dbc.NavLink("Donar", active="exact", class_name="text-white mx-3", href="/Donar")),
                     ],
                     className="ms-auto",
                     navbar=True,
@@ -33,6 +35,7 @@ Navbar = dbc.Navbar(
             ),
         ],
     ),
+    
     fixed="top",
     className="text-white",
     id="navbar"
@@ -56,7 +59,7 @@ Footer = html.Footer(dbc.Container([
             dbc.Col(
                 html.Div(
                     [
-                        html.A(html.Img(src=MUNDO_SUR_ISOLOGOTIPO, height="100px"), target="_blank", href="https://mundosur.org"),
+                        html.A(html.Img(src=PIS_ISOLOGOTIPO, height="100px"), target="_blank", href="https://mundosur.org"),
                         html.Hr(),
                         html.Div(
                             [
