@@ -2,47 +2,51 @@ import dash_bootstrap_components as dbc
 from dash import html
 
 
-top_card = dbc.Card(
-    [
-        dbc.CardImg(src="assets/img/involucrate/lab.png", top=True),
-        dbc.CardBody(
-            [
-                html.I(className="bi bi-info-circle-fill me-2 card-title"),
-                html.H4("Testeate", className="card-title"),
-                html.H6("¿donde puedo hacerme el test?", className="card-subtitle"),
-            ]
-        ),
-    ],
-
-)
-
-bottom_card = dbc.Card(
-    [
-        dbc.CardImg(src="assets/img/involucrate/salud.png", bottom=True),
-        dbc.CardBody(
-            [
-                html.I(className="bi bi-info-circle-fill me-2 card-title"),
-                html.H4("Testeate", className="card-title"),
-                html.H6("¿donde puedo hacerme el test?", className="card-subtitle"),
-            ]
-        ),        
-    ],
-)
-
-cards = dbc.Row(
-    [
-        dbc.Col(top_card, width=4),
-        dbc.Col(bottom_card, width=4),
-        dbc.Col(bottom_card, width=4),
-    ]
-)
-
+CARD_STYLE = {
+    'padding': '3rem',
+    'background': '#FFFFFF',
+    'box-shadow': '0px 7.52px 18.8px rgba(0, 0, 0, 0.25)',
+    'border-radius': '10px',
+}
 
 Involucrate = html.Section(
     dbc.Container(
         [
             html.H2("Involucrate"),
-            cards
+            html.Div([
+                dbc.Row(
+                        [
+                            dbc.Col(dbc.Card(
+                                    dbc.CardBody(
+                                        [
+                                            html.Img(src="assets/img/involucrate/lab.png", width="80px", className="card-title mb-5"),
+                                            html.H5("TESTEATE", className="card-subtitle"),
+                                            html.P("¿donde puedo hacerme el test?", className="card-text"),
+                                        ]
+                                    ), style=CARD_STYLE
+                                ), lg=4
+                            ),
+                            dbc.Col(dbc.Card(
+                                    dbc.CardBody(
+                                        [
+                                            html.Img(src="assets/img/involucrate/salud.png", width="80px", className="card-title mb-5"),
+                                            html.H5("ENVIANOS TUS RESULTADOS", className="card-subtitle"),
+                                        ]
+                                    ), style=CARD_STYLE
+                                ), lg=4
+                            ),             
+                            dbc.Col(dbc.Card(
+                                    dbc.CardBody(
+                                        [
+                                            html.Img(src="assets/img/involucrate/figuras.png", width="80px", className="card-title mb-5"),
+                                            html.H5("COMPARTÍ RECURSOS", className="card-subtitle"),
+                                        ]
+                                    ), style=CARD_STYLE
+                                ), lg=4
+                            ),                                              
+                        ]
+                )                
+            ], className="py-5")
         ],
         fluid=True,
         className="py-3 text-dark",

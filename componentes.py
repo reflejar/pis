@@ -24,7 +24,7 @@ Navbar = dbc.Navbar(
                         dbc.NavItem(dbc.NavLink("Digesto", active="exact", class_name="text-white mx-3", href="/digesto")),          
                         dbc.NavItem(dbc.NavLink("Doctrinario", active="exact", class_name="text-white mx-3", href="/doctrinario")),          
                         dbc.NavItem(dbc.NavLink("Caja herramientas", active="exact", class_name="text-white mx-3", href="/herramientas")),   
-                        dbc.NavItem(dbc.NavLink("Donar", active="exact", class_name="text-white mx-3", href="/Donar")),
+                        dbc.NavItem(dbc.NavLink(dbc.Button("Donar", size="sm", class_name="bg-grey border-grey"), active="exact", class_name="text-white mx-3", href="/donar")),
                     ],
                     className="ms-auto",
                     navbar=True,

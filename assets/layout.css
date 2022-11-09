@@ -6,6 +6,12 @@
     font-weight: bold;
 }
 
+
+#involucrate {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
 .bg-image {
     position: relative;
 }
@@ -43,6 +49,18 @@
 
 .border-secondary {
     border-color : rgba(0, 0, 0, 0.51) !important
+}
+
+.text-grey {
+    color: #A8A8A8!important
+}
+
+.bg-grey {
+    background-color: #A8A8A8!important
+}
+
+.border-grey {
+    border-color : #A8A8A8!important
 }
 
 .hero-title {

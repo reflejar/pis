@@ -23,7 +23,7 @@ app.layout = html.Div(
 	children=[
 		Navbar, 
 		dash.page_container,
-		Footer
+		# Footer
 	]
 )
 

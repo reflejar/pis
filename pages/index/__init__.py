@@ -12,8 +12,8 @@ layout = html.Div(
             Hero,
             dbc.Container(
                 [
-                    QueEs,
-                    html.Hr(),
+                    # QueEs,
+                    # html.Hr(),
                     Involucrate,
                 ]
             )
