@@ -7,7 +7,7 @@ Hero = html.Section(
 			dbc.Col([
 					html.H1("P.I.S.", className="display-1 hero-title text-white"),
 					html.H2([
-						"Peligros Introducidos Silenciosamente",
+						"Pesticidas (herbicidas, plaguicidas) Introducidos Silenciosamente",
 					], className="hero-title text-dark mb-5"),
 					html.H4([
 						"Campaña de mapeo y sistematización colectivo de datos e información sobre el uso de agroquímicos y la salud humana",

@@ -18,9 +18,9 @@ Navbar = dbc.Navbar(
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 dbc.Nav([
-                        dbc.NavItem(dbc.NavLink("Mapa resultados", active="exact", class_name="text-white mx-3", href="/mapa")),
+                        dbc.NavItem(dbc.NavLink("Mapa resultados", active="exact", class_name="text-white mx-3", href="/resultados")),
                         dbc.NavItem(dbc.NavLink("Ranking Municipal", active="exact", class_name="text-white mx-3", href="/ranking")),
-                        dbc.NavItem(dbc.NavLink("Proyección GIS", active="exact", class_name="text-white mx-3", href="/resultados")),
+                        dbc.NavItem(dbc.NavLink("Proyección GIS", active="exact", class_name="text-white mx-3", href="/gis")),
                         dbc.NavItem(dbc.NavLink("Digesto", active="exact", class_name="text-white mx-3", href="/digesto")),          
                         dbc.NavItem(dbc.NavLink("Doctrinario", active="exact", class_name="text-white mx-3", href="/doctrinario")),          
                         dbc.NavItem(dbc.NavLink("Caja herramientas", active="exact", class_name="text-white mx-3", href="/herramientas")),   

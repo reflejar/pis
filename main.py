@@ -7,7 +7,7 @@ from componentes import Navbar, Footer
 from server import server
 
 from pages import (
-	index
+	index, gis
 )
 
 # Se crea Dash y elegimos el tema
@@ -17,6 +17,7 @@ app = dash.Dash(
     use_pages=True
 )
 dash.register_page(index.__name__, title="Pesticidas Introducidos Silenciosamente", path='/', layout=index.layout)
+dash.register_page(gis.__name__, title="Proyección GIS", path='/gis', layout=gis.layout)
 
 # Se agregan los componentes de la web
 app.layout = html.Div(
