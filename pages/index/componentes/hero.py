@@ -5,12 +5,12 @@ Hero = html.Section(
 	dbc.Container(
 		dbc.Row(
 			dbc.Col([
-					html.H1("P.I.S.", className="display-1 hero-title text-white"),
+					html.H1("¿Qué es P.I.S.?", className="display-1 hero-title text-white"),
 					html.H2([
-						"Pesticidas (herbicidas, plaguicidas) Introducidos Silenciosamente",
+						"Plaguicidas introducidos silenciosamente",
 					], className="hero-title text-dark mb-5"),
 					html.H4([
-						"Campaña de mapeo y sistematización colectivo de datos e información sobre el uso de agroquímicos y la salud humana",
+						"Campaña de incidencia pública para la reducción de uso de plaguicidas  basados en datos , información y activación territorial efectiva.",
 						html.Br(),
 					], className="text-dark"),					
 				],

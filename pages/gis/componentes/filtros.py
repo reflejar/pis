@@ -2,11 +2,24 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 MUNICIPIOS = ['Mar Chiquita']
-TIPO_RECURSOS = ['Escuelas', 'Rios']
+TIPO_RECURSOS = {
+    'cursos-agua': 'Cursos de agua',
+    'cuerpos-agua': 'Cuerpos de agua',
+    'escuelas': 'Escuelas',
+    'radio-escuelas': 'Radio escuelas',
+    'ciudades': 'Ciudades',
+    'apiario': 'Apiario',
+    'zonas-de-exclusion': 'Zonas de exclusión',
+}
 
 Filtros = html.Div(
     [
-        html.H4("Filtros"), 
+        html.H4("PROYECCIÓN GIS", className="text-white"),
+        html.P([
+            "Seleccioná el municipio de tu interés.",
+            html.Br(),
+            "Activá y desactivá las capas de los diferentes elementos."
+        ]),
         dbc.Row([dbc.Col([
                     html.Label(htmlFor="select-municipio", title='Municipio'),
                     dcc.Dropdown(
@@ -16,7 +29,8 @@ Filtros = html.Div(
                         searchable = True,
                         placeholder = 'Selecciona un municipio..',
                         value=["Mar Chiquita"],
-                        clearable=True
+                        clearable=True,
+                        style={'background-color': 'black'}
                     )        
             ], md=12), 
                          
@@ -29,13 +43,19 @@ Filtros = html.Div(
                         multi=True,
                         searchable=True,
                         placeholder = 'Selecciona un tipo de recurso..',
-                        value=['Escuelas'],
-                        clearable=True
+                        value=['escuelas'],
+                        clearable=True,
+                        style={'background-color': 'black'}                        
                     )        
             ], md=12
-            ))
+            )),        
+        # dbc.Row(dbc.Col([
+        #             html.Label(htmlFor="select-recurso", title='Recurso'),
+        #             *[dbc.Checklist([dbc.Switch(id=k), html.Label(v, htmlFor=k)]) for k,v in TIPO_RECURSOS.items()]
+        #     ], md=12
+        #     ))            
                    
     ],
     id="filtros",
-    className="bg-body"
+    className=" text-white"
 )

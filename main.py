@@ -2,7 +2,7 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import html
 
-from componentes import Navbar, Footer
+from tools.layout import Navbar, Footer
 
 from server import server
 
@@ -12,9 +12,10 @@ from pages import (
 
 # Se crea Dash y elegimos el tema
 app = dash.Dash(
-    __name__,
-    external_stylesheets=[dbc.themes.MINTY], # COSMO, FLATLY, LUX, MINTY
-    use_pages=True
+	__name__,
+	server=server,
+	external_stylesheets=[dbc.icons.BOOTSTRAP], # COSMO, FLATLY, LUX, MINTY
+	use_pages=True
 )
 dash.register_page(index.__name__, title="Pesticidas Introducidos Silenciosamente", path='/', layout=index.layout)
 dash.register_page(gis.__name__, title="Proyección GIS", path='/gis', layout=gis.layout)
