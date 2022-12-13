@@ -10,19 +10,15 @@ REFLEJAR_LOGOTIPO = "assets/img/reflejar_logotipo.png"
 Navbar = dbc.Navbar(
     dbc.Container(
         [
-            html.A(
-                html.Strong("P.I.S."),
-                href="/",
-                className="text-white",
-            ),
+            html.Img(src=PIS_ISOTIPO, height="50px"),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 dbc.Nav([
-                        dbc.NavItem(dbc.NavLink("Inicio", active="exact", class_name="text-white mx-3", href="/")),
-                        dbc.NavItem(dbc.NavLink("Proyección GIS", active="exact", class_name="text-white mx-3", href="/gis")),
-                        dbc.NavItem(dbc.NavLink("Ranking", active="exact", class_name="text-white mx-3", href="/ranking")),
-                        dbc.NavItem(dbc.NavLink("Mapa Resultados", active="exact", class_name="text-white mx-3", href="/digesto")),          
-                        dbc.NavItem(dbc.NavLink("Digesto", active="exact", class_name="text-white mx-3", href="/doctrinario")),          
+                        dbc.NavItem(dbc.NavLink("Inicio", active="exact", class_name="text-white fw-bolder mx-3", href="/")),
+                        dbc.NavItem(dbc.NavLink("Proyección GIS", active="exact", class_name="text-white fw-bolder mx-3", href="/gis/normativo")),
+                        dbc.NavItem(dbc.NavLink("Ranking", active="exact", class_name="text-white fw-bolder mx-3", href="/ranking")),
+                        dbc.NavItem(dbc.NavLink("Mapa Resultados", active="exact", class_name="text-white fw-bolder mx-3", href="/gis/resultados")),          
+                        dbc.NavItem(dbc.NavLink("Digesto", active="exact", class_name="text-white fw-bolder mx-3", href="/digesto")),          
                         # dbc.NavItem(dbc.NavLink(dbc.Button("Donar", size="sm", class_name="bg-grey border-grey"), active="exact", class_name="text-white mx-3", href="/donar")),
                     ],
                     className="ms-auto",
@@ -53,52 +49,48 @@ callback(
 
 
 
-Footer = html.Footer(dbc.Container([
+Footer = html.Footer([
+    html.Div(style={'height': '9px'}, className="bg-primary mb-5"),
+    dbc.Container([
         dbc.Row([
             dbc.Col(
                 html.Div(
                     [
-                        # html.A(html.Img(src=PIS_ISOLOGOTIPO, height="100px"), target="_blank", href="https://pis.org.ar"),
-                        # html.Hr(),
-                        html.Div(
-                            [
-                                html.A(html.I(className="bi bi-instagram"), href="https://www.instagram.com/mundosur_org",target="_blank", className="btn btn-outline-white btn-sm btn-floating"),
-                                html.A(html.I(className="bi bi-youtube"), href="https://www.youtube.com/channel/UC3OKs4eBtLXLeIDLpEDCZYw",target="_blank", className="btn btn-outline-white btn-sm btn-floating"),
-                                html.A(html.I(className="bi bi-twitter"), href="https://twitter.com/MundoSur",target="_blank", className="btn btn-outline-white btn-sm btn-floating"),
-                                html.A(html.I(className="bi bi-facebook"), href="https://www.facebook.com/mundosur.org",target="_blank", className="btn btn-outline-white btn-sm btn-floating"),
-                                html.A(html.I(className="bi bi-linkedin"), href="https://www.linkedin.com/company/mundosur/",target="_blank", className="btn btn-outline-white btn-sm btn-floating"),
-                            ]
-                        )
+                        html.A(html.Img(src=PIS_ISOLOGOTIPO, height="100px"), target="_blank", href="https://pis.org.ar"),
+
                     ],
                     className="text-center"
                 )
                 
-                , md=2),
+                , md=3),
             dbc.Col([
-                html.P(html.Small("MundoSur es una Asociación Civil Franco-Argentina que visibiliza e impulsa los cambios sociales y políticos necesarios para la construcción colectiva de sociedades inclusivas, participativas, diversas y democráticas en América Latina y el Caribe.")),
-                html.P(html.Small("El Mapa Latinoamericano de Feminicidios (MLF) es una herramienta de incidencia política, que proporciona la información necesaria para exigirle a los Estados de América Latina y el Caribe el cumplimiento de sus obligaciones internacionales, conforme lo dispuesto por la Convención Interamericana  para prevenir, sancionar y erradicar la violencia contra la mujer (Convención Belém do Pará)")),
+                html.Div(
+                    [
+                        html.A(html.I(className="bi bi-twitter"), href="https://twitter.com/",target="_blank", className="btn mx-3 btn-outline-primary btn-sm btn-floating"),
+                        html.A(html.I(className="bi bi-instagram"), href="https://www.instagram.com/",target="_blank", className="btn mx-3 btn-outline-primary btn-sm btn-floating"),
+                        html.A(html.I(className="bi bi-facebook"), href="https://www.facebook.com/",target="_blank", className="btn mx-3 btn-outline-primary btn-sm btn-floating"),
+                        # html.A(html.I(className="bi bi-youtube"), href="https://www.youtube.com/channel/UC3OKs4eBtLXLeIDLpEDCZYw",target="_blank", className="btn mx-2 btn-outline-primary btn-sm btn-floating"),
+                        # html.A(html.I(className="bi bi-linkedin"), href="https://www.linkedin.com/company/mundosur/",target="_blank", className="btn mx-2 btn-outline-primary btn-sm btn-floating"),
+                    ],
+                    className="text-center"
+                )
             ],
-                md=7
-            ),
+                md=3),
             dbc.Col([
-                dbc.NavItem(dbc.NavLink("Feminicidios bajo la lupa", class_name="text-white", href="/lupa")),
-                dbc.NavItem(dbc.NavLink("Lo que los Estados nos deben", class_name="text-white", href="/estados")),
-                dbc.NavItem(dbc.NavLink("Metodología", class_name="text-white", href="/metodologia")),
-                dbc.NavItem(dbc.NavLink("Contacto", class_name="text-white", href="/contacto")),
+                dbc.NavItem(dbc.NavLink("¿Cómo funciona?", class_name="text-dark my-2", href="/como")),
+                dbc.NavItem(dbc.NavLink("Acerca de este sitio", class_name="text-dark my-2", href="/acerca-de")),
+                dbc.NavItem(dbc.NavLink("Contacto", class_name="text-dark my-2", href="/contacto")),
             ],
-            md=3,
-            ),
+            md=3),
+            dbc.Col([
+                dbc.NavItem(dbc.NavLink("Terminos y condiciones", class_name="text-dark my-2", href="/tyc")),
+                dbc.NavItem(dbc.NavLink("Politica de privacidad", class_name="text-dark my-2", href="/pp")),
+            ],
+            md=3),
         ]),
-        #html.Hr(),
-        #dbc.Row(
-        #    dbc.Col(html.P([
-        #        "Desarrollado por ",
-        #        html.Img(src=REFLEJAR_LOGOTIPO, height="18px"),
-        #        
-        #    ]))
-        #)
-    ]),
-    className="text-white bg-primary",
+    ])
+    ],
+    className="text-white position-relative",
     id="footer"
 )
 

@@ -7,7 +7,9 @@ from tools.layout import Navbar, Footer
 from server import server
 
 from pages import (
-	index, gis
+	index, gis_normativo, 
+	gis_resultados, ranking,
+	digesto
 )
 
 # Se crea Dash y elegimos el tema
@@ -18,14 +20,17 @@ app = dash.Dash(
 	use_pages=True
 )
 dash.register_page(index.__name__, title="Pesticidas Introducidos Silenciosamente", path='/', layout=index.layout)
-dash.register_page(gis.__name__, title="Proyección GIS", path='/gis', layout=gis.layout)
+dash.register_page(gis_normativo.__name__, title="Proyección GIS", path='/gis/normativo', layout=gis_normativo.layout)
+dash.register_page(gis_resultados.__name__, title="Proyección GIS", path='/gis/resultados', layout=gis_resultados.layout)
+dash.register_page(ranking.__name__, title="Proyección GIS", path='/ranking', layout=ranking.layout)
+dash.register_page(digesto.__name__, title="Proyección GIS", path='/digesto', layout=digesto.layout)
 
 # Se agregan los componentes de la web
 app.layout = html.Div(
 	children=[
 		Navbar, 
 		dash.page_container,
-		# Footer
+		Footer
 	]
 )
 

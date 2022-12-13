@@ -30,30 +30,29 @@ Filtros = html.Div(
                         placeholder = 'Selecciona un municipio..',
                         value=["Mar Chiquita"],
                         clearable=True,
-                        style={'background-color': 'black'}
+                        style={
+                            'background-color': 'black',
+                            'color': 'var(--primary)'
+                        }
                     )        
             ], md=12), 
                          
-        ]),
-        dbc.Row(dbc.Col([
-                    html.Label(htmlFor="select-recurso", title='Recurso'),
-                    dcc.Dropdown(
-                        id="select-recurso",
-                        options=TIPO_RECURSOS,
-                        multi=True,
-                        searchable=True,
-                        placeholder = 'Selecciona un tipo de recurso..',
-                        value=['escuelas'],
-                        clearable=True,
-                        style={'background-color': 'black'}                        
-                    )        
+        ]),    
+        dbc.Row(
+            dbc.Col([
+                html.Div(
+                    [
+                        dbc.Checklist(
+                            options=[{'label': v, 'value': k} for k,v in TIPO_RECURSOS.items()],
+                            value=list(TIPO_RECURSOS.keys()),
+                            id="switches-recursos",
+                            switch=True,
+                        ),
+                    ], className="mt-3"
+                )
             ], md=12
-            )),        
-        # dbc.Row(dbc.Col([
-        #             html.Label(htmlFor="select-recurso", title='Recurso'),
-        #             *[dbc.Checklist([dbc.Switch(id=k), html.Label(v, htmlFor=k)]) for k,v in TIPO_RECURSOS.items()]
-        #     ], md=12
-        #     ))            
+            )
+        )            
                    
     ],
     id="filtros",

@@ -7,20 +7,19 @@ import plotly.graph_objects as go
 from data.gis import DF_CUERPOS, DF_CURSOS_AGUA, DF_ESCUELAS
 
 
-Mapa = dbc.Card(dbc.CardBody(dcc.Graph(id="gis-mapa")))
+Mapa = dbc.Card(dbc.CardBody(dcc.Graph(id="gis-resultados")))
 
 @callback(
-    Output("gis-mapa", "figure"), 
+    Output("gis-resultados", "figure"), 
     [
         Input("select-municipio", "value"),
-        Input("select-recurso", "value"),
+        Input("switches-recursos", "value"),
     ]
 )
 def update_bar_chart(municipio, recursos):
     
     sel_municipio = [c for c in municipio if c != '']
     sel_recurso = [c for c in recursos if c != '']
-    print(municipio)
 
     df = DF_CUERPOS.copy()
     df['color'] = 1
