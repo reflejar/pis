@@ -17,7 +17,9 @@ app = dash.Dash(
 	__name__,
 	server=server,
 	external_stylesheets=[dbc.icons.BOOTSTRAP], # COSMO, FLATLY, LUX, MINTY
-	use_pages=True
+	use_pages=True,
+	update_title="Actualizando...",
+	title="PIS | Pesticidas Introducidos Silenciosamente"
 )
 dash.register_page(index.__name__, title="Pesticidas Introducidos Silenciosamente", path='/', layout=index.layout)
 dash.register_page(gis_normativo.__name__, title="Proyección GIS", path='/gis/normativo', layout=gis_normativo.layout)

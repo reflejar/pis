@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from data.gis import DF_CUERPOS, DF_CURSOS_AGUA, DF_ESCUELAS
 
 
-Mapa = dbc.Card(dbc.CardBody(dcc.Graph(id="gis-resultados")))
+Mapa = dcc.Graph(id="gis-resultados", className="mt-4")
 
 @callback(
     Output("gis-resultados", "figure"), 

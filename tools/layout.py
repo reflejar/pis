@@ -2,9 +2,9 @@ from dash import html, Input, Output, callback, State
 import dash_bootstrap_components as dbc
 
 
-PIS_ISOTIPO = "assets/img/pis_isotipo.png"
-PIS_ISOLOGOTIPO = "assets/img/pis_isologotipo.png"
-REFLEJAR_LOGOTIPO = "assets/img/reflejar_logotipo.png"
+PIS_ISOTIPO = "/assets/img/pis_isotipo.png"
+PIS_ISOLOGOTIPO = "/assets/img/pis_isologotipo.png"
+REFLEJAR_LOGOTIPO = "/assets/img/reflejar_logotipo.png"
 
 
 Navbar = dbc.Navbar(
@@ -56,7 +56,7 @@ Footer = html.Footer([
             dbc.Col(
                 html.Div(
                     [
-                        html.A(html.Img(src=PIS_ISOLOGOTIPO, height="100px"), target="_blank", href="https://pis.org.ar"),
+                        html.A(html.Img(src=PIS_ISOLOGOTIPO, height="100px"), href="/"),
 
                     ],
                     className="text-center"
