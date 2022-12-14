@@ -1,16 +1,9 @@
 from dash import html, dcc
+
 import dash_bootstrap_components as dbc
 
-MUNICIPIOS = ['Mar Chiquita']
-TIPO_RECURSOS = {
-    'cursos-agua': 'Cursos de agua',
-    'cuerpos-agua': 'Cuerpos de agua',
-    'escuelas': 'Escuelas',
-    'radio-escuelas': 'Radio escuelas',
-    'ciudades': 'Ciudades',
-    'apiario': 'Apiario',
-    'zonas-de-exclusion': 'Zonas de exclusión',
-}
+from data import Data
+
 
 Filtros = html.Div(
     [
@@ -24,16 +17,13 @@ Filtros = html.Div(
                     html.Label(htmlFor="select-municipio", title='Municipio'),
                     dcc.Dropdown(
                         id="select-municipio",
-                        options=MUNICIPIOS,
+                        options=Data.MUNICIPIOS,
                         multi=True,
                         searchable = True,
                         placeholder = 'Selecciona un municipio..',
                         value=["Mar Chiquita"],
                         clearable=True,
-                        style={
-                            'background-color': 'black',
-                            'color': 'var(--primary)'
-                        }
+                        style={'background-color': 'black'}
                     )        
             ], md=12), 
                          
@@ -43,8 +33,8 @@ Filtros = html.Div(
                 html.Div(
                     [
                         dbc.Checklist(
-                            options=[{'label': v, 'value': k} for k,v in TIPO_RECURSOS.items()],
-                            value=list(TIPO_RECURSOS.keys()),
+                            options=[{'label': v['title'], 'value': k} for k,v in Data.TIPO_RECURSOS.items()],
+                            value=list(Data.TIPO_RECURSOS.keys()),
                             id="switches-recursos",
                             switch=True,
                         ),
