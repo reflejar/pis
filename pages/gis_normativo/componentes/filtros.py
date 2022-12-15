@@ -2,7 +2,7 @@ from dash import html, dcc
 
 import dash_bootstrap_components as dbc
 
-from data import Data
+from data import Mapa
 
 
 Filtros = html.Div(
@@ -17,7 +17,7 @@ Filtros = html.Div(
                     html.Label(htmlFor="select-municipio", title='Municipio'),
                     dcc.Dropdown(
                         id="select-municipio",
-                        options=Data.MUNICIPIOS,
+                        options=Mapa.MUNICIPIOS,
                         multi=True,
                         searchable = True,
                         placeholder = 'Selecciona un municipio..',
@@ -33,8 +33,8 @@ Filtros = html.Div(
                 html.Div(
                     [
                         dbc.Checklist(
-                            options=[{'label': v['title'], 'value': k} for k,v in Data.TIPO_RECURSOS.items()],
-                            value=list(Data.TIPO_RECURSOS.keys()),
+                            options=[{'label': v['title'], 'value': k} for k,v in Mapa.TIPO_RECURSOS.items()],
+                            value=list(Mapa.TIPO_RECURSOS.keys()),
                             id="switches-recursos",
                             switch=True,
                         ),
