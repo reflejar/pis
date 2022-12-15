@@ -1,1 +1,1 @@
-from .gis import Mapa
+from .gis import MapHandler

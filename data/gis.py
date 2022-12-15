@@ -4,24 +4,32 @@ import numpy as np
 import plotly.graph_objects as go
 import json
 
-class Mapa:
+class MapHandler:
 
     """
-    Obtencion del df de la data solicitada
+    Clase para la creación de capas de mapas
 
-    Parametros
+    Parametros que recibe
     ----------
         resource : str
             tipo de recurso
         folder : str
             carpeta en la que se encuentra. Default: data
-        extension : list
-            extensión del archivo. Default: geojson
 
     Atributos
     ----------
-        df: pandas.Dataframe
-            Dataframe final
+        TIPO_RECURSOS: dict
+            Diccionario de los tipos de recursos disponibles con sus caracterizaciones
+                [cursos_agua, cuerpos_agua, escuelas_en_parcelas, ...]
+        MUNICIPIOS: 
+            Falta ...
+        gdf: gpd.GeoDataFrame
+            GeoDataFrame final
+    
+    Métodos
+    ----------
+        .create()
+            Retorna el tipo de mapa específico para el recurso solicitado
             
     """
 
@@ -56,40 +64,41 @@ class Mapa:
         self.resource = resource
         if not resource in self.TIPO_RECURSOS.keys():
             raise Exception(f"pedime un tipo de recursos valido bichi, osea: {self.TIPO_RECURSOS.keys()}")
-        self.df = gpd.read_file(f"{folder or self.DEFAULT_FOLDER}/{resource}.geojson").reset_index()
+        self.gdf = gpd.read_file(f"{folder or self.DEFAULT_FOLDER}/{resource}.geojson").reset_index()
         
 
     def create(self):
         return {
-            'cuerpos_agua': self.choroplet,
-            'cursos_agua': self.scatter,
-            'escuelas_en_parcelas': self.choroplet,
+            'cuerpos_agua': self._choroplet,
+            'cursos_agua': self._scatter,
+            'escuelas_en_parcelas': self._choroplet,
         }[self.resource]()
 
 
-    def choroplet(self):
-        self.df['color'] = self.TIPO_RECURSOS[self.resource]['color']
+    def _choroplet(self):
+        self.gdf['color'] = self.TIPO_RECURSOS[self.resource]['color']
 
         return go.Choroplethmapbox(
-            geojson=json.loads(self.df.to_json(na="keep")), 
+            geojson=json.loads(self.gdf.to_json(na="keep")), 
             featureidkey="properties.index",
-            locations=self.df['index'], 
-            z=self.df['color'],
+            locations=self.gdf['index'], 
+            z=self.gdf['color'],
             zmax=1,
             zmin=0,
             colorscale=self.COLOR_SCALE,
             marker_opacity=1,
             marker_line_width=0.5,
             # customdata=,
-            showscale=False
+            showscale=False,
+            name=self.resource
         )
 
-    def scatter(self):
+    def _scatter(self):
         #Crear latitudes y longitudes de rios
         lats = []
         lons = []
         names = []
-        for feature, name in zip(self.df.geometry, self.df.NOMBRE):
+        for feature, name in zip(self.gdf.geometry, self.gdf.NOMBRE):
             if isinstance(feature, shapely.geometry.linestring.LineString):
                 linestrings = [feature]
             elif isinstance(feature, shapely.geometry.multilinestring.MultiLineString):
@@ -111,7 +120,7 @@ class Mapa:
             mode = 'lines',
             marker_size=12,
             marker_color='rgb(30, 115, 199)',
-            name="Rios"
+            name=self.resource
             )            
 
     @staticmethod
@@ -161,9 +170,9 @@ class Mapa:
     # def make_custom_data(self):
     #     hover_escuelas_parc='<b>Nombre</b>: %{customdata[0]}<br>'+'<b>Nivel</b>: %{customdata[1]}<br>'+'<b>Teléfono</b>: %{customdata[2]}'+'<extra></extra>'
     
-    #     customdata_escuelas_parc = np.stack((self.df["nombre.establecimiento"], self.df['nivel'],
-    #                         self.df["Tel"]), axis=-1)
+    #     customdata_escuelas_parc = np.stack((self.gdf["nombre.establecimiento"], self.gdf['nivel'],
+    #                         self.gdf["Tel"]), axis=-1)
     #     hover_cuerpos='<b>Nombre</b>: %{customdata[0]}<br>'+'<b>Tipo</b>: %{customdata[1]}<br>'+'<extra></extra>'
-    #     customdata_cuerpos = np.stack((self.df["NOMBRE"], self.df['TIPO']), axis=-1)
+    #     customdata_cuerpos = np.stack((self.gdf["NOMBRE"], self.gdf['TIPO']), axis=-1)
     #     hover_cursos='<b>Nombre</b>: %{customdata[0]}<br>'+'<extra></extra>'
     #     customdata_cursos = np.stack((names,names), axis=-1)

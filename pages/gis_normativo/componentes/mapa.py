@@ -1,10 +1,10 @@
 import json
-from dash import dcc, html, Input, Output, callback
+from dash import dcc, html, Input, Output, State, callback
 import dash_bootstrap_components as dbc
 
 import plotly.graph_objects as go
 
-from data import Mapa
+from data import MapHandler
 
 
 MapaNormativo = dcc.Graph(id="gis-normativo", className="mt-4")
@@ -14,11 +14,20 @@ MapaNormativo = dcc.Graph(id="gis-normativo", className="mt-4")
     [
         Input("select-municipio", "value"),
         Input("switches-recursos", "value"),
+        State("gis-normativo", "figure")
     ]
 )
-def update_bar_chart(municipio, recursos):
+def update_mapa(municipio, recursos, anterior):
+    fig = go.Figure(anterior)
     
-    fig = go.Figure([Mapa(r).create() for r in recursos])
+    # Si los recursos a mostrarse son menores a los ya existentes hay que borrar el que ya no se necesita
+    if len(recursos) < len(fig.data):
+        fig.data = [data for data in fig.data if data.name in recursos]
+    # Y sino hay que agregar las capas que no existen aun
+    else:
+        capas_existentes = [data.name for data in fig.data]
+        capas_a_realizar = [i for i in recursos if i not in capas_existentes]
+        fig.add_traces([MapHandler(r).create() for r in capas_a_realizar])
 
     fig.update_layout(
         mapbox_style="open-street-map",
@@ -29,5 +38,6 @@ def update_bar_chart(municipio, recursos):
         margin={"r":0,"t":0,"l":0,"b":0},
         mapbox_center={"lat": -36.26, "lon": -60.23},
     )
+    
 
     return fig
