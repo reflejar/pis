@@ -32,6 +32,7 @@ Filtros = html.Div(
             dbc.Col([
                 html.Div(
                     [
+                        dbc.Label("Seleccione tipos de recursos", class_name="mt-3"),
                         dbc.Checklist(
                             options=[{'label': v['title'], 'value': k} for k,v in MapHandler.TIPO_RECURSOS.items()],
                             value=list(MapHandler.TIPO_RECURSOS.keys()),
@@ -42,7 +43,25 @@ Filtros = html.Div(
                 )
             ], md=12
             )
-        )            
+        ),
+        dbc.Row(
+            dbc.Col([
+                html.Div(
+                    [
+                        dbc.Label("Seleccione vista", class_name="mt-3"),
+                        dbc.RadioItems(
+                            options=[
+                                {"label": "Poligono", "value": 'poligono'},
+                                {"label": "Satelital", "value": 'satelital'},
+                            ],
+                            value='poligono',
+                            id="radioitems-vista",
+                        ),
+                    ]
+                )
+            ], md=12
+            )
+        )           
                    
     ],
     id="filtros",

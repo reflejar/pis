@@ -7,29 +7,37 @@ import json
 class MapHandler:
 
     """
-    Clase para la creación de capas de mapas
 
-    Parametros que recibe
-    ----------
-        resource : str
-            tipo de recurso
-        folder : str
-            carpeta en la que se encuentra. Default: data
+        Clase para la manipulación de mapas
 
-    Atributos
-    ----------
-        TIPO_RECURSOS: dict
-            Diccionario de los tipos de recursos disponibles con sus caracterizaciones
-                [cursos_agua, cuerpos_agua, escuelas_en_parcelas, ...]
-        MUNICIPIOS: 
-            Falta ...
-        gdf: gpd.GeoDataFrame
-            GeoDataFrame final
-    
-    Métodos
-    ----------
-        .create()
-            Retorna el tipo de mapa específico para el recurso solicitado
+        Parametros que recibe
+        ----------
+            municipios: list
+                Municipios que quiera mostrar.
+            recursos: list
+                Lista de recursos que se quiera mostrar.
+            vista: str
+                Tipo de vista que se quiera mostrar 'poligono' o 'satelital'.
+                Default: 'poligono'.
+            anterior: go.Figure
+                figura anterior.
+
+        Atributos principales
+        ----------
+            TIPO_RECURSOS: dict
+                Diccionario de los tipos de recursos disponibles con sus caracterizaciones.
+                    [cursos_agua, cuerpos_agua, escuelas_en_parcelas, ...]
+            MUNICIPIOS: 
+                Municipios de Bs As. (Por ahora solo Mar Chiquita).
+                Falta ...
+            fig: go.Figure
+                Figura a la que se le agregarán y quitarán capas.
+        
+        Métodos principales
+        ----------
+            .render() -> go.Figure
+                Prende y apaga las capas y el tipo de vista.
+                Retorna el mapa entero.
             
     """
 
@@ -56,33 +64,72 @@ class MapHandler:
 
     def __init__(
         self,
-        resource:str=None,
-        folder:str=None,
+        municipios:list=[],
+        recursos:list=[],
+        vista:str='poligono',
+        anterior:go.Figure=None,
     ) -> None:
-        if not isinstance(resource, str):
-            raise Exception("dame un string para el tipo de recurso porfis")
-        self.resource = resource
-        if not resource in self.TIPO_RECURSOS.keys():
-            raise Exception(f"pedime un tipo de recursos valido bichi, osea: {self.TIPO_RECURSOS.keys()}")
-        self.gdf = gpd.read_file(f"{folder or self.DEFAULT_FOLDER}/{resource}.geojson").reset_index()
-        
+        if not isinstance(recursos, list):
+            raise Exception("dame una lista de strings para los tipos de recurso porfis")
+        self.fig = go.Figure(anterior)
+        self.municipios = municipios or self.MUNICIPIOS
+        self.recursos = recursos
+        self.vista = vista
 
-    def create(self):
-        return {
-            'cuerpos_agua': self._choroplet,
-            'cursos_agua': self._scatter,
-            'escuelas_en_parcelas': self._choroplet,
-        }[self.resource]()
+    def render(self):
+        self.switch_vista()        
+        self.switch_capas()
+        return self.fig
 
+    def switch_vista(self):
+        if self.vista == "poligono":
+            self.fig.update_layout(
+                mapbox_style="open-street-map",
+                mapbox_zoom=6, 
+                uirevision=True,
+                height=800,
+                coloraxis_showscale=False,
+                margin={"r":0,"t":0,"l":0,"b":0},
+                mapbox_center={"lat": -36.26, "lon": -60.23},
+            )
+        else:
+            self.fig.update_layout(
+                mapbox_style="white-bg",
+                mapbox_layers=[
+                    {
+                        "below": 'traces',
+                        "sourcetype": "raster",
+                        "sourceattribution": 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+                        "source": [
+                            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                        ]
+                        
+                    }
+            ])                
 
-    def _choroplet(self):
-        self.gdf['color'] = self.TIPO_RECURSOS[self.resource]['color']
+    def switch_capas(self):
+        # Si los recursos a mostrarse son menores a los ya existentes hay que borrar el que ya no se necesita
+        if len(self.recursos) < len(self.fig.data):
+            self.fig.data = [data for data in self.fig.data if data.name in self.recursos]
+        # Y sino hay que agregar las capas que no existen aun
+        else:
+            capas_existentes = [data.name for data in self.fig.data]
+            capas_a_realizar = [i for i in self.recursos if i not in capas_existentes]
+            for r in capas_a_realizar:
+                gdf = gpd.read_file(f"{self.DEFAULT_FOLDER}/{r}.geojson").reset_index()
+                if r in ['cuerpos_agua', 'escuelas_en_parcelas']:
+                    self.fig.add_trace(self._choroplet(gdf, r))
+                elif r in ['cursos_agua']:
+                    self.fig.add_trace(self._scatter(gdf, r))                    
+
+    def _choroplet(self, gdf, recurso):
+        gdf['color'] = self.TIPO_RECURSOS[recurso]['color']
 
         return go.Choroplethmapbox(
-            geojson=json.loads(self.gdf.to_json(na="keep")), 
+            geojson=json.loads(gdf.to_json(na="keep")), 
             featureidkey="properties.index",
-            locations=self.gdf['index'], 
-            z=self.gdf['color'],
+            locations=gdf['index'], 
+            z=gdf['color'],
             zmax=1,
             zmin=0,
             colorscale=self.COLOR_SCALE,
@@ -90,15 +137,15 @@ class MapHandler:
             marker_line_width=0.5,
             # customdata=,
             showscale=False,
-            name=self.resource
+            name=recurso
         )
 
-    def _scatter(self):
+    def _scatter(self, gdf, recurso):
         #Crear latitudes y longitudes de rios
         lats = []
         lons = []
         names = []
-        for feature, name in zip(self.gdf.geometry, self.gdf.NOMBRE):
+        for feature, name in zip(gdf.geometry, gdf.NOMBRE):
             if isinstance(feature, shapely.geometry.linestring.LineString):
                 linestrings = [feature]
             elif isinstance(feature, shapely.geometry.multilinestring.MultiLineString):
@@ -120,7 +167,7 @@ class MapHandler:
             mode = 'lines',
             marker_size=12,
             marker_color='rgb(30, 115, 199)',
-            name=self.resource
+            name=recurso
             )            
 
     @staticmethod
@@ -167,12 +214,12 @@ class MapHandler:
         return zoom, b_box['center']        
 
 
-    # def make_custom_data(self):
+    # def create_hover_info(self):
     #     hover_escuelas_parc='<b>Nombre</b>: %{customdata[0]}<br>'+'<b>Nivel</b>: %{customdata[1]}<br>'+'<b>Teléfono</b>: %{customdata[2]}'+'<extra></extra>'
     
-    #     customdata_escuelas_parc = np.stack((self.gdf["nombre.establecimiento"], self.gdf['nivel'],
-    #                         self.gdf["Tel"]), axis=-1)
+    #     customdata_escuelas_parc = np.stack((gdf["nombre.establecimiento"], gdf['nivel'],
+    #                         gdf["Tel"]), axis=-1)
     #     hover_cuerpos='<b>Nombre</b>: %{customdata[0]}<br>'+'<b>Tipo</b>: %{customdata[1]}<br>'+'<extra></extra>'
-    #     customdata_cuerpos = np.stack((self.gdf["NOMBRE"], self.gdf['TIPO']), axis=-1)
+    #     customdata_cuerpos = np.stack((gdf["NOMBRE"], gdf['TIPO']), axis=-1)
     #     hover_cursos='<b>Nombre</b>: %{customdata[0]}<br>'+'<extra></extra>'
     #     customdata_cursos = np.stack((names,names), axis=-1)
