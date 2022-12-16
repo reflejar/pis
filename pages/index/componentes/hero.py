@@ -8,7 +8,7 @@ Hero = html.Section(
 						"Pesticidas introducidos silenciosamente",
 					], className="hero-subtitle text-center text-uppercase text-dark mb-5"),
 					html.H4([
-						"Campaña de incidencia pública para la reducción de uso de plaguicidas  basados en datos , información y activación territorial efectiva.",
+						"Campaña de incidencia pública para la reducción de uso de plaguicidas  basados en datos, información y activación territorial efectiva.",
 						html.Br(),
 					], className="hero-description text-center text-dark"),					
 				])),
