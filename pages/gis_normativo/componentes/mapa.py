@@ -1,4 +1,4 @@
-from dash import dcc, html, Input, Output, State, callback
+from dash import dcc, html, Input, Output, State, callback, ctx
 
 import plotly.graph_objects as go
 
@@ -18,6 +18,7 @@ MapaNormativo = dcc.Graph(id="gis-normativo", className="mt-4")
     ]
 )
 def update_map_layers(municipios, recursos, vista):
+    
     mapa = MapHandler(municipios, recursos, vista)
     return mapa.render(), ''
 

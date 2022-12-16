@@ -32,23 +32,7 @@ Filtros = html.Div(
             dbc.Col([
                 html.Div(
                     [
-                        dbc.Label("Seleccione tipos de recursos", class_name="mt-3"),
-                        dbc.Checklist(
-                            options=[{'label': v['title'], 'value': k} for k,v in MapHandler.TIPO_RECURSOS.items()],
-                            value=list(MapHandler.TIPO_RECURSOS.keys()),
-                            id="switches-recursos",
-                            switch=True,
-                        ),
-                    ], className="mt-3"
-                )
-            ], md=12
-            )
-        ),
-        dbc.Row(
-            dbc.Col([
-                html.Div(
-                    [
-                        dbc.Label("Seleccione vista", class_name="mt-3"),
+                        dbc.Label("Seleccione tipo de vista", class_name="mt-3"),
                         dbc.RadioItems(
                             options=[
                                 {"label": "Poligono", "value": 'open-street-map'},
@@ -61,7 +45,24 @@ Filtros = html.Div(
                 )
             ], md=12
             )
+        ),        
+        dbc.Row(
+            dbc.Col([
+                html.Div(
+                    [
+                        dbc.Label("Seleccione tipos de recursos", class_name="mt-3"),
+                        dbc.Checklist(
+                            options=[{'label': v['title'], 'value': k} for k,v in MapHandler.TIPO_RECURSOS.items()],
+                            value=list(MapHandler.TIPO_RECURSOS.keys()),
+                            id="switches-recursos",
+                            switch=True,
+                        ),
+                    ], className="mt-3"
+                )
+            ], md=12
+            )
         ),
+
         dbc.Spinner(html.Div(id="loading-output"),color="primary"),
                    
     ],
