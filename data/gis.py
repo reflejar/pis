@@ -78,11 +78,19 @@ class MapHandler:
 
     def render(self):
         self.switch_vista()        
+        self.switch_municipio()
         self.switch_capas()
         return self.fig
+        
+    
+    def switch_municipio(self):
+        # Por ahora no hace nada mas que centrar y centra con un gdf dummy
+        gdf = gpd.read_file(f"{self.DEFAULT_FOLDER}/cursos_agua.geojson").reset_index()
+        self.zoom_and_center(gdf)
+
 
     def switch_vista(self):
-        if self.vista == "poligono":
+        if len(self.fig.data) == 0:
             self.fig.update_layout(
                 mapbox_style="open-street-map",
                 mapbox_zoom=6, 
@@ -91,6 +99,11 @@ class MapHandler:
                 coloraxis_showscale=False,
                 margin={"r":0,"t":0,"l":0,"b":0},
                 mapbox_center={"lat": -36.26, "lon": -60.23},
+            )
+        if self.vista == "poligono":
+            self.fig.update_layout(
+                mapbox_style="open-street-map",
+                mapbox_layers=[]
             )
         else:
             self.fig.update_layout(
@@ -105,7 +118,8 @@ class MapHandler:
                         ]
                         
                     }
-            ])                
+                ]
+            )                
 
     def switch_capas(self):
         # Si los recursos a mostrarse son menores a los ya existentes hay que borrar el que ya no se necesita
@@ -170,8 +184,7 @@ class MapHandler:
             name=recurso
             )            
 
-    @staticmethod
-    def zoom_and_center(longitudes=None, latitudes=None):
+    def zoom_and_center(self, gdf):
         """Function documentation:\n
         Basic framework adopted from Krichardson under the following thread:
         https://community.plotly.com/t/dynamic-zoom-for-mapbox/32658/7
@@ -185,6 +198,12 @@ class MapHandler:
         """
 
         # Check whether both latitudes and longitudes have been passed,
+        x1,y1,x2,y2 = gdf['geometry'].total_bounds
+        longitudes=np.array([x1,x2])
+        latitudes=np.array([y1,y2])
+        max_bound = max(abs(x1-x2), abs(y1-y2)) * 111
+        zoom = 11.5 - np.log(max_bound)
+
         # or if the list lenghts don't match
         if ((latitudes is None or longitudes is None)
                 or (len(latitudes) != len(longitudes))):
@@ -211,7 +230,10 @@ class MapHandler:
                         fp=[20, 15,    14,     13,     12,     7,      5])
 
         # Finally, return the zoom level and the associated boundary-box center coordinates
-        return zoom, b_box['center']        
+        self.fig.update_layout(
+            mapbox_zoom=zoom-1, 
+            mapbox_center = {"lat": b_box['center'][1], "lon": b_box['center'][0]},
+        )
 
 
     # def create_hover_info(self):
