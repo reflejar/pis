@@ -42,17 +42,25 @@ class MapHandler:
     DEFAULT_FOLDER = 'data'
 
     TIPO_RECURSOS = {
-        'cursos_agua': {
-            'title': 'Cursos de agua',
-            'color': None
-        },
+        # 'reservas': {
+        #     'title': 'Reservas',
+        #     'color': None
+        # },        
         'cuerpos_agua': {
             'title': 'Cuerpos de agua',
             'color': 0
         },
+        # 'localidades': {
+        #     'title': 'Cuerpos de agua',
+        #     'color': 0
+        # },        
         'escuelas_en_parcelas': {
             'title': 'Escuelas',
             'color': 1
+        },
+        'cursos_agua': {
+            'title': 'Cursos de agua',
+            'color': None
         },
     }
 
@@ -74,9 +82,9 @@ class MapHandler:
         self.vista = vista
 
     def render(self):
-        self.switch_vista()        
-        self.switch_municipio()
+        self.switch_vista()
         self.switch_capas()
+        self.switch_municipio()
         return self.fig
         
     
@@ -87,54 +95,43 @@ class MapHandler:
 
 
     def switch_vista(self):
-        if len(self.fig.data) == 0:
+        self.fig.update_layout(
+            mapbox_style="open-street-map",
+            mapbox_zoom=6, 
+            uirevision=True,
+            height=800,
+            coloraxis_showscale=False,
+            margin={"r":0,"t":0,"l":0,"b":0},
+            mapbox_center={"lat": -36.26, "lon": -60.23},
+        )
+        if self.vista == "open-street-map":
             self.fig.update_layout(
                 mapbox_style="open-street-map",
-                mapbox_zoom=6, 
-                uirevision=True,
-                height=800,
-                coloraxis_showscale=False,
-                margin={"r":0,"t":0,"l":0,"b":0},
-                mapbox_center={"lat": -36.26, "lon": -60.23},
+                mapbox_layers=[]
             )
-        if self.vista != self.fig.layout.mapbox.style:
-            if self.vista == "open-street-map":
-                self.fig.update_layout(
-                    mapbox_style="open-street-map",
-                    mapbox_layers=[]
-                )
-            else:
-                self.fig.update_layout(
-                    mapbox_style="white-bg",
-                    mapbox_layers=[
-                        {
-                            "below": 'traces',
-                            "sourcetype": "raster",
-                            "sourceattribution": 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-                            "source": [
-                                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                            ]
-                            
-                        }
-                    ]
-                )                
+        else:
+            self.fig.update_layout(
+                mapbox_style="white-bg",
+                mapbox_layers=[
+                    {
+                        "below": 'traces',
+                        "sourcetype": "raster",
+                        "sourceattribution": 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+                        "source": [
+                            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                        ]
+                        
+                    }
+                ]
+            )                
 
     def switch_capas(self):
-        # Solo si hay cambio en lo solicitado
-        if len(self.recursos) != len(self.fig.data):
-            # Si los recursos a mostrarse son menores a los ya existentes hay que borrar el que ya no se necesita
-            if len(self.recursos) < len(self.fig.data):
-                self.fig.data = [data for data in self.fig.data if data.name in self.recursos]
-            # Y sino hay que agregar las capas que no existen aun
-            else:
-                capas_existentes = [data.name for data in self.fig.data]
-                capas_a_realizar = [i for i in self.recursos if i not in capas_existentes]
-                for r in capas_a_realizar:
-                    gdf = gpd.read_file(f"{self.DEFAULT_FOLDER}/{r}.geojson").reset_index()
-                    if r in ['cuerpos_agua', 'escuelas_en_parcelas']:
-                        self.fig.add_trace(self._choroplet(gdf, r))
-                    elif r in ['cursos_agua']:
-                        self.fig.add_trace(self._scatter(gdf, r))                    
+        for r in self.recursos:
+            gdf = gpd.read_file(f"{self.DEFAULT_FOLDER}/{r}.geojson").reset_index()
+            if r in ['cuerpos_agua', 'escuelas_en_parcelas']:
+                self.fig.add_trace(self._choroplet(gdf, r))
+            elif r in ['cursos_agua']:
+                self.fig.add_trace(self._scatter(gdf, r))                    
 
     def _choroplet(self, gdf, recurso):
         gdf['color'] = self.TIPO_RECURSOS[recurso]['color']
