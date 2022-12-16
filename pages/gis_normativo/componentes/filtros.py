@@ -51,17 +51,18 @@ Filtros = html.Div(
                         dbc.Label("Seleccione vista", class_name="mt-3"),
                         dbc.RadioItems(
                             options=[
-                                {"label": "Poligono", "value": 'poligono'},
-                                {"label": "Satelital", "value": 'satelital'},
+                                {"label": "Poligono", "value": 'open-street-map'},
+                                {"label": "Satelital", "value": 'white-bg'},
                             ],
-                            value='poligono',
+                            value='open-street-map',
                             id="radioitems-vista",
                         ),
                     ]
                 )
             ], md=12
             )
-        )           
+        ),
+        dbc.Spinner(html.Div(id="loading-output"),color="primary"),
                    
     ],
     id="filtros",

@@ -17,8 +17,8 @@ class MapHandler:
             recursos: list
                 Lista de recursos que se quiera mostrar.
             vista: str
-                Tipo de vista que se quiera mostrar 'poligono' o 'satelital'.
-                Default: 'poligono'.
+                Tipo de vista que se quiera mostrar 'open-street-map' o 'white-bg'.
+                Default: 'open-street-map'.
 
         Atributos principales
         ----------
@@ -64,7 +64,7 @@ class MapHandler:
         self,
         municipios:list=[],
         recursos:list=[],
-        vista:str='poligono',
+        vista:str='open-street-map',
     ) -> None:
         if not isinstance(recursos, list):
             raise Exception("dame una lista de strings para los tipos de recurso porfis")
@@ -97,41 +97,44 @@ class MapHandler:
                 margin={"r":0,"t":0,"l":0,"b":0},
                 mapbox_center={"lat": -36.26, "lon": -60.23},
             )
-        if self.vista == "poligono":
-            self.fig.update_layout(
-                mapbox_style="open-street-map",
-                mapbox_layers=[]
-            )
-        else:
-            self.fig.update_layout(
-                mapbox_style="white-bg",
-                mapbox_layers=[
-                    {
-                        "below": 'traces',
-                        "sourcetype": "raster",
-                        "sourceattribution": 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-                        "source": [
-                            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                        ]
-                        
-                    }
-                ]
-            )                
+        if self.vista != self.fig.layout.mapbox.style:
+            if self.vista == "open-street-map":
+                self.fig.update_layout(
+                    mapbox_style="open-street-map",
+                    mapbox_layers=[]
+                )
+            else:
+                self.fig.update_layout(
+                    mapbox_style="white-bg",
+                    mapbox_layers=[
+                        {
+                            "below": 'traces',
+                            "sourcetype": "raster",
+                            "sourceattribution": 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+                            "source": [
+                                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                            ]
+                            
+                        }
+                    ]
+                )                
 
     def switch_capas(self):
-        # Si los recursos a mostrarse son menores a los ya existentes hay que borrar el que ya no se necesita
-        if len(self.recursos) < len(self.fig.data):
-            self.fig.data = [data for data in self.fig.data if data.name in self.recursos]
-        # Y sino hay que agregar las capas que no existen aun
-        else:
-            capas_existentes = [data.name for data in self.fig.data]
-            capas_a_realizar = [i for i in self.recursos if i not in capas_existentes]
-            for r in capas_a_realizar:
-                gdf = gpd.read_file(f"{self.DEFAULT_FOLDER}/{r}.geojson").reset_index()
-                if r in ['cuerpos_agua', 'escuelas_en_parcelas']:
-                    self.fig.add_trace(self._choroplet(gdf, r))
-                elif r in ['cursos_agua']:
-                    self.fig.add_trace(self._scatter(gdf, r))                    
+        # Solo si hay cambio en lo solicitado
+        if len(self.recursos) != len(self.fig.data):
+            # Si los recursos a mostrarse son menores a los ya existentes hay que borrar el que ya no se necesita
+            if len(self.recursos) < len(self.fig.data):
+                self.fig.data = [data for data in self.fig.data if data.name in self.recursos]
+            # Y sino hay que agregar las capas que no existen aun
+            else:
+                capas_existentes = [data.name for data in self.fig.data]
+                capas_a_realizar = [i for i in self.recursos if i not in capas_existentes]
+                for r in capas_a_realizar:
+                    gdf = gpd.read_file(f"{self.DEFAULT_FOLDER}/{r}.geojson").reset_index()
+                    if r in ['cuerpos_agua', 'escuelas_en_parcelas']:
+                        self.fig.add_trace(self._choroplet(gdf, r))
+                    elif r in ['cursos_agua']:
+                        self.fig.add_trace(self._scatter(gdf, r))                    
 
     def _choroplet(self, gdf, recurso):
         gdf['color'] = self.TIPO_RECURSOS[recurso]['color']
