@@ -15,9 +15,8 @@ MapaNormativo = dcc.Graph(id="gis-normativo", className="mt-4")
         Input("select-municipio", "value"),
         Input("switches-recursos", "value"),
         Input("radioitems-vista", "value"),
-        State("gis-normativo", "figure"),
     ]
 )
-def update_map_layers(municipios, recursos, vista, anterior):
-    mapa = MapHandler(municipios, recursos, vista, anterior)
+def update_map_layers(municipios, recursos, vista):
+    mapa = MapHandler(municipios, recursos, vista)
     return mapa.render()

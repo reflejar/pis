@@ -19,8 +19,6 @@ class MapHandler:
             vista: str
                 Tipo de vista que se quiera mostrar 'poligono' o 'satelital'.
                 Default: 'poligono'.
-            anterior: go.Figure
-                figura anterior.
 
         Atributos principales
         ----------
@@ -67,11 +65,10 @@ class MapHandler:
         municipios:list=[],
         recursos:list=[],
         vista:str='poligono',
-        anterior:go.Figure=None,
     ) -> None:
         if not isinstance(recursos, list):
             raise Exception("dame una lista de strings para los tipos de recurso porfis")
-        self.fig = go.Figure(anterior)
+        self.fig = go.Figure()
         self.municipios = municipios or self.MUNICIPIOS
         self.recursos = recursos
         self.vista = vista
