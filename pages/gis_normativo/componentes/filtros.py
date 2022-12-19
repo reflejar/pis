@@ -62,10 +62,10 @@ Filtros = html.Div(
             ], md=12
             )
         ),
+        dbc.Row(dbc.Col(dbc.Spinner(html.Div(id="loading-output", className="mt-5"),color="primary"), md=12)),        
 
-        dbc.Spinner(html.Div(id="loading-output"),color="primary"),
                    
     ],
     id="filtros",
-    className=" text-white"
+    className=" text-white mt-5"
 )
