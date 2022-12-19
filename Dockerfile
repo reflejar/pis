@@ -1,5 +1,5 @@
 # Stage 1
-FROM python:3.10-slim as base
+FROM python:3.11-slim as base
 
 ENV PYTHONUNBUFFERED 1
 
@@ -17,7 +17,7 @@ ARG VERSION
 
 LABEL maintainer "hola@reflej.ar"
 LABEL created $BUILD_DATE
-LABEL url "https://reflej.ar"
+LABEL url "https://pis.reflej.ar"
 LABEL source "git@github.com:reflejar/pis.git"
 LABEL version $VERSION
 LABEL revision $REVISION
