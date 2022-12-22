@@ -1,8 +1,11 @@
 import geopandas as gpd
 import shapely
+import pandas as pd
 import numpy as np
+
 import plotly.graph_objects as go
-import json
+
+import pickle
 
 class MapHandler:
 
@@ -24,7 +27,7 @@ class MapHandler:
         ----------
             TIPO_RECURSOS: dict
                 Diccionario de los tipos de recursos disponibles con sus caracterizaciones.
-                    [cursos_agua, cuerpos_agua, escuelas_en_parcelas, ...]
+                    [cursos_agua, cuerpos_agua, escuelas_parcelas, ...]
             MUNICIPIOS: 
                 Municipios de Bs As. (Por ahora solo Mar Chiquita).
                 Falta ...
@@ -42,26 +45,85 @@ class MapHandler:
     DEFAULT_FOLDER = 'data'
 
     TIPO_RECURSOS = {
-        # 'reservas': {
-        #     'title': 'Reservas',
-        #     'color': None
-        # },        
+        'reservas': {
+            'title': 'Reservas',
+            'color': None,
+            'pkl': 'reservas_geojson.pkl',
+            'parquet': 'reservas.parquet',
+            'graph': 'choroplet',
+            'opacity': 0.3,
+            'line_width': 1.2,
+            'customdata_attrs': ["Name", "color"],
+            'hover': '<b>Nombre</b>: %{customdata[0]}<br>'+'<extra></extra>'
+        },        
+        'total_excl': {
+            'title': 'Zonas de Exclusión',
+            'color': None,
+            'pkl': 'total_excl_geojson.pkl',
+            'parquet': 'total_excl.parquet',
+            'graph': 'choroplet',
+            'opacity': 0.3,
+            'line_width': 1.2,
+            'customdata_attrs': [],
+            'hover': '<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
+        },    
+        'total_amort_geojson': {
+            'title': 'Zonas de Amortiguamiento',
+            'color': None,
+            'pkl': 'total_amort_geojson.pkl',
+            'parquet': 'total_amort.parquet',
+            'graph': 'choroplet',
+            'opacity': 0.3,
+            'line_width': 1.2,
+            'customdata_attrs': [],
+            'hover': '<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
+        },                     
         'cuerpos_agua': {
             'title': 'Cuerpos de agua',
-            'color': 0
-        },
-        # 'localidades': {
-        #     'title': 'Cuerpos de agua',
-        #     'color': 0
-        # },        
-        'escuelas_en_parcelas': {
-            'title': 'Escuelas',
-            'color': 1
+            'color': 0,
+            'pkl': 'cuerpos_geojson.pkl',
+            'parquet': 'cuerpos.parquet',
+            'graph': 'choroplet',
+            'opacity': 0.7,
+            'line_width': 0.5,
+            'customdata_attrs': ["NOMBRE", "TIPO"],
+            'hover': '<b>Nombre</b>: %{customdata[0]}<br>'+'<b>Tipo</b>: %{customdata[1]}<br>'+'<extra></extra>'
         },
         'cursos_agua': {
-            'title': 'Cursos de agua',
-            'color': None
+            'title': 'Rios',
+            'color': 'rgb(30, 115, 199)',
+            'pkl': 'nombres_rios.npy',
+            'lats': 'latitudes_rios.npy',
+            'lons': 'longitudes_rios.npy',
+            'graph': 'scatter',
+            'line_width': 12,
+            'hover': '<b>Nombre</b>: %{customdata[0]}<br>'+'<extra></extra>'
+
+        },        
+        'localidades_parajes': {
+            'title': 'Localidades y parajes',
+            'color': 0,
+            'pkl': 'localidades_parajes_geojson.pkl',
+            'parquet': 'localidades_parajes.parquet',
+            'graph': 'choroplet',
+            'opacity': 0.7,
+            'line_width': 1.2,
+            'customdata_attrs': ["Name","Habitantes"],
+            'hover': '<b>Nombre</b>: %{customdata[0]}<br>'+'<b>Población</b>:  %{customdata[1]}<br>'+'<extra></extra>'
+        },        
+        'escuelas_parcelas': {
+            'title': 'Escuelas',
+            'color': 1,
+            'pkl': 'escuelas_parcelas_geojson.pkl',
+            'parquet': 'escuelas_parcelas.parquet',
+            'graph': 'choroplet',
+            'opacity': 0.7,
+            'line_width': 1.2,
+            'customdata_attrs': ["nombre.establecimiento", "nivel", "Tel", "email"],
+            'hover': '<b>Nombre</b>: %{customdata[0]}<br>'+'<b>Nivel</b>: %{customdata[1]}<br>'+'<b>Teléfono</b>: %{customdata[2]}<br>'+'<b>Email</b>: %{customdata[3]}'+'<extra></extra>'
+
         },
+
     }
 
     MUNICIPIOS = ['Mar Chiquita']
@@ -126,59 +188,49 @@ class MapHandler:
             )                
 
     def switch_capas(self):
-        for r in self.recursos:
-            gdf = gpd.read_file(f"{self.DEFAULT_FOLDER}/{r}.geojson").reset_index()
-            if r in ['cuerpos_agua', 'escuelas_en_parcelas']:
-                self.fig.add_trace(self._choroplet(gdf, r))
-            elif r in ['cursos_agua']:
-                self.fig.add_trace(self._scatter(gdf, r))                    
-
-    def _choroplet(self, gdf, recurso):
-        gdf['color'] = self.TIPO_RECURSOS[recurso]['color']
+        for recurso in self.recursos:
+            recurso = self.TIPO_RECURSOS[recurso]
+            self.fig.add_trace(getattr(self, recurso['graph'])(recurso))
+            
+    def choroplet(self, recurso):
+        df = gpd.read_parquet(f"{self.DEFAULT_FOLDER}/{recurso['parquet']}").reset_index()
+        with open(f"{self.DEFAULT_FOLDER}/{recurso['pkl']}", 'rb') as f:
+            gdf= pickle.load(f)        
+        gdf['color'] = recurso['color']
 
         return go.Choroplethmapbox(
-            geojson=json.loads(gdf.to_json(na="keep")), 
+            geojson=gdf, 
             featureidkey="properties.index",
-            locations=gdf['index'], 
-            z=gdf['color'],
+            locations=df['index'], 
+            z=df['color'],
+            colorscale=self.COLOR_SCALE,
             zmax=1,
             zmin=0,
-            colorscale=self.COLOR_SCALE,
-            marker_opacity=1,
-            marker_line_width=0.5,
-            # customdata=,
+            marker_opacity=recurso['opacity'],
+            marker_line_width=recurso['line_width'],
+            customdata=np.stack([df[attr] for attr in recurso['customdata_attrs']], axis=-1) if recurso['customdata_attrs'] else [],
+            name=recurso['parquet'],
             showscale=False,
-            name=recurso
+            hovertemplate=recurso['hover'],
         )
 
-    def _scatter(self, gdf, recurso):
+    def scatter(self, recurso):
         #Crear latitudes y longitudes de rios
-        lats = []
-        lons = []
-        names = []
-        for feature, name in zip(gdf.geometry, gdf.NOMBRE):
-            if isinstance(feature, shapely.geometry.linestring.LineString):
-                linestrings = [feature]
-            elif isinstance(feature, shapely.geometry.multilinestring.MultiLineString):
-                linestrings = feature.geoms
-            else:
-                continue
-            for linestring in linestrings:
-                x, y = linestring.xy
-                lats = np.append(lats, y)
-                lons = np.append(lons, x)
-                names = np.append(names, [name]*len(y))
-                lats = np.append(lats, None)
-                lons = np.append(lons, None)
-                names = np.append(names, None)
-                
+        lats=np.load(f"{self.DEFAULT_FOLDER}/{recurso['lats']}",allow_pickle=True)
+        lons=np.load(f"{self.DEFAULT_FOLDER}/{recurso['lons']}",allow_pickle=True)
+        nombres=np.load(f"{self.DEFAULT_FOLDER}/{recurso['pkl']}",allow_pickle=True)
+        
+        
         return go.Scattermapbox(
             lat = lats,
             lon = lons,
             mode = 'lines',
-            marker_size=12,
-            marker_color='rgb(30, 115, 199)',
-            name=recurso
+            marker_size=recurso['line_width'],
+            marker_color=recurso['color'],
+            name=recurso['pkl'],
+            customdata = np.stack((nombres, nombres), axis=-1),
+            hovertemplate =recurso['hover'],   
+
             )            
 
     def zoom_and_center(self, gdf):

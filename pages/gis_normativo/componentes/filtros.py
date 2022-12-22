@@ -4,6 +4,8 @@ import dash_bootstrap_components as dbc
 
 from data import MapHandler
 
+# RECURSOS_INICIAL = ['reservas','cuerpos_agua','cursos_agua','localidades_parajes','escuelas_parcelas']
+RECURSOS_INICIAL = list(MapHandler.TIPO_RECURSOS.keys())
 
 Filtros = html.Div(
     [
@@ -53,7 +55,7 @@ Filtros = html.Div(
                         dbc.Label("Seleccione tipos de recursos", class_name="mt-3"),
                         dbc.Checklist(
                             options=[{'label': v['title'], 'value': k} for k,v in MapHandler.TIPO_RECURSOS.items()],
-                            value=list(MapHandler.TIPO_RECURSOS.keys()),
+                            value=RECURSOS_INICIAL,
                             id="switches-recursos",
                             switch=True,
                         ),
