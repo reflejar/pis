@@ -55,18 +55,7 @@ class MapHandler:
             'line_width': 1.2,
             'customdata_attrs': ["Name", "color"],
             'hover': '<b>Nombre</b>: %{customdata[0]}<br>'+'<extra></extra>'
-        },        
-        'total_excl': {
-            'title': 'Zonas de Exclusión',
-            'color': None,
-            'pkl': 'total_excl_geojson.pkl',
-            'parquet': 'total_excl.parquet',
-            'graph': 'choroplet',
-            'opacity': 0.3,
-            'line_width': 1.2,
-            'customdata_attrs': [],
-            'hover': '<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-        },    
+        },          
         'total_amort_geojson': {
             'title': 'Zonas de Amortiguamiento',
             'color': None,
@@ -77,7 +66,18 @@ class MapHandler:
             'line_width': 1.2,
             'customdata_attrs': [],
             'hover': '<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-        },                     
+        },        
+        'total_excl': {
+            'title': 'Zonas de Exclusión',
+            'color': None,
+            'pkl': 'total_excl_geojson.pkl',
+            'parquet': 'total_excl.parquet',
+            'graph': 'choroplet',
+            'opacity': 0.5,
+            'line_width': 1.2,
+            'customdata_attrs': [],
+            'hover': '<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
+        },                       
         'cuerpos_agua': {
             'title': 'Cuerpos de agua',
             'color': 0,
@@ -127,8 +127,9 @@ class MapHandler:
     }
 
     MUNICIPIOS = ['Mar Chiquita']
-    COLOR_SCALE = [[0, 'rgb(17, 56, 173)'], [1,'rgb(199, 30, 30)' ]]
-
+    # COLOR_SCALE = [[0, 'rgb(17, 56, 173)'], [1,'rgb(199, 30, 30)' ]]
+    COLOR_SCALE=[[0, 'rgb(17, 56, 173)'], [0.5,'rgb(199, 30, 30)' ],[1,'rgb(35, 161, 31)' ]]
+# colorscale=[[0, 'rgb(17, 56, 173)'], [1,'rgb(199, 30, 30)' ]]
 
     def __init__(
         self,
