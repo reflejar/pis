@@ -15,14 +15,11 @@ ARG BUILD_DATE
 ARG REVISION
 ARG VERSION
 
-LABEL maintainer "hola@reflej.ar"
 LABEL created $BUILD_DATE
-LABEL url "https://pis.reflej.ar"
-LABEL source "git@github.com:reflejar/pis.git"
 LABEL version $VERSION
 LABEL revision $REVISION
-LABEL vendor "Reflejar"
+
+LABEL vendor "Democracia en Red & Reflejar"
 LABEL title "Pesticidas introducidos silenciosamente"
-LABEL description "Democracia en Red"
 
 EXPOSE 8050

@@ -1,8 +1,8 @@
 ![Header](assets/img/ryder_isologotipos.png)
 
-# Plaguicidas introducidos silenciosamente (PIS)
+# Pesticidas introducidos silenciosamente (PIS)
 
-Dashboard y web para proyecto "Plaguicidas introducidos silenciosamente" (PIS) de Democracia en Red
+Dashboard y web para proyecto "Pesticidas introducidos silenciosamente" (PIS) de Democracia en Red
 
 
 ## Setup

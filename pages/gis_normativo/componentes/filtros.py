@@ -4,8 +4,8 @@ import dash_bootstrap_components as dbc
 
 from data import MapHandler
 
-# RECURSOS_INICIAL = ['reservas','cuerpos_agua','cursos_agua','localidades_parajes','escuelas_parcelas']
-RECURSOS_INICIAL = list(MapHandler.TIPO_RECURSOS.keys())
+RECURSOS_INICIAL = ['reservas','cuerpos_agua','cursos_agua','localidades_parajes','escuelas_parcelas']
+# RECURSOS_INICIAL = list(MapHandler.TIPO_RECURSOS.keys())
 
 Filtros = html.Div(
     [
