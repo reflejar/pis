@@ -11,4 +11,4 @@ services:
     ports:
       - "8050:8050"
     # command: /usr/local/bin/gunicorn main:app.server --bind 0.0.0.0:8050 --chdir=/app --timeout 1800
-    command: python main.py
+    # command: python main.py
