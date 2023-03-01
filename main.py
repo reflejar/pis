@@ -22,10 +22,10 @@ app = dash.Dash(
 	title="PIS | Pesticidas Introducidos Silenciosamente"
 )
 dash.register_page(index.__name__, title="Pesticidas Introducidos Silenciosamente", path='/', layout=index.layout)
-dash.register_page(gis_normativo.__name__, title="Proyección GIS", path='/gis/normativo', layout=gis_normativo.layout)
-dash.register_page(gis_resultados.__name__, title="Proyección GIS", path='/gis/resultados', layout=gis_resultados.layout)
-dash.register_page(ranking.__name__, title="Proyección GIS", path='/ranking', layout=ranking.layout)
-dash.register_page(digesto.__name__, title="Proyección GIS", path='/digesto', layout=digesto.layout)
+dash.register_page(gis_normativo.__name__, title="Mapa Normativo", path='/gis/normativo', layout=gis_normativo.layout)
+dash.register_page(gis_resultados.__name__, title="Mapa Normativo", path='/gis/resultados', layout=gis_resultados.layout)
+dash.register_page(ranking.__name__, title="Mapa Normativo", path='/ranking', layout=ranking.layout)
+dash.register_page(digesto.__name__, title="Mapa Normativo", path='/digesto', layout=digesto.layout)
 
 # Se agregan los componentes de la web
 app.layout = html.Div(

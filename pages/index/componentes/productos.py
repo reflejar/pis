@@ -5,7 +5,7 @@ from dash import html
 GisNormativo = html.Section(
             dbc.Row(
                 dbc.Col([
-                    html.H1("Proyección GIS", className="text-white mt-5 strong"),
+                    html.H1("Mapa Normativo", className="text-white mt-5 strong"),
                     html.H5("Mapa municipal de áreas urbanizadas, zonas de exclusión y amortiguamiento", className="pb-5 text-white"),
                     dbc.Button("Ver más", size="md", class_name="text-dark mt-5 px-4 rounded-pill strong", href="/gis/normativo")
 

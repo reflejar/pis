@@ -1,6 +1,7 @@
 from dash import html, dcc
 
 import dash_bootstrap_components as dbc
+import dash_daq as daq
 
 from data import MapHandler
 
@@ -9,7 +10,7 @@ RECURSOS_INICIAL = ['reservas','cuerpos_agua','cursos_agua','localidades_parajes
 
 Filtros = html.Div(
     [
-        html.H4("PROYECCIÓN GIS", className="text-white"),
+        html.H4("MAPA NORMATIVO", className="text-white"),
         html.P([
             "Seleccioná el municipio de tu interés.",
             html.Br(),
@@ -29,44 +30,15 @@ Filtros = html.Div(
                     )        
             ], md=12), 
                          
-        ]),    
-        dbc.Row(
-            dbc.Col([
-                html.Div(
-                    [
-                        dbc.Label("Seleccione tipo de vista", class_name="mt-3"),
-                        dbc.RadioItems(
-                            options=[
-                                {"label": "Poligono", "value": 'open-street-map'},
-                                {"label": "Satelital", "value": 'white-bg'},
-                            ],
-                            value='open-street-map',
-                            id="radioitems-vista",
-                        ),
-                    ]
-                )
-            ], md=12
-            )
-        ),        
-        dbc.Row(
-            dbc.Col([
-                html.Div(
-                    [
-                        dbc.Label("Seleccione tipos de recursos", class_name="mt-3"),
-                        dbc.Checklist(
-                            options=[{'label': v['title'], 'value': k} for k,v in MapHandler.TIPO_RECURSOS.items()],
-                            value=RECURSOS_INICIAL,
-                            id="switches-recursos",
-                            switch=True,
-                        ),
-                    ], className="mt-3"
-                )
-            ], md=12
-            )
-        ),
-        dbc.Row(dbc.Col(dbc.Spinner(html.Div(id="loading-output", className="mt-5"),color="primary"), md=12)),        
-
-                   
+        ]),
+        html.Br(),
+        daq.BooleanSwitch(on=True, id="toggle1",color="#134dab",label="Cursos de agua"),
+        daq.BooleanSwitch(on=True, id="toggle2",color="purple",label="Localidades"),
+        daq.BooleanSwitch(on=True, id="toggle3",color="#8c0d22",label="Zonas Amortización"),
+        daq.BooleanSwitch(on=True, id="toggle4",color="#8c0d22",label="Zonas Exclusión"),
+        daq.BooleanSwitch(on=True, id="toggle5",color="#134dab",label="Cuerpos de agua"),
+        daq.BooleanSwitch(on=True, id="toggle6",color="#06660b",label="Reservas"),
+        daq.BooleanSwitch(on=True, id="toggle7",color="#cfc817",label="Escuelas")
     ],
     id="filtros",
     className=" text-white mt-5"

@@ -9,8 +9,8 @@ from .componentes.mapa import MapaNormativo
 
 layout = html.Div([
         dbc.Row([
-            dbc.Col(html.Div(Filtros), md=4),
-            dbc.Col(MapaNormativo, md=8)
+            dbc.Col(Filtros, md=3),
+            dbc.Col(MapaNormativo, md=9)
         ]),
         html.Hr(),
         ],

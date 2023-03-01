@@ -15,7 +15,7 @@ Navbar = dbc.Navbar(
             dbc.Collapse(
                 dbc.Nav([
                         dbc.NavItem(dbc.NavLink("Inicio", active="exact", class_name="text-white fw-bolder mx-3", href="/")),
-                        dbc.NavItem(dbc.NavLink("Proyección GIS", active="exact", class_name="text-white fw-bolder mx-3", href="/gis/normativo")),
+                        dbc.NavItem(dbc.NavLink("Mapa Normativo", active="exact", class_name="text-white fw-bolder mx-3", href="/gis/normativo")),
                         dbc.NavItem(dbc.NavLink("Ranking", active="exact", class_name="text-white fw-bolder mx-3", href="/ranking")),
                         dbc.NavItem(dbc.NavLink("Mapa Resultados", active="exact", class_name="text-white fw-bolder mx-3", href="/gis/resultados")),          
                         dbc.NavItem(dbc.NavLink("Digesto", active="exact", class_name="text-white fw-bolder mx-3", href="/digesto")),          
