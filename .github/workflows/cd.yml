@@ -3,6 +3,9 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read    
+
 jobs:
   deploy:
     name: deploy to totoro
