@@ -1,30 +1,30 @@
-# version 1.0
-name: CI/CD - Upgrade Chart and Deploy 
-on:
-  push:
-    release:
-      - '*'
+# # version 1.0
+# name: CI/CD - Upgrade Chart and Deploy 
+# on:
+#   push:
+#     release:
+#       - '*'
 
-jobs:
-  deploy:
-    name: deploy to totoro
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up kubectl
-        uses: matootie/dokube@v1.4.0
-        with:
-          personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
-          clusterName: k8s-totoro
+# jobs:
+#   deploy:
+#     name: deploy to totoro
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Set up kubectl
+#         uses: matootie/dokube@v1.4.0
+#         with:
+#           personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+#           clusterName: k8s-totoro
 
-      - name: Check out code
-        uses: actions/checkout@v2
+#       - name: Check out code
+#         uses: actions/checkout@v2
 
-      - name: Get repository name
-        id: repo_name
-        run: echo "::set-output name=name::$(echo ${GITHUB_REPOSITORY} | cut -d'/' -f2)"
+#       - name: Get repository name
+#         id: repo_name
+#         run: echo "::set-output name=name::$(echo ${GITHUB_REPOSITORY} | cut -d'/' -f2)"
 
-      - name: Upgrade Helm chart
-        run: |
-          RELEASE_NAME="${{ steps.repo_name.outputs.name }}"
-          helm upgrade --install $RELEASE_NAME ./.chart/ \
-            --set appVersion=${{ github.ref_name }},version=${{ github.event.release.name }}          
+#       - name: Upgrade Helm chart
+#         run: |
+#           RELEASE_NAME="${{ steps.repo_name.outputs.name }}"
+#           helm upgrade --install $RELEASE_NAME ./.chart/ \
+#             --set appVersion=${{ github.ref_name }},version=${{ github.event.release.name }}          

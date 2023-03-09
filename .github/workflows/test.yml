@@ -1,0 +1,12 @@
+name: Nuevo Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  mi-trabajo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ejecutar acción
+        run: echo "Se ha creado un nuevo release"
