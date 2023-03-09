@@ -1,7 +1,8 @@
 name: CI/CD - Upgrade Chart and Deploy 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    release:
+      types: [published]
 
 permissions:
   contents: read    
