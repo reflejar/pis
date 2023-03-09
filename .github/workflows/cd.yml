@@ -1,8 +1,10 @@
 # version 1.0
 name: CI/CD - Upgrade Chart and Deploy 
 on:
-  release:
-    types: [created, published]
+  push:
+    branches:
+      - main
+
 
 jobs:
   deploy:
