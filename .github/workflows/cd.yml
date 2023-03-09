@@ -1,11 +1,8 @@
+# version 1.0
 name: CI/CD - Upgrade Chart and Deploy 
 on:
-  workflow_dispatch:
-    release:
-      types: [published]
-
-permissions:
-  contents: read    
+  release:
+    types: [published]
 
 jobs:
   deploy:
@@ -24,10 +21,7 @@ jobs:
 
       - name: Seteo variables
         id: set-vars
-        run: |
-          export APP_VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\/v//')
-          export CHART_VERSION=$(echo $GITHUB_EVENT_RELEASE_NAME | cut -d ' ' -f 2)
+        run: export APP_VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\/v//') export CHART_VERSION=$(echo $GITHUB_EVENT_RELEASE_NAME | cut -d ' ' -f 2)
       
       - name: Actualizar chart
-        run: |
-          helm upgrade --install pis ./.chart/ --set-string appVersion=$APP_VERSION --version $CHART_VERSION
+        run: helm upgrade --install pis ./.chart/ --set-string appVersion=$APP_VERSION --version $CHART_VERSION
