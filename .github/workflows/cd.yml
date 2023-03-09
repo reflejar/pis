@@ -25,5 +25,4 @@ jobs:
       - name: Upgrade Helm chart
         run: |
           RELEASE_NAME="${{ steps.repo_name.outputs.name }}"
-          helm upgrade --install $RELEASE_NAME ./.chart/ \
-            --set appVersion=${{ github.ref_name }},version=${{ github.event.release.name }}          
+          helm upgrade --install $RELEASE_NAME ./.chart/ --set appVersion=${{ github.ref_name }},version=${{ github.event.release.name }}
