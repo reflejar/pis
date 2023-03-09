@@ -47,7 +47,7 @@ oauthlib==3.2.0
 packaging==21.3
 pandas==1.5.2
 plotly==5.10.0
-protobuf==3.20.0
+protobuf==3.20.1
 pyarrow==10.0.1
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
