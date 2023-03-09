@@ -27,4 +27,4 @@ jobs:
       
       - name: Actualizar chart
         run: |
-          helm upgrade --install <release-name> <chart-path> --set-string appVersion=$APP_VERSION --version $CHART_VERSION
+          helm upgrade --install pis ./.chart/ --set-string appVersion=$APP_VERSION --version $CHART_VERSION
