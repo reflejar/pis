@@ -32,13 +32,13 @@ Filtros = html.Div(
                          
         ]),
         html.Br(),
-        daq.BooleanSwitch(on=True, id="toggle1",color="#134dab",label="Cursos de agua"),
-        daq.BooleanSwitch(on=True, id="toggle2",color="purple",label="Localidades"),
-        daq.BooleanSwitch(on=True, id="toggle3",color="#8c0d22",label="Zonas Amortización"),
-        daq.BooleanSwitch(on=True, id="toggle4",color="#8c0d22",label="Zonas Exclusión"),
-        daq.BooleanSwitch(on=True, id="toggle5",color="#134dab",label="Cuerpos de agua"),
-        daq.BooleanSwitch(on=True, id="toggle6",color="#06660b",label="Reservas"),
-        daq.BooleanSwitch(on=True, id="toggle7",color="#cfc817",label="Escuelas")
+        daq.BooleanSwitch(on=True, id="toggle_cursos",color="#134dab",label="Cursos de agua"),
+        daq.BooleanSwitch(on=True, id="toggle_localidades",color="purple",label="Localidades"),
+        daq.BooleanSwitch(on=True, id="toggle_amort",color="#8c0d22",label="Zonas Amortización"),
+        daq.BooleanSwitch(on=True, id="toggle_excl",color="#8c0d22",label="Zonas Exclusión"),
+        daq.BooleanSwitch(on=True, id="toggle_cuerpos",color="#134dab",label="Cuerpos de agua"),
+        daq.BooleanSwitch(on=True, id="toggle_reservas",color="#06660b",label="Reservas"),
+        daq.BooleanSwitch(on=True, id="toggle_escuelas",color="#cfc817",label="Escuelas")
     ],
     id="filtros",
     className=" text-white mt-5"
