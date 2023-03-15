@@ -45,14 +45,14 @@ escuelas_informacion_manual = escuelas_informacion_manual[VARIABLES_A_ACTUALIZAR
 
 base_escuelas_actualizada = pd.merge(establec_educativos_completo , escuelas_informacion_manual, on = VAR_CODIGO_UNICO, how = 'left')
 
-base_escuelas_actualizada[VAR_NOM_ESTABLEC] = base_escuelas_actualizada['nombre establecimiento a considerar'].str.title()
+base_escuelas_actualizada[VAR_NOM_ESTABLEC] = base_escuelas_actualizada['nombre establecimiento a considerar'].fillna(base_escuelas_actualizada['nombre establecimiento']).str.title()
 base_escuelas_actualizada[VAR_MAIL] = base_escuelas_actualizada['mail_manual'].fillna(base_escuelas_actualizada['mail_gj']).str.lower()
 base_escuelas_actualizada[VAR_TELEFONO] = base_escuelas_actualizada['telefono_manual'].fillna(base_escuelas_actualizada['telefono_gj'])
 base_escuelas_actualizada[VAR_DIRECCION] = base_escuelas_actualizada['direccion_manual'].fillna(base_escuelas_actualizada['direccion_gj']).str.title()
 
 base_escuelas_actualizada_gsjon = gpd.GeoDataFrame(base_escuelas_actualizada, geometry = 'geometry', crs='EPSG:4326')  #epsg4326 is WGS84
 
-#base_escuelas_actualizada_gsjon.to_file('./data/escuelas_informacion_actualizada.geojson', driver='GeoJSON')
+base_escuelas_actualizada_gsjon.to_file('./data/escuelas_informacion_actualizada.geojson', driver='GeoJSON')
 
 #actualizado_check =gpd.read_file("./data/escuelas_informacion_actualizada.geojson")
 
