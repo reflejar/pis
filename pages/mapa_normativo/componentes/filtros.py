@@ -32,13 +32,40 @@ Filtros = html.Div(
                          
         ]),
         html.Br(),
-        daq.BooleanSwitch(on=True, id="toggle_cursos",color="#134dab",label="Cursos de agua"),
-        daq.BooleanSwitch(on=True, id="toggle_localidades",color="purple",label="Localidades"),
-        daq.BooleanSwitch(on=True, id="toggle_amort",color="#8c0d22",label="Zonas Amortización"),
-        daq.BooleanSwitch(on=True, id="toggle_excl",color="#8c0d22",label="Zonas Exclusión"),
-        daq.BooleanSwitch(on=True, id="toggle_cuerpos",color="#134dab",label="Cuerpos de agua"),
-        daq.BooleanSwitch(on=True, id="toggle_reservas",color="#06660b",label="Reservas"),
-        daq.BooleanSwitch(on=True, id="toggle_escuelas",color="#cfc817",label="Escuelas")
+        dbc.Row([
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_cursos", labelPosition="bottom",color="#134dab"), md=3),
+            dbc.Col(html.Span("Cursos de agua"), md=9)
+        ], className="mb-2"),
+        dbc.Row([
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_cuerpos", labelPosition="bottom",color="#134dab"), md=3),
+            dbc.Col(html.Span("Cuerpos de agua"), md=9)
+        ], className="mb-2"),
+        dbc.Row([
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_localidades", labelPosition="bottom",color="purple"), md=3),
+            dbc.Col(html.Span("Localidades"), md=9)
+        ], className="mb-2"),
+        dbc.Row([
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_reservas", labelPosition="bottom",color="#06660b"), md=3),
+            dbc.Col(html.Span("Reservas"), md=9)
+        ], className="mb-2"),
+        dbc.Row([
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_escuelas", labelPosition="bottom",color="#cfc817"), md=3),
+            dbc.Col(html.Span("Escuelas"), md=9)
+        ], className="mb-2"),
+        dbc.Row([
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_amort", labelPosition="bottom",color="#8c0d22"), md=3),
+            dbc.Col(html.Span("Zonas Amortización"), md=9)
+        ], className="mb-2"),
+        dbc.Row([
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_excl", labelPosition="bottom",color="#8c0d22"), md=3),
+            dbc.Col(html.Span("Zonas Exclusión"), md=9)
+        ]),        
+        
+        
+        
+        
+        
+        
     ],
     id="filtros",
     className=" text-white mt-5"
