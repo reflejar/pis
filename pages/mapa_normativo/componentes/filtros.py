@@ -3,10 +3,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 import dash_daq as daq
 
-from data import MapHandler
-
-RECURSOS_INICIAL = ['reservas','cuerpos_agua','cursos_agua','localidades_parajes','escuelas_parcelas']
-# RECURSOS_INICIAL = list(MapHandler.TIPO_RECURSOS.keys())
+from ._data import MUNICIPIOS
 
 Filtros = html.Div(
     [
@@ -20,7 +17,7 @@ Filtros = html.Div(
                     html.Label(htmlFor="select-municipio", title='Municipio'),
                     dcc.Dropdown(
                         id="select-municipio",
-                        options=MapHandler.MUNICIPIOS,
+                        options=MUNICIPIOS,
                         multi=True,
                         searchable = True,
                         placeholder = 'Selecciona un municipio..',
@@ -53,17 +50,13 @@ Filtros = html.Div(
             dbc.Col(html.Span("Escuelas"), md=9)
         ], className="mb-2"),
         dbc.Row([
-            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_amort", labelPosition="bottom",color="#8c0d22"), md=3),
-            dbc.Col(html.Span("Zonas Amortización"), md=9)
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_excl", labelPosition="bottom",color="#8c0d22"), md=3),
+            dbc.Col(html.Span("Zonas de Exclusión"), md=9)
         ], className="mb-2"),
         dbc.Row([
-            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_excl", labelPosition="bottom",color="#8c0d22"), md=3),
-            dbc.Col(html.Span("Zonas Exclusión"), md=9)
-        ]),        
-        
-        
-        
-        
+            dbc.Col(daq.BooleanSwitch(on=True, id="toggle_amort", labelPosition="bottom",color="#8c0d22"), md=3),
+            dbc.Col(html.Span("Zonas de Amortiguamiento"), md=9)
+        ], className="mb-2"),
         
         
     ],

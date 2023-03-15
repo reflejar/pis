@@ -1,87 +1,30 @@
-from dash import  html, Input, Output, callback
-import geopandas as gpd
 import dash_leaflet.express as dlx
-import json
+import dash_leaflet as dl
+
+from dash import  html, Input, Output, callback
 from dash_extensions.javascript import arrow_function
 from dash_extensions.javascript import Namespace
-import dash_leaflet as dl
+
+from ._data import (
+    cursos_geojson,
+    escuelas_parcelas_geojson,
+    cuerpos_geojson,
+    reservas_geojson,
+    localidades_parajes_geojson,
+    cuerpos_excl_geojson,
+    cursos_excl_geojson,
+    localidades_excl_geojson,
+    parajes_excl_geojson,
+    escuelas_parcelas_excl_geojson,
+    localidades_amort_geojson,
+    parajes_amort_geojson,
+    escuelas_parcelas_amort_geojson,
+)
 
 ###### Constantes ###########
 HOVER_STYLE=dict(weight=3,fillOpacity=0.75)
 ns = Namespace("dash_props", "module")
 
-
-###### Se importan las bases de los objetos representados en el mapa ##############
-cuerpos=gpd.read_parquet("./data/cuerpos.parquet")
-localidades_parajes=gpd.read_parquet("./data/localidades_parajes.parquet")
-escuelas_parcelas=gpd.read_parquet("./data/escuelas_parcelas.parquet")
-reservas=gpd.read_parquet("./data/reservas.parquet")
-cursos=gpd.read_parquet("./data/cursos_agua.parquet")
-# cursos=cursos.reset_index()
-
-###### Se importan las bases de las zonas de exclusion y amortiguamiento de cada objeto ############
-cuerpos_excl=gpd.read_parquet("./data/cuerpos_excl.parquet")
-cursos_excl=gpd.read_parquet("./data/cursos_excl.parquet")
-localidades_excl=gpd.read_parquet("./data/localidades_excl.parquet")
-parajes_excl=gpd.read_parquet("./data/parajes_excl.parquet")
-escuelas_parcelas_excl=gpd.read_parquet("./data/escuelas_parcelas_excl.parquet")
-localidades_amort=gpd.read_parquet("./data/localidades_amort.parquet")
-parajes_amort=gpd.read_parquet("./data/parajes_amort.parquet")
-escuelas_parcelas_amort=gpd.read_parquet("./data/escuelas_parcelas_amort.parquet")
-
-################ Se crea una columna llamada "tooltip" que luego sirve como etiqueta en el mapa #############
-################ se pasan las tablas a json #################################################################
-cursos["tooltip"]="<b>Nombre</b>: "+cursos["NOMBRE"]+'<extra></extra>'
-cursos["popup"]=cursos["tooltip"]
-cursos_geojson=json.loads(cursos.to_json(na="keep"))
-
-escuelas_parcelas["tooltip"]='<b>Nombre</b>: '+escuelas_parcelas["nombre.establecimiento"]+'<br>'+'<b>Nivel</b>: '+escuelas_parcelas["nivel"]+ '<br>'+'<b>Teléfono</b>: '+escuelas_parcelas["Tel"]+'<br>'+'<b>Email</b>: '+escuelas_parcelas["email"]+'<extra></extra>'
-escuelas_parcelas["popup"]=escuelas_parcelas["tooltip"]
-escuelas_parcelas_geojson=json.loads(escuelas_parcelas.to_json(na="keep"))
-
-cuerpos["tooltip"]='<b>Nombre</b>: '+cuerpos["NOMBRE"]+'<br>'+'<b>Tipo</b>: '+cuerpos['TIPO']+'<extra></extra>'
-cuerpos["popup"]=cuerpos["tooltip"]
-cuerpos_geojson=json.loads(cuerpos.to_json(na="keep"))
-
-reservas["tooltip"]="<b>Nombre</b>: "+reservas["Name"]
-reservas["popup"]="<b>Nombre</b>: "+reservas["Name"]
-reservas_geojson=json.loads(reservas.to_json(na="keep"))
-
-localidades_parajes["tooltip"]='<b>Nombre</b>: '+localidades_parajes["Name"]+'<br>'+'<b>Habitantes</b>: '+localidades_parajes["Habitantes"]+'<extra></extra>'
-localidades_parajes["popup"]=localidades_parajes["tooltip"]
-localidades_parajes_geojson=json.loads(localidades_parajes.to_json(na="keep"))
-
-cuerpos_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-cuerpos_excl_geojson = json.loads(cuerpos_excl.to_json(na="keep"))
-
-cursos_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-cursos_excl_geojson = json.loads(cursos_excl.to_json(na="keep"))
-
-localidades_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-localidades_excl_geojson = json.loads(localidades_excl.to_json(na="keep"))
-
-parajes_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-parajes_excl_geojson = json.loads(parajes_excl.to_json(na="keep"))
-
-escuelas_parcelas_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-escuelas_parcelas_excl_geojson = json.loads(escuelas_parcelas_excl.to_json(na="keep"))
-
-localidades_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-localidades_amort_geojson = json.loads(localidades_amort.to_json(na="keep"))
-
-parajes_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-parajes_amort_geojson = json.loads(parajes_amort.to_json(na="keep"))
-
-escuelas_parcelas_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-escuelas_parcelas_amort_geojson = json.loads(escuelas_parcelas_amort.to_json(na="keep"))
-
-
-##################### Se importan los json guardados en el paso anterior #################################################
-geobuf_cursos = dlx.geojson_to_geobuf(cursos_geojson)
-geobuf_localidades = dlx.geojson_to_geobuf(localidades_parajes_geojson)
-geobuf_reservas = dlx.geojson_to_geobuf(reservas_geojson)
-geobuf_cuerpos = dlx.geojson_to_geobuf(cuerpos_geojson)
-geobuf_escuelas = dlx.geojson_to_geobuf(escuelas_parcelas_geojson)
 
 
 MapaNormativo = html.Div(
@@ -215,7 +158,7 @@ MapaNormativo = html.Div(
             dl.Pane(
                 dl.LayerGroup([
                     dl.GeoJSON(
-                        data=geobuf_cursos, 
+                        data=dlx.geojson_to_geobuf(cursos_geojson), 
                         format='geobuf', 
                         zoomToBounds=True, 
                         zoomToBoundsOnClick=True,
@@ -228,7 +171,20 @@ MapaNormativo = html.Div(
             dl.Pane(
                 dl.LayerGroup([
                     dl.GeoJSON(
-                        data=geobuf_localidades, 
+                        data=dlx.geojson_to_geobuf(cuerpos_geojson), 
+                        format='geobuf', 
+                        zoomToBounds=True, 
+                        zoomToBoundsOnClick=True,
+                        hoverStyle=arrow_function(HOVER_STYLE),
+                        options=dict(onEachFeature=ns("on_each_feature"),
+                        style={"color":"#134dab","weight":2,"fillOpacity":0.3}))
+                ]),
+                id="pane_cuerpos"
+            ),            
+            dl.Pane(
+                dl.LayerGroup([
+                    dl.GeoJSON(
+                        data=dlx.geojson_to_geobuf(localidades_parajes_geojson), 
                         format='geobuf', 
                         zoomToBounds=True, 
                         zoomToBoundsOnClick=True,
@@ -241,20 +197,7 @@ MapaNormativo = html.Div(
             dl.Pane(
                 dl.LayerGroup([
                     dl.GeoJSON(
-                        data=geobuf_cuerpos, 
-                        format='geobuf', 
-                        zoomToBounds=True, 
-                        zoomToBoundsOnClick=True,
-                        hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#134dab","weight":2,"fillOpacity":0.3}))
-                ]),
-                id="pane_cuerpos"
-            ),
-            dl.Pane(
-                dl.LayerGroup([
-                    dl.GeoJSON(
-                        data=geobuf_reservas, 
+                        data=dlx.geojson_to_geobuf(reservas_geojson), 
                         format='geobuf', 
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
@@ -265,7 +208,7 @@ MapaNormativo = html.Div(
             dl.Pane(
                 dl.LayerGroup([
                     dl.GeoJSON(
-                        data=geobuf_escuelas, 
+                        data=dlx.geojson_to_geobuf(escuelas_parcelas_geojson), 
                         format='geobuf', 
                         zoomToBounds=True, 
                         zoomToBoundsOnClick=True,
@@ -276,7 +219,9 @@ MapaNormativo = html.Div(
                 id="pane_escuelas"
             ),            
         ], 
-        style={'width': '1080px', 'height': '720px'}),
+        style={'width': '1080px', 'height': '720px'},
+        className="mt-3"
+        ),
     ]
 )
 
