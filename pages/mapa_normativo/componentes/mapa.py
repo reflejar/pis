@@ -16,8 +16,8 @@ cuerpos=gpd.read_parquet("./data/cuerpos.parquet")
 localidades_parajes=gpd.read_parquet("./data/localidades_parajes.parquet")
 escuelas_parcelas=gpd.read_parquet("./data/escuelas_parcelas.parquet")
 reservas=gpd.read_parquet("./data/reservas.parquet")
-cursos=gpd.read_file("./data/cursos_agua.geojson")
-cursos=cursos.reset_index()
+cursos=gpd.read_parquet("./data/cursos_agua.parquet")
+# cursos=cursos.reset_index()
 
 ###### Se importan las bases de las zonas de exclusion y amortiguamiento de cada objeto ############
 cuerpos_excl=gpd.read_parquet("./data/cuerpos_excl.parquet")
