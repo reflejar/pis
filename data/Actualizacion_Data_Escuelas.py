@@ -2,13 +2,16 @@ import geopandas as gpd
 import pandas as pd
 
 
-# VARIABLES FIJAS
-VAR_TELEFONO = 'Tel'
-VAR_MAIL = ''
-VAR_CODIGO_UNICO = 'codigo_unico_pis'
+# VARIABLES FIJAS UTILIZADAS PARA EL MERGE Y PARA EL TOOLTIP
 VAR_CUE = 'cue'
 VAR_SEDE_ANEXO_EXT = 'sede/axo/ext'
 VAR_COD_POSTAL = 'código postal'
+
+VAR_TELEFONO = 'Tel'
+VAR_MAIL = 'email'
+VAR_CODIGO_UNICO = 'codigo_unico_pis'
+VAR_DIRECCION = 'direccion'
+VAR_NOM_ESTABLEC = 'nombre.establecimiento'
 
 
 #ARCHIVO CON INFORMACIÓN PROVINCIAL > DE ACA SE TOMA EL LISTADO DE VALIDACIÓN
@@ -18,7 +21,7 @@ establec_educativos_completo=gpd.read_file("./data/establecimientos-educativos-P
 establec_educativos_completo['direccion_gj'] = establec_educativos_completo['dirección calle'] + establec_educativos_completo['dirección nro.']
 establec_educativos_completo['característica telefónica'] = '(' + establec_educativos_completo['característica telefónica'].fillna(0).astype(int).astype(str) + ')'
 establec_educativos_completo['telefono_gj'] = establec_educativos_completo['característica telefónica'] +' ' + establec_educativos_completo['teléfono'].astype(str)
-establec_educativos_completo = establec_educativos_completo.rename(columns = {'email': 'mail_gj'})
+establec_educativos_completo = establec_educativos_completo.rename(columns = {VAR_MAIL: 'mail_gj'})
 
 establec_educativos_completo[VAR_CODIGO_UNICO] = establec_educativos_completo[VAR_COD_POSTAL].fillna(0).astype(int).astype(str)+ ' - ' +  establec_educativos_completo[VAR_CUE].astype(str) + ' - ' + establec_educativos_completo[VAR_SEDE_ANEXO_EXT]
 
@@ -42,18 +45,16 @@ escuelas_informacion_manual = escuelas_informacion_manual[VARIABLES_A_ACTUALIZAR
 
 base_escuelas_actualizada = pd.merge(establec_educativos_completo , escuelas_informacion_manual, on = VAR_CODIGO_UNICO, how = 'left')
 
-base_escuelas_actualizada['nombre.establecimiento'] = base_escuelas_actualizada['nombre establecimiento a considerar'].str.title()
-base_escuelas_actualizada['email'] = base_escuelas_actualizada['mail_manual'].fillna(base_escuelas_actualizada['mail_gj']).str.lower()
-base_escuelas_actualizada['Tel'] = base_escuelas_actualizada['telefono_manual'].fillna(base_escuelas_actualizada['telefono_gj'])
-base_escuelas_actualizada['direccion'] = base_escuelas_actualizada['direccion_manual'].fillna(base_escuelas_actualizada['direccion_gj']).str.title()
+base_escuelas_actualizada[VAR_NOM_ESTABLEC] = base_escuelas_actualizada['nombre establecimiento a considerar'].str.title()
+base_escuelas_actualizada[VAR_MAIL] = base_escuelas_actualizada['mail_manual'].fillna(base_escuelas_actualizada['mail_gj']).str.lower()
+base_escuelas_actualizada[VAR_TELEFONO] = base_escuelas_actualizada['telefono_manual'].fillna(base_escuelas_actualizada['telefono_gj'])
+base_escuelas_actualizada[VAR_DIRECCION] = base_escuelas_actualizada['direccion_manual'].fillna(base_escuelas_actualizada['direccion_gj']).str.title()
 
 base_escuelas_actualizada_gsjon = gpd.GeoDataFrame(base_escuelas_actualizada, geometry = 'geometry', crs='EPSG:4326')  #epsg4326 is WGS84
 
 #base_escuelas_actualizada_gsjon.to_file('./data/escuelas_informacion_actualizada.geojson', driver='GeoJSON')
 
-actualizado_check =gpd.read_file("./data/escuelas_informacion_actualizada.geojson")
-
-print(actualizado_check[actualizado_check['cue']==602164])
+#actualizado_check =gpd.read_file("./data/escuelas_informacion_actualizada.geojson")
 
 
 ##FALTA AGREGAR CASOS NUEVOS
