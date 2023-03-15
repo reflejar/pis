@@ -26,7 +26,7 @@ localidades_excl=gpd.read_parquet("./data/localidades_excl.parquet")
 parajes_excl=gpd.read_parquet("./data/parajes_excl.parquet")
 escuelas_parcelas_excl=gpd.read_parquet("./data/escuelas_parcelas_excl.parquet")
 localidades_amort=gpd.read_parquet("./data/localidades_amort.parquet")
-parajes_amort=gpd.read_parquet("./data/parajes_excl.parquet")
+parajes_amort=gpd.read_parquet("./data/parajes_amort.parquet")
 escuelas_parcelas_amort=gpd.read_parquet("./data/escuelas_parcelas_amort.parquet")
 
 ################ Se crea una columna llamada "tooltip" que luego sirve como etiqueta en el mapa #############
@@ -117,7 +117,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,                       
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_localidades_amort"
             ), 
@@ -130,7 +130,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,                       
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_parajes_amort"
             ),
@@ -143,7 +143,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,                       
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_escuelas_parcelas_amort"
             ),                                              
@@ -156,7 +156,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_cursos_excl"
             ), 
@@ -169,7 +169,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_cuerpos_excl"
             ),
@@ -182,7 +182,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_localidades_excl"
             ),
@@ -195,7 +195,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_parajes_excl"
             ),
@@ -208,7 +208,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_escuelas_parcelas_excl"
             ),
@@ -221,7 +221,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#134dab","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#134dab","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_cursos"
             ),
@@ -233,7 +233,8 @@ MapaNormativo = html.Div(
                         zoomToBounds=True, 
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),style={"color":"purple","weight":1,"fillOpacity":0.5}))
+                        options=dict(onEachFeature=ns("on_each_feature"),
+                        style={"color":"purple","weight":2,"fillOpacity":0.4}))
                 ]), 
                 id="pane_localidades"
             ),
@@ -246,7 +247,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#134dab","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#134dab","weight":2,"fillOpacity":0.3}))
                 ]),
                 id="pane_cuerpos"
             ),
@@ -255,11 +256,10 @@ MapaNormativo = html.Div(
                     dl.GeoJSON(
                         data=geobuf_reservas, 
                         format='geobuf', 
-                        zoomToBounds=True, 
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#06660b","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#06660b","weight":2,"fillOpacity":0.3}))
                 ]), 
                 id="pane_reservas"),
             dl.Pane(
@@ -271,7 +271,7 @@ MapaNormativo = html.Div(
                         zoomToBoundsOnClick=True,
                         hoverStyle=arrow_function(HOVER_STYLE),
                         options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#cfc817","weight":1,"fillOpacity":0.5}))
+                        style={"color":"#cfc817","weight":3,"fillOpacity":0.4}))
                 ]), 
                 id="pane_escuelas"
             ),            
