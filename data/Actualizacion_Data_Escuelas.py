@@ -57,7 +57,7 @@ base_escuelas_actualizada = pd.merge(establec_educativos_completo , escuelas_exi
 if len(escuelas_nuevas_informacion_manual):
     base_escuelas_actualizada = pd.concat([base_escuelas_actualizada, escuelas_nuevas_informacion_manual])
 
-base_escuelas_actualizada[VAR_NOM_ESTABLEC] = base_escuelas_actualizada['nombre establecimiento a considerar'].str.title()
+base_escuelas_actualizada[VAR_NOM_ESTABLEC] = base_escuelas_actualizada['nombre establecimiento a considerar'].fillna(base_escuelas_actualizada['nombre establecimiento']).str.title()
 base_escuelas_actualizada[VAR_MAIL] = base_escuelas_actualizada['mail_manual'].fillna(base_escuelas_actualizada['mail_gj']).str.lower()
 base_escuelas_actualizada[VAR_TELEFONO] = base_escuelas_actualizada['telefono_manual'].fillna(base_escuelas_actualizada['telefono_gj'])
 base_escuelas_actualizada[VAR_DIRECCION] = base_escuelas_actualizada['direccion_manual'].fillna(base_escuelas_actualizada['direccion_gj']).str.title()
