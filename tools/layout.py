@@ -2,7 +2,6 @@ from dash import html, Input, Output, callback, State
 import dash_bootstrap_components as dbc
 
 
-PIS_ISOTIPO = "/assets/img/pis_isotipo.png"
 PIS_ISOLOGOTIPO = "/assets/img/pis_isologotipo.png"
 REFLEJAR_LOGOTIPO = "/assets/img/reflejar_logotipo.png"
 
@@ -10,15 +9,15 @@ REFLEJAR_LOGOTIPO = "/assets/img/reflejar_logotipo.png"
 Navbar = dbc.Navbar(
     dbc.Container(
         [
-            html.Img(src=PIS_ISOTIPO, height="50px"),
+            html.Img(src=PIS_ISOLOGOTIPO, height="80px"),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 dbc.Nav([
-                        dbc.NavItem(dbc.NavLink("Inicio", active="exact", class_name="text-white fw-bolder mx-3", href="/")),
-                        dbc.NavItem(dbc.NavLink("Mapa Normativo", active="exact", class_name="text-white fw-bolder mx-3", href="/mapa-normativo")),
-                        dbc.NavItem(dbc.NavLink("Ranking", active="exact", class_name="text-white fw-bolder mx-3", href="/ranking")),
-                        dbc.NavItem(dbc.NavLink("Mapa Resultados", active="exact", class_name="text-white fw-bolder mx-3", href="/mapa-resultados")),          
-                        dbc.NavItem(dbc.NavLink("Digesto", active="exact", class_name="text-white fw-bolder mx-3", href="/digesto")),
+                        dbc.NavItem(dbc.NavLink("Proyecto", active="exact", class_name="text-white text-uppercase mx-3", href="/")),
+                        dbc.NavItem(dbc.NavLink("Testeos", active="exact", class_name="text-white text-uppercase mx-3", href="/mapa-normativo")),
+                        dbc.NavItem(dbc.NavLink("Herramientas", active="exact", class_name="text-white text-uppercase mx-3", href="/ranking")),
+                        dbc.NavItem(dbc.NavLink("FAQS", active="exact", class_name="text-white text-uppercase mx-3", href="/mapa-resultados")),          
+                        dbc.NavItem(dbc.NavLink("Donar", active="exact", class_name="text-white text-uppercase mx-3", href="/digesto")),
                         # dbc.NavItem(dbc.NavLink(dbc.Button("Donar", size="sm", class_name="bg-grey border-grey"), active="exact", class_name="text-white mx-3", href="/donar")),
                     ],
                     className="ms-auto",
