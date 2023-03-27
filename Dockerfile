@@ -23,3 +23,5 @@ LABEL vendor "Democracia en Red & Reflejar"
 LABEL title "Pesticidas introducidos silenciosamente"
 
 EXPOSE 8050
+
+CMD [ "gunicorn", "main:app.server", "--bind", "0.0.0.0:8050", "--chdir=/app", "--timeout", "1800" ]

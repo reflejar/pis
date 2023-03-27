@@ -1,4 +1,4 @@
-from app import server
+from app import server, app
 
 # Se corre la aplicación
 if __name__ == "__main__":
