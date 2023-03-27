@@ -4,14 +4,15 @@
 
 
 #footer {
-    padding-bottom: 2vh;
-    background: #F0F0F0;
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+    background: #333333;
 }
 
-.bg-image {
+.bg-hero {
     position: relative;
 }
-.bg-image::before {
+.bg-hero::before {
     background-image: url('img/pis-web-2073x858.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -48,13 +49,13 @@
     padding: 20px;
   }
 
-#index-gis-normativo {
-    background: #3E3E3E!important;
-
+#index-testeando,
+#index-donar {
+    background: linear-gradient(90deg, #DCDC7C -0.28%, #DEDD84 5.75%, #F0E8B8 49.92%, #FAEED9 82.05%, #FFF1E6 100.12%);
 }  
 
-#index-gis-resultados {
-    background: #575757!important;
+#index-proximamente {
+    background: #000000!important;
 }  
 
 .h-50 {
