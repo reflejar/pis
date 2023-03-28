@@ -1,4 +1,4 @@
-#hero {
+#index-proyecto {
     font-weight: bold;
 }
 
@@ -54,10 +54,14 @@
     background: linear-gradient(90deg, #DCDC7C -0.28%, #DEDD84 5.75%, #F0E8B8 49.92%, #FAEED9 82.05%, #FFF1E6 100.12%);
 }  
 
-#index-proximamente {
+#index-herramientas {
     background: #000000!important;
 }  
 
 .h-50 {
     height: 50vh!important;
 } 
+
+.text-none-decoration {
+    text-decoration: none;
+}

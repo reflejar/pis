@@ -13,5 +13,5 @@ Hero = html.Section(
 					], className="hero-description text-white"),					
 				])),
 	className="bg-hero d-flex justify-content-center align-items-center min-vh-100",
-	id="hero"
+	id="index-proyecto"
 )

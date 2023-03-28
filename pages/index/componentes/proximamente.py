@@ -38,5 +38,5 @@ Proximamente = html.Section([
                 dbc.Row(dbc.Col(dbc.Button("Noticias sin spamear", color="primary", className="my-5 text-black p-3 text-uppercase"))),
             ],
             className="p-5 mb-5 text-center",
-            id="index-proximamente",
+            id="index-herramientas",
 )
