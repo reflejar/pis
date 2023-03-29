@@ -1,18 +1,18 @@
-#hero {
+#index-proyecto {
     font-weight: bold;
-    background: #D9D9D9;
 }
 
 
 #footer {
-    padding-bottom: 2vh;
-    background: #F0F0F0;
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+    background: #333333;
 }
 
-.bg-image {
+.bg-hero {
     position: relative;
 }
-.bg-image::before {
+.bg-hero::before {
     background-image: url('img/pis-web-2073x858.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -25,14 +25,20 @@
 }
 
 .hero-title {
-    font-weight: 1000;
-    font-size: 62px;
+    font-weight: 400px;
+    font-size: 100px;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
 }
 
 .hero-subtitle {
-    font-weight: 800;
-    font-size: 34px;
+    font-weight: 400px;
+    font-size: 30px;
+}
+
+.hero-description {
+    font-weight: 400px;
+    font-size: 30px;
+    width: 50%;
 }
 
 .anchor-top {
@@ -43,15 +49,19 @@
     padding: 20px;
   }
 
-#index-gis-normativo {
-    background: #3E3E3E!important;
-
+#index-testeando,
+#index-donar {
+    background: linear-gradient(90deg, #DCDC7C -0.28%, #DEDD84 5.75%, #F0E8B8 49.92%, #FAEED9 82.05%, #FFF1E6 100.12%);
 }  
 
-#index-gis-resultados {
-    background: #575757!important;
+#index-herramientas {
+    background: #000000!important;
 }  
 
 .h-50 {
     height: 50vh!important;
 } 
+
+.text-none-decoration {
+    text-decoration: none;
+}
