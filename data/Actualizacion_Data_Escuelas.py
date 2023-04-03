@@ -15,10 +15,13 @@ VAR_NOM_ESTABLEC = 'nombre.establecimiento'
 VAR_LATITUD = 'latitud'
 VAR_LONGITUD = 'longitud'
 VAR_GEOMETRIA = 'geometry'
+VAR_PARTIDO= 'partido'
 
 
 # ARCHIVO CON INFORMACIÓN PROVINCIAL > DE ACA SE TOMA EL LISTADO DE VALIDACIÓN
-establec_educativos_completo=gpd.read_file("./data/establecimientos-educativos-PBA.geojson")
+establec_educativos_completo_original=gpd.read_file("./data/establecimientos-educativos-PBA.geojson")
+establec_educativos_completo = establec_educativos_completo_original.copy()
+establec_educativos_completo = establec_educativos_completo[establec_educativos_completo[VAR_PARTIDO]== "Mar Chiquita"]
 
 # LIMPIEZA Y ORDENAMIENTO DE DATOS
 establec_educativos_completo['direccion_indec'] = establec_educativos_completo['dirección calle'] + establec_educativos_completo['dirección nro.']
@@ -69,8 +72,13 @@ base_escuelas_actualizada[VAR_DIRECCION] = base_escuelas_actualizada['direccion_
 base_escuelas_actualizada[VAR_LATITUD] = base_escuelas_actualizada['latitud_manual'].fillna(base_escuelas_actualizada['latitud_indec'])
 base_escuelas_actualizada[VAR_LONGITUD] = base_escuelas_actualizada['longitud_manual'].fillna(base_escuelas_actualizada['longitud_indec'])
 
-base_escuelas_actualizada_gsjon = gpd.GeoDataFrame(base_escuelas_actualizada, geometry=gpd.points_from_xy(base_escuelas_actualizada[VAR_LONGITUD], base_escuelas_actualizada[VAR_LATITUD]), crs='EPSG:4326')
 
+COLS_ORIGINALES = [c for c in establec_educativos_completo_original.columns if c != VAR_GEOMETRIA]
+
+COLS_TO_SAVE =  COLS_ORIGINALES + [VAR_CODIGO_UNICO]
+base_escuelas_actualizada = base_escuelas_actualizada[COLS_TO_SAVE]
+
+base_escuelas_actualizada_gsjon = gpd.GeoDataFrame(base_escuelas_actualizada, geometry=gpd.points_from_xy(base_escuelas_actualizada[VAR_LONGITUD], base_escuelas_actualizada[VAR_LATITUD]), crs='EPSG:4326')
 base_escuelas_actualizada_gsjon.to_file('./data/escuelas_informacion_actualizada_prueba.geojson', driver='GeoJSON')
 
 #actualizado_check =gpd.read_file("./data/escuelas_informacion_actualizada.geojson")
