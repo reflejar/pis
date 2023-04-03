@@ -65,3 +65,11 @@
 .text-none-decoration {
     text-decoration: none;
 }
+
+.space-grotesk {
+    font-family: Space Grotesk!important;
+}
+
+.pointer {
+    cursor: pointer;
+}
