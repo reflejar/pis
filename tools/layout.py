@@ -56,9 +56,9 @@ Footer = html.Footer([
             dbc.Col([
                 html.Div(
                     [
-                        html.A(html.I(className="bi bi-twitter"), href="https://twitter.com/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
-                        html.A(html.I(className="bi bi-instagram"), href="https://www.instagram.com/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
-                        html.A(html.I(className="bi bi-facebook"), href="https://www.facebook.com/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
+                        html.A(html.I(className="bi bi-twitter"), href="https://twitter.com/fundacionDER",target="_blank", className="btn mx-3 btn-lg btn-floating"),
+                        html.A(html.I(className="bi bi-instagram"), href="https://www.instagram.com/democraciaenred/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
+                        html.A(html.I(className="bi bi-facebook"), href="https://www.facebook.com/democraciaenred",target="_blank", className="btn mx-3 btn-lg btn-floating"),
                     ],
                     className="text-center"
                 )
