@@ -15,8 +15,8 @@ Testeando = html.Section(
                     html.H4("En breve publicaremos los resultados.", className="text-black"),
                 ],
                 md=10,
-                class_name="mt-5"),
+                class_name="my-5 px-5"),
             ]),
-            className="h-50 d-flex justify-content-center align-items-center",
+            className="min-vh-50 d-flex justify-content-center align-items-center",
             id="index-testeando",
 )

@@ -3,7 +3,7 @@ from dash import html
 
 
 Proximamente = html.Section([
-                dbc.Row(dbc.Col(html.H3("Proximamente", className="text-uppercase my-5 text-white"))),
+                dbc.Row(dbc.Col(html.H3("Proximamente", className="text-uppercase my-5 space-grotesk text-white"))),
                 dbc.Row([
                     dbc.Col([
                         html.Img(src="/assets/img/recursos/buenos_aires.svg", height="120px"),

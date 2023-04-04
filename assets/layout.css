@@ -41,6 +41,27 @@
     width: 50%;
 }
 
+@media screen and (max-width: 750px) {
+
+    .hero-title {
+        font-weight: 400px;
+        font-size: 80px;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    }
+    
+    .hero-subtitle {
+        font-weight: 400px;
+        font-size: 20px;
+    }
+    
+    .hero-description {
+        font-weight: 400px;
+        font-size: 20px;
+        width: 50%;
+    }
+  }
+
+
 .anchor-top {
     position: -webkit-sticky;
     position: sticky;
@@ -58,10 +79,6 @@
     background: #000000!important;
 }  
 
-.h-50 {
-    height: 50vh!important;
-} 
-
 .text-none-decoration {
     text-decoration: none;
 }
@@ -73,3 +90,9 @@
 .pointer {
     cursor: pointer;
 }
+
+.min-vh-25{min-height:25vh!important}
+
+.min-vh-50{min-height:50vh!important}
+
+.min-vh-75{min-height:75vh!important}

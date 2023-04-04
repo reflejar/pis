@@ -3,7 +3,7 @@ from dash import html, callback, Input, Output, State
 
 FAQs = html.Section([
             dbc.Row(dbc.Col([
-                html.H1("FAQs", className="text-uppercase my-5 text-black"),
+                html.H1("FAQs", className="text-uppercase my-5 text-black space-grotesk"),
                 dbc.Row([
                     dbc.Col([
                         html.H5([
@@ -81,7 +81,7 @@ FAQs = html.Section([
             lg={'offset': 1, 'size':10}
             )),
             ],
-            className="p-5 bg-white",
+            className="min-vh-50 p-5 bg-white",
             id="index-faqs",
 )
 

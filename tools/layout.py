@@ -31,6 +31,7 @@ Navbar = dbc.Navbar(
                 navbar=True,
             ),
         ],
+        className="bg-black"
     ),
     
     fixed="top",
