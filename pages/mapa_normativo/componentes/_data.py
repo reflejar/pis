@@ -1,6 +1,7 @@
 import geopandas as gpd
 import json
-
+import pandas as pd
+from itertools import combinations
 
 MUNICIPIOS = ['Mar Chiquita']
 
@@ -37,29 +38,89 @@ reservas["popup"]="<b>Nombre</b>: "+reservas["Name"]
 localidades_parajes["tooltip"]='<b>Nombre</b>: '+localidades_parajes["Name"]+'<br>'+'<b>Habitantes</b>: '+localidades_parajes["Habitantes"]+'<extra></extra>'
 localidades_parajes["popup"]=localidades_parajes["tooltip"]
 
-cuerpos_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-cursos_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-localidades_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-parajes_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-escuelas_parcelas_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-
-localidades_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-parajes_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-escuelas_parcelas_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
 
 ################ se pasan las tablas a json #################################################################
-localidades_amort_geojson = json.loads(localidades_amort.to_json(na="keep"))
-parajes_amort_geojson = json.loads(parajes_amort.to_json(na="keep"))
-escuelas_parcelas_amort_geojson = json.loads(escuelas_parcelas_amort.to_json(na="keep"))
-
-cursos_excl_geojson = json.loads(cursos_excl.to_json(na="keep"))
-cuerpos_excl_geojson = json.loads(cuerpos_excl.to_json(na="keep"))
-localidades_excl_geojson = json.loads(localidades_excl.to_json(na="keep"))
-parajes_excl_geojson = json.loads(parajes_excl.to_json(na="keep"))
-escuelas_parcelas_excl_geojson = json.loads(escuelas_parcelas_excl.to_json(na="keep"))
 
 cursos_geojson = json.loads(cursos.to_json(na="keep"))
 cuerpos_geojson = json.loads(cuerpos.to_json(na="keep"))
 localidades_parajes_geojson=json.loads(localidades_parajes.to_json(na="keep"))
 escuelas_parcelas_geojson = json.loads(escuelas_parcelas.to_json(na="keep"))
 reservas_geojson = json.loads(reservas.to_json(na="keep"))
+
+###################### tabla general exclusion y amortiguamiento ####################################################
+excl=[localidades_excl, parajes_excl,cursos_excl, cuerpos_excl,escuelas_parcelas_excl]
+combinaciones=[]
+for i in range(1,len(excl)+1):
+    x = combinations(excl, i)
+    for j in list(x):
+        combinaciones.append(j)
+combinaciones
+exclusion=pd.DataFrame()
+for i in list(combinaciones):
+    exclusion_x=pd.DataFrame()
+    lista=[]
+    puntos_interes=pd.DataFrame()
+    for j in i:
+        exclusion_x=pd.concat([exclusion_x, j[["geometry"]]])
+        nombre_variable=[name for name in globals() if globals()[name] is j]
+        lista.append(nombre_variable[0][0:nombre_variable[0].find("_")])
+    x=""
+    for z in lista:
+        x=x+z
+
+    
+    if "cuerpos" in x:
+        puntos_interes=pd.concat([puntos_interes, cuerpos])
+    if "localidades"  in x:
+        puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "parajes"  in x:
+        if "localidades"  not in x:
+            puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "escuelas" in x:
+        puntos_interes=pd.concat([puntos_interes, escuelas_parcelas])
+
+    exclusion_x["id"]=x
+    if x!="cursos":
+        exclusion_x = exclusion_x.overlay(puntos_interes, how='difference')
+    exclusion_x = exclusion_x.dissolve().explode(ignore_index=True,index_parts=False)
+    exclusion=pd.concat([exclusion,exclusion_x])
+exclusion.reset_index(inplace=True)
+
+###################### tabla general amortiguamiento ####################################################
+   
+amort=[localidades_amort, parajes_amort, escuelas_parcelas_amort ]
+
+combinaciones=[]
+for i in range(1,len(amort)+1):
+    x = combinations(amort, i)
+    for j in list(x):
+        combinaciones.append(j)
+combinaciones
+
+amortiguacion=pd.DataFrame()
+for i in list(combinaciones):
+    amortiguacion_x=pd.DataFrame()
+    lista=[]
+    puntos_interes=pd.DataFrame()
+    for j in i:
+        amortiguacion_x=pd.concat([amortiguacion_x, j[["geometry"]]])
+        nombre_variable=[name for name in globals() if globals()[name] is j]
+        lista.append(nombre_variable[0][0:nombre_variable[0].find("_")])
+    x=""
+    for z in lista:
+        x=x+z
+    
+    puntos_interes=pd.concat([puntos_interes, cuerpos])
+    if "localidades"  in x:
+        puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "parajes"  in x:
+        if "localidades"  not in x:
+            puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "escuelas" in x:
+        puntos_interes=pd.concat([puntos_interes, escuelas_parcelas])
+
+    amortiguacion_x["id"]=x
+    amortiguacion_x = amortiguacion_x.overlay(pd.concat([exclusion[exclusion["id"]==x],puntos_interes]), how='difference')
+    amortiguacion_x = amortiguacion_x.dissolve().explode(ignore_index=True,index_parts=False)
+    amortiguacion=pd.concat([amortiguacion,amortiguacion_x])
+amortiguacion.reset_index(inplace=True)
