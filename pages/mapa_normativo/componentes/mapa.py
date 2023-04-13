@@ -16,14 +16,6 @@ from ._data import (
     cuerpos_geojson,
     reservas_geojson,
     localidades_parajes_geojson,
-    # cuerpos_excl_geojson,
-    # cursos_excl_geojson,
-    # localidades_excl_geojson,
-    # parajes_excl_geojson,
-    # escuelas_parcelas_excl_geojson,
-    # localidades_amort_geojson,
-    # parajes_amort_geojson,
-    # escuelas_parcelas_amort_geojson,
     amortiguacion,
     exclusion,
 )
@@ -335,7 +327,7 @@ def toggle_excl(on, loc_on, cur_on, cue_on, esc_on ):
     for z in lista:
             x=x+z
     total_excl=exclusion[exclusion["id"]==x]
-    total_excl["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
+    total_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
     total_excl_geojson = dlx.geojson_to_geobuf(json.loads(total_excl.to_json(na="keep")))
     if on:
         return  total_excl_geojson , {"display": "block"}
