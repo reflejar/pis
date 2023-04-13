@@ -16,6 +16,7 @@ VAR_LATITUD = 'latitud'
 VAR_LONGITUD = 'longitud'
 VAR_GEOMETRIA = 'geometry'
 VAR_PARTIDO= 'partido'
+VAR_NUEVA_EXISTENTE = 'nueva_existente'
 
 
 # ARCHIVO CON INFORMACIÓN PROVINCIAL > DE ACA SE TOMA EL LISTADO DE VALIDACIÓN
@@ -63,7 +64,7 @@ base_escuelas_actualizada = base_escuelas_actualizada.drop(columns = ['geometry_
 
 if len(escuelas_nuevas_informacion_manual):
     base_escuelas_actualizada = pd.concat([base_escuelas_actualizada, escuelas_nuevas_informacion_manual])
-
+    print(base_escuelas_actualizada['nombre establecimiento a considerar'])
 
 base_escuelas_actualizada[VAR_NOM_ESTABLEC] = base_escuelas_actualizada['nombre establecimiento a considerar'].fillna(base_escuelas_actualizada['nombre establecimiento']).str.title()
 base_escuelas_actualizada[VAR_MAIL] = base_escuelas_actualizada['mail_manual'].fillna(base_escuelas_actualizada['mail_indec']).str.lower()
@@ -71,12 +72,16 @@ base_escuelas_actualizada[VAR_TELEFONO] = base_escuelas_actualizada['telefono_ma
 base_escuelas_actualizada[VAR_DIRECCION] = base_escuelas_actualizada['direccion_manual'].fillna(base_escuelas_actualizada['direccion_indec']).str.title()
 base_escuelas_actualizada[VAR_LATITUD] = base_escuelas_actualizada['latitud_manual'].fillna(base_escuelas_actualizada['latitud_indec'])
 base_escuelas_actualizada[VAR_LONGITUD] = base_escuelas_actualizada['longitud_manual'].fillna(base_escuelas_actualizada['longitud_indec'])
+base_escuelas_actualizada[VAR_NUEVA_EXISTENTE] = base_escuelas_actualizada[VAR_NUEVA_EXISTENTE].fillna('Existente')
 
 
-COLS_ORIGINALES = [c for c in establec_educativos_completo_original.columns if c != VAR_GEOMETRIA]
+COLS_TO_SAVE = [VAR_CODIGO_UNICO, VAR_CUE, 'clave provincial', 
+                VAR_PARTIDO, VAR_COD_POSTAL,  VAR_NUEVA_EXISTENTE, VAR_SEDE_ANEXO_EXT, 
+                'region educativa', VAR_NOM_ESTABLEC, VAR_DIRECCION, VAR_TELEFONO, VAR_MAIL, 
+                VAR_LATITUD, VAR_LONGITUD]
 
-COLS_TO_SAVE =  COLS_ORIGINALES + [VAR_CODIGO_UNICO]
 base_escuelas_actualizada = base_escuelas_actualizada[COLS_TO_SAVE]
+
 
 base_escuelas_actualizada_gsjon = gpd.GeoDataFrame(base_escuelas_actualizada, geometry=gpd.points_from_xy(base_escuelas_actualizada[VAR_LONGITUD], base_escuelas_actualizada[VAR_LATITUD]), crs='EPSG:4326')
 base_escuelas_actualizada_gsjon.to_file('./data/escuelas_informacion_actualizada_prueba.geojson', driver='GeoJSON')
