@@ -60,6 +60,7 @@ Footer = html.Footer([
                         html.A(html.I(className="bi bi-twitter"), href="https://twitter.com/fundacionDER",target="_blank", className="btn mx-3 btn-lg btn-floating"),
                         html.A(html.I(className="bi bi-instagram"), href="https://www.instagram.com/democraciaenred/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
                         html.A(html.I(className="bi bi-facebook"), href="https://www.facebook.com/democraciaenred",target="_blank", className="btn mx-3 btn-lg btn-floating"),
+                        html.A(html.I(className="bi bi-linkedin"), href="https://www.linkedin.com/company/democracia-en-red/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
                     ],
                     className="text-center"
                 )
