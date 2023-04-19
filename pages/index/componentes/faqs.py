@@ -7,7 +7,7 @@ FAQs = html.Section([
                 dbc.Row([
                     dbc.Col([
                         html.H5([
-                            html.Span("+",className="text-primary display-5"), "¿Qué significa PIS?"
+                            html.Span("+",className="text-primary display-6"), "¿Qué significa PIS?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-1"),
                         dbc.Collapse(
                             html.P("PIS es el acrónimo de PESTICIDAS INTRODUCIDOS SILENCIOSAMENTE"),
@@ -15,7 +15,7 @@ FAQs = html.Section([
                             is_open=True,
                         ),
                         html.H5([
-                            html.Span("+",className="text-primary display-5"), "¿Qué es PIS?"
+                            html.Span("+",className="text-primary display-6"), "¿Qué es PIS?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-2"),
                         dbc.Collapse(
                             html.P("Pesticidas Introducidos Silenciosamente (PIS) es una serie de  herramientas , datos e información que  facilitan la  reducción  del impacto de los agroquímicos desde los territorios."),
@@ -23,7 +23,7 @@ FAQs = html.Section([
                             is_open=True,
                         ),
                         html.H5([
-                            html.Span("+",className="text-primary display-5"), "¿A quién está dirigido PIS?"
+                            html.Span("+",className="text-primary display-6"), "¿A quién está dirigido PIS?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-3"),
                         dbc.Collapse(
                             html.P("En términos generales a todo el mundo pero específicamente está pensado para: comunidades afectadas, escuelas rurales, gobiernos locales, legisladores, productores agropecuarios, investigadoras/es, activistas, abogados con causas ambientalistas, etc."),
@@ -33,7 +33,7 @@ FAQs = html.Section([
                     ], lg=4),
                     dbc.Col([
                         html.H5([
-                            html.Span("+",className="text-primary display-5"), "¿Qué están haciendo?"
+                            html.Span("+",className="text-primary display-6"), "¿Qué están haciendo?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-4"),
                         dbc.Collapse(
                             html.Ul([
@@ -49,7 +49,7 @@ FAQs = html.Section([
                             is_open=True,
                         ),
                         html.H5([
-                            html.Span("+",className="text-primary display-5"), "¿Cómo me entero de los próximos lanzamientos?"
+                            html.Span("+",className="text-primary display-6"), "¿Cómo me entero de los próximos lanzamientos?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-5"),
                         dbc.Collapse(
                             html.P("Nos podés seguir en redes sociales y/o nos podés dejar  tu mail para que te mantengamos al tanto."),
@@ -57,7 +57,7 @@ FAQs = html.Section([
                             is_open=True,
                         ),
                         html.H5([
-                            html.Span("+",className="text-primary display-5"), "¿Necesitan más plata? ¿Para qué?"
+                            html.Span("+",className="text-primary display-6"), "¿Necesitan más plata? ¿Para qué?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-6"),
                         dbc.Collapse(
                             html.P("Si, Para terminar esta etapa y sobre todo para  que el proyecto crezca. Queremos llevar PIS ala siguiente etapa."),
@@ -68,13 +68,24 @@ FAQs = html.Section([
 
                     dbc.Col([
                         html.H5([
-                            html.Span("+",className="text-primary display-5"), "¿Cómo puedo donar?"
+                            html.Span("+",className="text-primary display-6"), "¿Cómo puedo donar?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-7"),
                         dbc.Collapse(
                             html.A("Te dejamos acá un link para donaciones", href="https://donaronline.org/democracia-en-red/pis-dona-un-testeo-de-agroquimicos", target="_blank"),
                             id="faq-7-collapse",
                             is_open=True,
-                        ),                      
+                        ),
+                        html.H5([
+                            html.Span("+",className="text-primary display-6"), "¿Los alimentos que comemos contienen agroquímicos?"
+                        ], className="text-dark pointer", n_clicks=0, id="faq-8"),
+                        dbc.Collapse(
+                            html.P([
+                                "Si, lamentablemente mucho más de lo que creemos. Y en muchos casos incluso con agroquímicos prohibidos. Ver casos ",
+                                html.A("https://naturaleza.ar/categoria/19/listado-de-alimentos-fumigados", href="https://naturaleza.ar/categoria/19/listado-de-alimentos-fumigados")
+                            ]),
+                            id="faq-8-collapse",
+                            is_open=True,
+                        ),                            
                     ], lg=4),
                 ])
             ],
@@ -131,5 +142,12 @@ def show(n_left, is_open):return not is_open
     Output("faq-7-collapse", "is_open"),
     [Input("faq-7", "n_clicks")],
     [State("faq-7-collapse", "is_open")],
+)
+def show(n_left, is_open):return not is_open
+
+@callback(
+    Output("faq-8-collapse", "is_open"),
+    [Input("faq-8", "n_clicks")],
+    [State("faq-8-collapse", "is_open")],
 )
 def show(n_left, is_open):return not is_open
