@@ -2,7 +2,7 @@ from dash import html, Input, Output, callback, State
 import dash_bootstrap_components as dbc
 
 
-PIS_ISOLOGOTIPO = "/assets/img/pis_isologotipo.png"
+PIS_ISOLOGOTIPO = "/assets/img/PIS_isologo_blanco.png"
 REFLEJAR_LOGOTIPO = "/assets/img/reflejar_logotipo.png"
 
 
@@ -31,7 +31,7 @@ Navbar = dbc.Navbar(
                 navbar=True,
             ),
         ],
-        className="bg-black"
+        className=""
     ),
     
     fixed="top",
@@ -60,6 +60,7 @@ Footer = html.Footer([
                         html.A(html.I(className="bi bi-twitter"), href="https://twitter.com/fundacionDER",target="_blank", className="btn mx-3 btn-lg btn-floating"),
                         html.A(html.I(className="bi bi-instagram"), href="https://www.instagram.com/democraciaenred/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
                         html.A(html.I(className="bi bi-facebook"), href="https://www.facebook.com/democraciaenred",target="_blank", className="btn mx-3 btn-lg btn-floating"),
+                        html.A(html.I(className="bi bi-linkedin"), href="https://www.linkedin.com/company/democracia-en-red/",target="_blank", className="btn mx-3 btn-lg btn-floating"),
                     ],
                     className="text-center"
                 )

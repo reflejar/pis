@@ -10,9 +10,9 @@ Testeando = html.Section(
                 md=2, 
                 class_name="mt-5 text-end"),
                 dbc.Col([
-                    html.H1("Testeando", className="text-black display-4 strong"),
-                    html.H4("Estamos midiendo los niveles de agroquímicos en orina humana - Provincia de Buenos Aires", className="text-black"),
-                    html.H4("En breve publicaremos los resultados.", className="text-black"),
+                    html.H1("TESTEANDO", className="text-black space-grotesk display-4 strong"),
+                    html.H4("Estamos midiendo los niveles de agroquímicos en orina humana", className="text-black"),
+                    html.H4("En breve publicaremos los resultados.", className="text-black fw-bold"),
                 ],
                 md=10,
                 class_name="my-5 px-5"),

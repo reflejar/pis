@@ -4,9 +4,12 @@ from dash import html
 
 Donar = html.Section([
                     html.H1("Donaciones", className="text-black display-4 strong my-5 space-grotesk text-uppercase"),
-                    html.H3("¿Querés que más personas conozcan el valor de su PIS y cómo reducirlo?", className="text-black strong "),
-                    html.H4("Con tu donación nos ayudás a llevar esta información a más territorios y provincias.", className="text-black "),
-                    dbc.Button("Doná información", color="primary", className="my-5 text-black p-3 text-uppercase ", href="https://donaronline.org/democracia-en-red/pis-dona-un-testeo-de-agroquimicos", target="_blank"),
+                    dbc.Row(dbc.Col(
+                        html.H4("Con tu donación nos ayudás a llevar esta información a más territorios y provincias.", className="text-black"),
+                        lg={'offset': 4, 'size': 4}
+                    )),
+                    
+                    dbc.Button("Doná", color="light", className="my-5 text-black fw-bold py-3 px-5 text-uppercase ", href="https://donaronline.org/democracia-en-red/pis-dona-un-testeo-de-agroquimicos", target="_blank"),
             ],
             className="min-vh-50 p-5 text-center",
             id="index-donar",
