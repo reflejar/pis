@@ -2,8 +2,7 @@ from dash import html, Input, Output, callback, State
 import dash_bootstrap_components as dbc
 
 
-PIS_ISOLOGOTIPO = "/assets/img/PIS_isologo_blanco.png"
-REFLEJAR_LOGOTIPO = "/assets/img/reflejar_logotipo.png"
+PIS_ISOLOGOTIPO = "/assets/img/PIS_isologo_negro.png"
 
 
 Navbar = dbc.Navbar(
