@@ -8,15 +8,15 @@ Orgas = html.Section([
                 html.Br(),
                 html.H4("En alizanza con", className="text-uppercase mt-5 text-black "),
                 dbc.Row([
-                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/amartya.png", height="130px", className="px-2"), href="https://www.amartya.org/ar/", target="_blank"), className="text-center"),
-                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/art41.png", height="130px", className="px-2"), href="https://articulo41.org/", target="_blank"), className="text-center"),
-                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/casaLobos.png", height="130px", className="px-2"), href="", target="_blank"), className="text-center"),
-                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/naturaleza.png", height="130px", className="px-2"), href="https://naturaleza.ar/", target="_blank"), className="text-center"),
-                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/reflejar.png", height="130px", className="px-2"), href="https://reflej.ar/", target="_blank"), className="text-center"),
-                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/simbiosis.png", height="130px", className="px-2"), href="https://simbiosis.cc/", target="_blank"), className="text-center"),
+                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/amartya.png", height="110px", className="px-2"), href="https://www.amartya.org/ar/", target="_blank"), className="text-center"),
+                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/art41.png", height="110px", className="px-2"), href="https://articulo41.org/", target="_blank"), className="text-center"),
+                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/casaLobos.png", height="110px", className="px-2"), href="", target="_blank"), className="text-center"),
+                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/naturaleza.png", height="110px", className="px-2"), href="https://naturaleza.ar/", target="_blank"), className="text-center"),
+                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/reflejar.png", height="110px", className="px-2"), href="https://reflej.ar/", target="_blank"), className="text-center"),
+                    dbc.Col(html.A(html.Img(src="/assets/img/orgas/simbiosis.png", height="110px", className="px-2"), href="https://simbiosis.cc/", target="_blank"), className="text-center"),
                 ])
             ],
-            md={'offset': 1, 'size': 10}
+            lg={'offset': 1, 'size': 10}
             ))
             ],
             className="min-vh-50 p-5 bg-white",
