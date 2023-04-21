@@ -6,7 +6,7 @@ Hero = html.Section(
 					html.H1("PIS", className="hero-title text-primary mb-3 space-grotesk"),
 					html.H2([
 						"Pesticidas Introducidos Silenciosamente",
-					], className="hero-subtitle text-primary mb-2 fw-bold space-grotesk"),
+					], className="hero-subtitle text-primary mb-2 fw-bold display-4 space-grotesk"),
 					html.H4([
     					"Información y herramientas para reducir el impacto de los agroquímicos en nuestros cuerpos.",
 						html.Br(),
