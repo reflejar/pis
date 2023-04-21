@@ -8,7 +8,7 @@ Testeando = html.Section(
                     html.Img(src="/assets/img/recursos/tubo.svg", height="120px"),
                 ],
                 md=2, 
-                class_name="mt-5 text-end"),
+                class_name="mt-5"),
                 dbc.Col([
                     html.H1("TESTEANDO", className="text-black space-grotesk display-4 strong"),
                     html.H4("Estamos midiendo los niveles de agroquímicos en orina humana", className="text-black"),
