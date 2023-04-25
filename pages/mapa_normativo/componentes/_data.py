@@ -1,6 +1,7 @@
 import geopandas as gpd
 import json
-
+import pandas as pd
+from itertools import combinations
 
 MUNICIPIOS = ['Mar Chiquita']
 
@@ -37,29 +38,14 @@ reservas["popup"]="<b>Nombre</b>: "+reservas["Name"]
 localidades_parajes["tooltip"]='<b>Nombre</b>: '+localidades_parajes["Name"]+'<br>'+'<b>Habitantes</b>: '+localidades_parajes["Habitantes"]+'<extra></extra>'
 localidades_parajes["popup"]=localidades_parajes["tooltip"]
 
-cuerpos_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-cursos_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-localidades_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-parajes_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-escuelas_parcelas_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
-
-localidades_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-parajes_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
-escuelas_parcelas_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
 
 ################ se pasan las tablas a json #################################################################
-localidades_amort_geojson = json.loads(localidades_amort.to_json(na="keep"))
-parajes_amort_geojson = json.loads(parajes_amort.to_json(na="keep"))
-escuelas_parcelas_amort_geojson = json.loads(escuelas_parcelas_amort.to_json(na="keep"))
-
-cursos_excl_geojson = json.loads(cursos_excl.to_json(na="keep"))
-cuerpos_excl_geojson = json.loads(cuerpos_excl.to_json(na="keep"))
-localidades_excl_geojson = json.loads(localidades_excl.to_json(na="keep"))
-parajes_excl_geojson = json.loads(parajes_excl.to_json(na="keep"))
-escuelas_parcelas_excl_geojson = json.loads(escuelas_parcelas_excl.to_json(na="keep"))
 
 cursos_geojson = json.loads(cursos.to_json(na="keep"))
 cuerpos_geojson = json.loads(cuerpos.to_json(na="keep"))
 localidades_parajes_geojson=json.loads(localidades_parajes.to_json(na="keep"))
 escuelas_parcelas_geojson = json.loads(escuelas_parcelas.to_json(na="keep"))
 reservas_geojson = json.loads(reservas.to_json(na="keep"))
+
+amortiguacion=gpd.read_parquet("./data/amortiguacion.parquet")
+exclusion=gpd.read_parquet("./data/exclusion.parquet")

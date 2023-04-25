@@ -18,6 +18,7 @@ import pandas as pd
 import plotly.express as px
 pd.options.display.float_format = '{:.0f}'.format
 import pickle
+from itertools import combinations
 
 #TEST PARA GUARDAR JSONS COMO PARQUET
 # from pyarrow import json
@@ -335,4 +336,82 @@ cursos.to_parquet("./cursos_agua.parquet")
 # np.save("./longitudes_rios.npy",lons_cursos,allow_pickle=True)
 # np.save("./nombres_rios.npy",names,allow_pickle=True)
 
+excl=[localidades_excl, parajes_excl,cursos_excl, cuerpos_excl,escuelas_parcelas_excl]
+combinaciones=[]
+for i in range(1,len(excl)+1):
+    x = combinations(excl, i)
+    for j in list(x):
+        combinaciones.append(j)
+combinaciones
+exclusion=pd.DataFrame()
+for i in list(combinaciones):
+    exclusion_x=pd.DataFrame()
+    lista=[]
+    puntos_interes=pd.DataFrame()
+    for j in i:
+        exclusion_x=pd.concat([exclusion_x, j[["geometry"]]])
+        nombre_variable=[name for name in globals() if globals()[name] is j]
+        lista.append(nombre_variable[0][0:nombre_variable[0].find("_")])
+    x=""
+    for z in lista:
+        x=x+z
 
+    
+    if "cuerpos" in x:
+        puntos_interes=pd.concat([puntos_interes, cuerpos])
+    if "localidades"  in x:
+        puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "parajes"  in x:
+        if "localidades"  not in x:
+            puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "escuelas" in x:
+        puntos_interes=pd.concat([puntos_interes, escuelas_parcelas])
+
+    exclusion_x["id"]=x
+    if x!="cursos":
+        exclusion_x = exclusion_x.overlay(puntos_interes, how='difference')
+    exclusion_x = exclusion_x.dissolve().explode(ignore_index=True,index_parts=False)
+    exclusion=pd.concat([exclusion,exclusion_x])
+exclusion.reset_index(inplace=True)
+
+###################### tabla general amortiguamiento ####################################################
+   
+amort=[localidades_amort, parajes_amort, escuelas_parcelas_amort ]
+
+combinaciones=[]
+for i in range(1,len(amort)+1):
+    x = combinations(amort, i)
+    for j in list(x):
+        combinaciones.append(j)
+combinaciones
+
+amortiguacion=pd.DataFrame()
+for i in list(combinaciones):
+    amortiguacion_x=pd.DataFrame()
+    lista=[]
+    puntos_interes=pd.DataFrame()
+    for j in i:
+        amortiguacion_x=pd.concat([amortiguacion_x, j[["geometry"]]])
+        nombre_variable=[name for name in globals() if globals()[name] is j]
+        lista.append(nombre_variable[0][0:nombre_variable[0].find("_")])
+    x=""
+    for z in lista:
+        x=x+z
+    
+    puntos_interes=pd.concat([puntos_interes, cuerpos])
+    if "localidades"  in x:
+        puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "parajes"  in x:
+        if "localidades"  not in x:
+            puntos_interes=pd.concat([puntos_interes, localidades_parajes])
+    if "escuelas" in x:
+        puntos_interes=pd.concat([puntos_interes, escuelas_parcelas])
+
+    amortiguacion_x["id"]=x
+    amortiguacion_x = amortiguacion_x.overlay(pd.concat([exclusion[exclusion["id"]==x],puntos_interes]), how='difference')
+    amortiguacion_x = amortiguacion_x.dissolve().explode(ignore_index=True,index_parts=False)
+    amortiguacion=pd.concat([amortiguacion,amortiguacion_x])
+amortiguacion.reset_index(inplace=True)
+
+amortiguacion.to_parquet("./amortiguacion.parquet")
+exclusion.to_parquet("./exclusion.parquet")
