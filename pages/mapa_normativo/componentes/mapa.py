@@ -5,22 +5,28 @@ from dash import  html, Input, Output, callback
 from dash_extensions.javascript import arrow_function
 from dash_extensions.javascript import Namespace
 
+import geopandas as gpd
+import json
+import pandas as pd
+
+
 from ._data import (
     cursos_geojson,
     escuelas_parcelas_geojson,
     cuerpos_geojson,
     reservas_geojson,
     localidades_parajes_geojson,
-    cuerpos_excl_geojson,
-    cursos_excl_geojson,
-    localidades_excl_geojson,
-    parajes_excl_geojson,
-    escuelas_parcelas_excl_geojson,
-    localidades_amort_geojson,
-    parajes_amort_geojson,
-    escuelas_parcelas_amort_geojson,
+    amortiguacion,
+    exclusion,
 )
 
+total_amort=amortiguacion[amortiguacion["id"]=="localidadesparajesescuelas"]
+total_amort.reset_index(inplace=True)
+total_amort_geojson = dlx.geojson_to_geobuf(json.loads(total_amort.to_json(na="keep")))
+
+total_excl=exclusion[exclusion["id"]=="localidadesparajescursoscuerposescuelas"]
+total_excl.reset_index(inplace=True)
+total_excl_geojson = dlx.geojson_to_geobuf(json.loads(total_excl.to_json(na="keep")))
 ###### Constantes ###########
 HOVER_STYLE=dict(weight=3,fillOpacity=0.75)
 ns = Namespace("dash_props", "module")
@@ -50,11 +56,11 @@ MapaNormativo = html.Div(
                     ),
                 ],
             ),
-
             dl.Pane(
                 dl.LayerGroup([
                     dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(localidades_amort_geojson), 
+                        id="geo_amort",
+                        data=total_amort_geojson, 
                         format='geobuf', 
                         zoomToBounds=True, 
                         zoomToBoundsOnClick=True,                       
@@ -62,12 +68,13 @@ MapaNormativo = html.Div(
                         options=dict(onEachFeature=ns("on_each_feature"),
                         style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
-                id="pane_localidades_amort"
-            ), 
+                id="pane_amort"
+            ),
             dl.Pane(
                 dl.LayerGroup([
                     dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(parajes_amort_geojson), 
+                        id="geo_excl",
+                        data=total_excl_geojson, 
                         format='geobuf', 
                         zoomToBounds=True, 
                         zoomToBoundsOnClick=True,                       
@@ -75,86 +82,112 @@ MapaNormativo = html.Div(
                         options=dict(onEachFeature=ns("on_each_feature"),
                         style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
                 ]), 
-                id="pane_parajes_amort"
+                id="pane_excl"
             ),
-            dl.Pane(
-                dl.LayerGroup([
-                    dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(escuelas_parcelas_amort_geojson), 
-                        format='geobuf', 
-                        zoomToBounds=True, 
-                        zoomToBoundsOnClick=True,                       
-                        hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
-                ]), 
-                id="pane_escuelas_parcelas_amort"
-            ),                                              
-            dl.Pane(
-                dl.LayerGroup([
-                    dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(cursos_excl_geojson), 
-                        format='geobuf', 
-                        zoomToBounds=True, 
-                        zoomToBoundsOnClick=True,
-                        hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
-                ]), 
-                id="pane_cursos_excl"
-            ), 
-            dl.Pane(
-                dl.LayerGroup([
-                    dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(cuerpos_excl_geojson), 
-                        format='geobuf', 
-                        zoomToBounds=True, 
-                        zoomToBoundsOnClick=True,
-                        hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
-                ]), 
-                id="pane_cuerpos_excl"
-            ),
-            dl.Pane(
-                dl.LayerGroup([
-                    dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(localidades_excl_geojson), 
-                        format='geobuf', 
-                        zoomToBounds=True, 
-                        zoomToBoundsOnClick=True,
-                        hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
-                ]), 
-                id="pane_localidades_excl"
-            ),
-            dl.Pane(
-                dl.LayerGroup([
-                    dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(parajes_excl_geojson), 
-                        format='geobuf', 
-                        zoomToBounds=True, 
-                        zoomToBoundsOnClick=True,
-                        hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
-                ]), 
-                id="pane_parajes_excl"
-            ),
-            dl.Pane(
-                dl.LayerGroup([
-                    dl.GeoJSON(
-                        data=dlx.geojson_to_geobuf(escuelas_parcelas_excl_geojson), 
-                        format='geobuf', 
-                        zoomToBounds=True, 
-                        zoomToBoundsOnClick=True,
-                        hoverStyle=arrow_function(HOVER_STYLE),
-                        options=dict(onEachFeature=ns("on_each_feature"),
-                        style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
-                ]), 
-                id="pane_escuelas_parcelas_excl"
-            ),
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(localidades_amort_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,                       
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_localidades_amort"
+            # ), 
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(parajes_amort_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,                       
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_parajes_amort"
+            # ),
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(escuelas_parcelas_amort_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,                       
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_escuelas_parcelas_amort"
+            # ),                                              
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(cursos_excl_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_cursos_excl"
+            # ), 
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(cuerpos_excl_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_cuerpos_excl"
+            # ),
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(localidades_excl_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_localidades_excl"
+            # ),
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(parajes_excl_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_parajes_excl"
+            # ),
+            # dl.Pane(
+            #     dl.LayerGroup([
+            #         dl.GeoJSON(
+            #             data=dlx.geojson_to_geobuf(escuelas_parcelas_excl_geojson), 
+            #             format='geobuf', 
+            #             zoomToBounds=True, 
+            #             zoomToBoundsOnClick=True,
+            #             hoverStyle=arrow_function(HOVER_STYLE),
+            #             options=dict(onEachFeature=ns("on_each_feature"),
+            #             style={"color":"#8c0d22","weight":2,"fillOpacity":0.3}))
+            #     ]), 
+            #     id="pane_escuelas_parcelas_excl"
+            # ),
             dl.Pane(
                 dl.LayerGroup([
                     dl.GeoJSON(
@@ -244,25 +277,34 @@ def toggle_escuelas(on): return {"display": "block" if on else "none"}
 
 
 @callback(
-        [Output("pane_localidades_amort", "style"),
-         Output("pane_parajes_amort", "style"),
-         Output("pane_escuelas_parcelas_amort", "style")], 
+        [Output("geo_amort", "data"),
+         Output("pane_amort", "style"),], 
         [Input("toggle_amort", "on"),
          Input("toggle_localidades", "on"),
          Input("toggle_escuelas", "on")]
         )
 def toggle_amort(on, loc_on, esc_on):
+    
+    lista=[]
+    if loc_on:
+        lista.append("localidades")
+        lista.append("parajes")
+    if esc_on:
+        lista.append("escuelas")
+    x=""
+    for z in lista:
+        x=x+z
+    total_amort=amortiguacion[amortiguacion["id"]==x]
+    total_amort["tooltip"]='<b>Zona de Amortiguamiento</b> <br>'+'<extra></extra>'
+    total_amort_geojson = dlx.geojson_to_geobuf(json.loads(total_amort.to_json(na="keep")))
     if on:
-        return {"display": "block" if loc_on else "none"}, {"display": "block" if loc_on else "none"}, {"display": "block" if esc_on else "none"}
+        return  total_amort_geojson , {"display": "block"}
     else:
-        return {"display": "none"}, {"display": "none"}, {"display": "none"}
+        return total_amort_geojson , {"display": "none"}
     
 @callback(
-        [Output("pane_localidades_excl", "style"),
-         Output("pane_parajes_excl", "style"),
-         Output("pane_cursos_excl", "style"),
-         Output("pane_cuerpos_excl", "style"),
-         Output("pane_escuelas_parcelas_excl", "style")], 
+        [Output("geo_excl", "data"),
+         Output("pane_excl", "style"),],
          [Input("toggle_excl", "on"),
          Input("toggle_localidades", "on"),
          Input("toggle_cursos", "on"),
@@ -270,10 +312,27 @@ def toggle_amort(on, loc_on, esc_on):
          Input("toggle_escuelas", "on")]
          )
 def toggle_excl(on, loc_on, cur_on, cue_on, esc_on ):
-    if  on:
-        return {"display": "block" if loc_on else "none"}, {"display": "block" if loc_on else "none"}, {"display": "block" if cur_on else "none"},{"display": "block" if cue_on else "none"}, {"display": "block" if esc_on else "none"}
-    else: 
-        return {"display": "none"}, {"display": "none"}, {"display": "none"},{"display": "none"}, {"display": "none"}    
+    
+    lista=[]
+    if loc_on:
+        lista.append("localidades")
+        lista.append("parajes")
+    if cur_on:
+            lista.append("cursos")
+    if cue_on:
+        lista.append("cuerpos")
+    if esc_on:
+        lista.append("escuelas")
+    x=""
+    for z in lista:
+            x=x+z
+    total_excl=exclusion[exclusion["id"]==x]
+    total_excl["tooltip"]='<b>Zona de Exclusión</b> <br>'+'<extra></extra>'
+    total_excl_geojson = dlx.geojson_to_geobuf(json.loads(total_excl.to_json(na="keep")))
+    if on:
+        return  total_excl_geojson , {"display": "block"}
+    else:
+        return total_excl_geojson , {"display": "none"}
 
 
     
