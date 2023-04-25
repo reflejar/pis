@@ -1,4 +1,24 @@
+############################
+### Se inicia el servidor de R-shiny
+############################
+import os
+cmd = 'R -e "shiny::runApp(\'shiny/app.R\', port=1203)"'
+os.system(cmd)
+
+############################
+### Se inicia Flask
+############################
 from flask import Flask
+server = Flask(__name__)
+# Se incorporan endpoints necesarios para k8s
+@server.route('/k8s/readiness/')
+def readiness(): return "OK", 200 
+@server.route('/k8s/liveness/') 
+def liveness(): return "OK", 200  
+
+############################
+### Se inicia Dash
+############################
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
@@ -12,19 +32,6 @@ from pages import (
     # ranking,
 	# digesto
 )
-
-
-# Se inicializa servidor de flask
-server = Flask(__name__)
-
-
-# Se incorporan endpoints necesarios para k8s
-@server.route('/k8s/readiness/')
-def readiness(): return "OK", 200 
-@server.route('/k8s/liveness/') 
-def liveness(): return "OK", 200  
-
-
 # Se crea Dash y elegimos el tema
 app = dash.Dash(
 	__name__,
