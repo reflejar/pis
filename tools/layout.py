@@ -15,11 +15,11 @@ Navbar = dbc.Navbar(
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 dbc.Nav([
-                        dbc.NavItem(html.A("Proyecto", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-proyecto")),
-                        dbc.NavItem(html.A("Testeos", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-testeando")),
-                        dbc.NavItem(html.A("Herramientas", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-herramientas")),
-                        dbc.NavItem(html.A("FAQS", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-faqs")),          
-                        dbc.NavItem(html.A("Donar", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-donar")),
+                        dbc.NavItem(html.A("Proyecto", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-proyecto"), class_name="text-end"),
+                        dbc.NavItem(html.A("Testeos", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-testeando"), class_name="text-end"),
+                        dbc.NavItem(html.A("Herramientas", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-herramientas"), class_name="text-end"),
+                        dbc.NavItem(html.A("FAQS", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-faqs"), class_name="text-end"),
+                        dbc.NavItem(html.A("Donar", className="text-white text-uppercase navitem-decoration mx-3", href="/#index-donar"), class_name="text-end"),
                         # dbc.NavItem(dbc.NavLink(dbc.Button("Donar", size="sm", class_name="bg-grey border-grey"), active="exact", class_name="text-white mx-3", href="/donar")),
                     ],
                     className="ms-auto",

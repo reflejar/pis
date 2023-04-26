@@ -1,9 +1,9 @@
-############################
-### Se inicia el servidor de R-shiny
-############################
-import os
-cmd = 'R -e "shiny::runApp(\'shiny/app.R\', port=1203)"'
-os.system(cmd)
+# ############################
+# ### Se inicia el servidor de R-shiny
+# ############################
+# import os
+# cmd = 'R -e "shiny::runApp(\'shiny/app.R\', port=1203)"'
+# os.system(cmd)
 
 ############################
 ### Se inicia Flask
@@ -27,7 +27,7 @@ from tools.layout import Navbar, Footer
 
 from pages import (
 	index, 
-    mapa_normativo, 
+    # mapa_normativo, 
 	# gis_resultados, 
     # ranking,
 	# digesto
@@ -43,7 +43,7 @@ app = dash.Dash(
 	title="PIS | Pesticidas Introducidos Silenciosamente"
 )
 dash.register_page(index.__name__, title="Pesticidas Introducidos Silenciosamente", path='/', layout=index.layout)
-dash.register_page(mapa_normativo.__name__, title="Mapa Normativo", path='/mapa-normativo', layout=mapa_normativo.layout)
+# dash.register_page(mapa_normativo.__name__, title="Mapa Normativo", path='/mapa-normativo', layout=mapa_normativo.layout)
 # dash.register_page(gis_resultados.__name__, title="Mapa Normativo", path='/mapa-resultados', layout=gis_resultados.layout)	
 # dash.register_page(ranking.__name__, title="Mapa Normativo", path='/ranking', layout=ranking.layout)
 # dash.register_page(digesto.__name__, title="Mapa Normativo", path='/digesto', layout=digesto.layout)

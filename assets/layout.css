@@ -75,21 +75,13 @@
     background: linear-gradient(90deg, #DCDC7C -0.28%, #DEDD84 5.75%, #F0E8B8 49.92%, #FAEED9 82.05%, #FFF1E6 100.12%);
 }  
 
-#index-herramientas {
-    background: #000000!important;
-}  
+#index-herramientas {background: #000000!important;}  
 
-.navitem-decoration {
-    text-decoration: none;
-}
+.navitem-decoration {text-decoration: none;}
 
-.space-grotesk {
-    font-family: Space Grotesk!important;
-}
+.space-grotesk {font-family: Space Grotesk!important;}
 
-.pointer {
-    cursor: pointer;
-}
+.pointer {cursor: pointer;}
 
 .min-vh-25{min-height:25vh!important}
 
@@ -97,3 +89,8 @@
 
 .min-vh-75{min-height:75vh!important}
 
+.active {
+  background-color: black!important;
+  color: white!important;
+  border-radius: 0px;
+}
