@@ -5,8 +5,8 @@ services:
   web: &web
     build:
       context: .
-    image: pis:latest
+    image: pis-web:latest
     volumes:
       - .:/app
     ports:
-      - "8050:8050"
+      - "5000:5000"

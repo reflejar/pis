@@ -3,12 +3,6 @@
 }
 
 
-#footer {
-    padding-bottom: 5vh;
-    padding-top: 5vh;
-    background: #333333;
-}
-
 .bg-hero {
     position: relative;
 }
@@ -76,21 +70,3 @@
 }  
 
 #index-herramientas {background: #000000!important;}  
-
-.navitem-decoration {text-decoration: none;}
-
-.space-grotesk {font-family: Space Grotesk!important;}
-
-.pointer {cursor: pointer;}
-
-.min-vh-25{min-height:25vh!important}
-
-.min-vh-50{min-height:50vh!important}
-
-.min-vh-75{min-height:75vh!important}
-
-.active {
-  background-color: black!important;
-  color: white!important;
-  border-radius: 0px;
-}
