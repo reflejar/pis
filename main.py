@@ -34,10 +34,33 @@ app = dash.Dash(
 	prevent_initial_callbacks=True,
 	title="PIS | Pesticidas Introducidos Silenciosamente"
 )
-# dash.register_page(mapa_normativo.__name__, title="Mapa Normativo", path='/mapa-normativo', layout=mapa_normativo.layout)
-# dash.register_page(gis_resultados.__name__, title="Mapa Normativo", path='/mapa-resultados', layout=gis_resultados.layout)	
-# dash.register_page(ranking.__name__, title="Mapa Normativo", path='/ranking', layout=ranking.layout)
-# dash.register_page(digesto.__name__, title="Mapa Normativo", path='/digesto', layout=digesto.layout)
+
+app.index_string = """<!DOCTYPE html>
+<html>
+    <head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-266168079-1"</script>>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-266168079-1');
+		</script>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>"""
 
 
 # Se agregan los componentes de la web
