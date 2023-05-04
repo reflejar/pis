@@ -71,7 +71,7 @@ FAQs = html.Section([
                             html.Span("+",className="text-primary display-6"), "¿Cómo puedo donar?"
                         ], className="text-dark pointer", n_clicks=0, id="faq-7"),
                         dbc.Collapse(
-                            html.A("Te dejamos acá un link para donaciones", href="https://donaronline.org/democracia-en-red/pis-dona-un-testeo-de-agroquimicos", target="_blank"),
+                            html.A("Te dejamos acá un link para donaciones", href="https://donaronline.org/democracia-en-red/campana-recaudacion-proyecto-pis", target="_blank"),
                             id="faq-7-collapse",
                             is_open=True,
                         ),

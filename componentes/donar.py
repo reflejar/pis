@@ -9,7 +9,7 @@ Donar = html.Section([
                         lg={'offset': 4, 'size': 4}
                     )),
                     
-                    dbc.Button("Doná", color="light", className="my-5 text-black fw-bold py-3 px-5 text-uppercase ", href="https://donaronline.org/democracia-en-red/pis-dona-un-testeo-de-agroquimicos", target="_blank"),
+                    dbc.Button("Doná", color="light", className="my-5 text-black fw-bold py-3 px-5 text-uppercase ", href="https://donaronline.org/democracia-en-red/campana-recaudacion-proyecto-pis", target="_blank"),
             ],
             className="min-vh-50 p-5 text-center",
             id="index-donar",
