@@ -35,33 +35,38 @@ app = dash.Dash(
 	title="PIS | Pesticidas Introducidos Silenciosamente"
 )
 
-app.index_string = """<!DOCTYPE html>
-<html>
-    <head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-266168079-1"</script>>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
 
-		gtag('config', 'UA-266168079-1');
-		</script>
-        {%metas%}
-        <title>{%title%}</title>
-        {%favicon%}
-        {%css%}
-    </head>
-    <body>
-        {%app_entry%}
-        <footer>
-            {%config%}
-            {%scripts%}
-            {%renderer%}
-        </footer>
-    </body>
-</html>"""
+# Analytics
+import os
+GOOGLE_ANALYTICS_TRACKING_ID = os.getenv('GOOGLE_ANALYTICS_TRACKING_ID')
+if GOOGLE_ANALYTICS_TRACKING_ID:
+	app.index_string = f"""<!DOCTYPE html>
+	<html>
+		<head>
+			<!-- Google tag (gtag.js) -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id={GOOGLE_ANALYTICS_TRACKING_ID}"</script>>
+			<script>
+			window.dataLayer = window.dataLayer || [];""" + """
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());""" +f"""
+			gtag('config', '{GOOGLE_ANALYTICS_TRACKING_ID}'); """ + """
+			</script>
+			{%metas%}
+			<title>{%title%}</title>
+			{%favicon%}
+			{%css%}
+		</head>
+		<body>
+			{%app_entry%}
+			<footer>
+				{%config%}
+				{%scripts%}
+				{%renderer%}
+			</footer>
+		</body>
+	</html>"""
 
+	
 
 # Se agregan los componentes de la web
 app.layout = html.Div(
