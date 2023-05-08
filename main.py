@@ -2,16 +2,21 @@
 ### Configuraciones iniciales
 ############################
 import os
-GOOGLE_ANALYTICS_TRACKING_ID = os.getenv('GOOGLE_ANALYTICS_TRACKING_ID')
-
 
 ############################
 ### Se inicia Flask
 ############################
-from flask import Flask, render_template, request, redirect
-
+from flask import Flask, render_template
 web = Flask(__name__)
-# Se incorporan endpoints necesarios para k8s
+
+# Se agregan variables de entorno
+@web.context_processor
+def inject_env():
+    return dict(
+          GOOGLE_ANALYTICS_TRACKING_ID=os.getenv('GOOGLE_ANALYTICS_TRACKING_ID'),
+	)
+
+# Se incorporan endpoints necesarios
 @web.route("/")
 def index(): return render_template("index.html")
 
