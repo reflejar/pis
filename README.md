@@ -12,8 +12,6 @@ Respecto a la disyuntiva de la elección de la tecnología de front-end ideal pa
 
 - [Flask](https://flask.palletsprojects.com/en/2.3.x/), al ser un pequeño framework desarrollado en python, es ideal para acercar los conceptos de html, css y js a cientistas de datos y para acercar terminología y sintaxis de python a desarrolladores front-end.
 
-- [Vue](https://vuejs.org/), al ser un framework "progresivo" desarrollado en javascript hace que sea de facil comprensión a través de los elementos más básicos. Y debido a que su implementación minimalista puede hacerse via cdn no es necesario instalar entornos.
-
 ## Setup
 
 Hay 2 maneras de preparar el entorno para desarrollo. A través de un entorno virtual de python, o a través de Docker
