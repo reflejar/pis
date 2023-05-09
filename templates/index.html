@@ -75,25 +75,25 @@
                     <h1 class="text-uppercase my-5 text-black space-grotesk">FAQs</h1>
                     <div class="row">
                         <div class="col-lg-4">
-                            <h5 id="faq-1" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-1" class="text-dark pointer" onclick="toggleCollapse('faq-1-collapse')">
                                 <span class="text-primary display-6">+</span>¿Qué significa PIS?
                             </h5>
                             <div class="collapse" id="faq-1-collapse">
                                 <p>PIS es el acrónimo de PESTICIDAS INTRODUCIDOS SILENCIOSAMENTE</p>
                             </div>
-                            <h5 id="faq-2" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-2" class="text-dark pointer" onclick="toggleCollapse('faq-2-collapse')">
                                 <span class="text-primary display-6">+</span>¿Qué es PIS?</h5>
                             <div class="collapse" id="faq-2-collapse">
                                 <p>Pesticidas Introducidos Silenciosamente (PIS) es una serie de  herramientas , datos e información que  facilitan la  reducción  del impacto de los agroquímicos desde los territorios.</p>
                             </div>
-                            <h5 id="faq-3" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-3" class="text-dark pointer" onclick="toggleCollapse('faq-3-collapse')">
                                 <span class="text-primary display-6">+</span>¿A quién está dirigido PIS?</h5>
                             <div class="collapse" id="faq-3-collapse">
                                 <p>En términos generales a todo el mundo pero específicamente está pensado para: comunidades afectadas, escuelas rurales, gobiernos locales, legisladores, productores agropecuarios, investigadoras/es, activistas, abogados con causas ambientalistas, etc.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <h5 id="faq-4" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-4" class="text-dark pointer" onclick="toggleCollapse('faq-4-collapse')">
                                 <span class="text-primary display-6">+</span>¿Qué están haciendo?</h5>
                             <div class="collapse" id="faq-4-collapse">
                                 <ul>
@@ -106,24 +106,24 @@
                                     <li>Una georreferenciación de la zonificación de aplicaciones de agroquímicos de algunos municipios.</li>
                                 </ul>
                             </div>
-                            <h5 id="faq-5" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-5" class="text-dark pointer" onclick="toggleCollapse('faq-5-collapse')">
                                 <span class="text-primary display-6">+</span>¿Cómo me entero de los próximos lanzamientos?</h5>
                             <div class="collapse" id="faq-5-collapse">
                                 <p>Nos podés seguir en redes sociales y/o nos podés dejar  tu mail para que te mantengamos al tanto.</p>
                             </div>
-                            <h5 id="faq-6" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-6" class="text-dark pointer" onclick="toggleCollapse('faq-6-collapse')">
                                 <span class="text-primary display-6">+</span>¿Necesitan más plata? ¿Para qué?</h5>
                             <div class="collapse" id="faq-6-collapse">
                                 <p>Si, Para terminar esta etapa y sobre todo para  que el proyecto crezca. Queremos llevar PIS ala siguiente etapa.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <h5 id="faq-7" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-7" class="text-dark pointer" onclick="toggleCollapse('faq-7-collapse')">
                                 <span class="text-primary display-6">+</span>¿Cómo puedo donar?</h5>
                             <div class="collapse" id="faq-7-collapse">
                                 <a href="https://donaronline.org/democracia-en-red/campana-recaudacion-proyecto-pis" target="_blank">Te dejamos acá un link para donaciones</a>
                             </div>
-                            <h5 id="faq-8" class="text-dark pointer" @click="toggleCollapse">
+                            <h5 id="faq-8" class="text-dark pointer" onclick="toggleCollapse('faq-8-collapse')">
                                 <span class="text-primary display-6">+</span>¿Los alimentos que comemos contienen agroquímicos?</h5>
                             <div class="collapse" id="faq-8-collapse">
                                 <p>Si, lamentablemente mucho más de lo que creemos. Y en muchos casos incluso con agroquímicos prohibidos. Ver casos <a href="https://naturaleza.ar/categoria/19/listado-de-alimentos-fumigados">https://naturaleza.ar/categoria/19/listado-de-alimentos-fumigados</a></p>
@@ -179,13 +179,14 @@
                                 <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/reflejar.png') }}>
                             </a>
                         </div>
-                        <div class="text-center col"><a href="https://simbiosis.cc/" target="_blank">
-                            <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/simbiosis.png') }}>
-                        </a>
+                        <div class="text-center col">
+                            <a href="https://simbiosis.cc/" target="_blank">
+                                <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/simbiosis.png') }}>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </section>
 
 {% endblock %}
