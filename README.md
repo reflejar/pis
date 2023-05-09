@@ -2,8 +2,15 @@
 
 # Pesticidas introducidos silenciosamente (PIS)
 
-Web para proyecto "Pesticidas introducidos silenciosamente" (PIS) de Democracia en Red
+Web y switch apps para proyecto "Pesticidas introducidos silenciosamente" (PIS) de Democracia en Red
 
+## Contenido y Fundamentación técnica
+
+Esta web contiene la presentación y explicación del proyecto, como así tambien un mapeo y rutas de las diferentes aplicaciones desarrolladas en otras tecnologías especialmente diseñadas para el procesamiento de datos.
+
+Respecto a la disyuntiva de la elección de la tecnología de front-end ideal para este caso se decidió ir por una tecnología hibrida que pueda hacer de nexo entre los oficios de desarrollo frontend y desarrollo de ciencia de datos.
+
+- [Flask](https://flask.palletsprojects.com/en/2.3.x/), al ser un pequeño framework desarrollado en python, es ideal para acercar los conceptos de html, css y js a cientistas de datos y para acercar terminología y sintaxis de python a desarrolladores front-end.
 
 ## Setup
 

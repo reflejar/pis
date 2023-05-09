@@ -1,0 +1,192 @@
+{% extends "_base.html" %}
+
+
+{% block content %}
+    
+        <section id="index-proyecto" class="bg-hero d-flex justify-content-center align-items-center min-vh-100">
+            <div class="container">
+                <div>
+                    <h1 class="hero-title text-primary mb-3 space-grotesk">PIS</h1>
+                    <h2 class="hero-subtitle text-primary mb-2 fw-bold display-4 space-grotesk">Pesticidas Introducidos Silenciosamente</h2>
+                    <h4 class="hero-description text-white space-grotesk">Información y herramientas para reducir el impacto de los agroquímicos en nuestros cuerpos. <br /></h4>
+                </div>
+            </div>
+        </section>
+    
+        <section id="index-testeando" class="min-vh-50 d-flex justify-content-center align-items-center">
+            <div class="row">
+                <div class="mt-5 col-md-2">
+                    
+                    <img height="120px" src={{ url_for('static', filename='assets/img/recursos/tubo.svg') }} alt="Ícono de tubo de ensayos">
+                </div>
+                <div class="my-5 px-5 col-md-10">
+                    <h1 class="text-black space-grotesk display-4 strong">TESTEANDO</h1>
+                    <h4 class="text-black">Estamos midiendo los niveles de agroquímicos en orina humana</h4>
+                    <h4 class="text-black fw-bold">En breve publicaremos los resultados.</h4>
+                </div>
+            </div>
+        </section>
+    
+        <section id="index-herramientas" class="p-5 mb-5 text-center">
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-uppercase my-5 space-grotesk text-white">Proximamente</h3>
+                </div>
+            </div>
+            <div class="px-5 row">
+                <div class="col-lg-3 offset-lg-3">
+                    <img class="mt-5" height="120px" src={{ url_for('static', filename='assets/img/recursos/buenos_aires.svg') }}>
+                    <h4 class="text-white mt-3 fw-bold">Un mapa lleno de PIS</h4>
+                    <p class="text-white px-1 mt-3">Conocé los resultados de la campaña de testeos en orina y análisis en el ambiente para saber dónde y en qué medida se detectaron trazas de agroquímicos.</p>
+                </div>
+                <div class="col-lg-3">
+                    <img class="mt-5" height="120px" src={{ url_for('static', filename='assets/img/recursos/ranking.svg') }}>
+                    <h4 class="text-white mt-3 fw-bold">Ranking Normativo</h4>
+                    <p class="text-white px-1 mt-3">Conocé en qué puesto del ranking normativo está la regulación de agroquímicos de tu territorio para saber cómo puede mejorar.</p>
+                </div>
+            </div>
+            <div class="px-5 row">
+                <div class="col-lg-3 offset-lg-3">
+                    <img class="mt-5" height="120px" src={{ url_for('static', filename='assets/img/recursos/justicia.svg') }}>
+                    <h4 class="text-white mt-3 fw-bold">PIS también en la justicia</h4>
+                    <p class="text-white px-1 mt-3">Descubrí el compendio de todos los fallos judiciales sobre el tema para saber en cuáles te podés apoyar y así exigir cambios.</p>
+                </div>
+                <div class="col-lg-3">
+                    <img class="mt-5" height="120px" src={{ url_for('static', filename='assets/img/recursos/normativo.svg') }}>
+                    <h4 class="text-white mt-3 fw-bold">PIS desde arriba</h4>
+                    <p class="text-white px-1 mt-3">Desde una georreferenciación, conocé las restricciones municipales a las aplicaciones de agroquímicos para saber cuál está vigente en el lugar en que vivís.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5 class="mt-5 text-white ">Suscribite a nuestro newsletter y seguí todos los lanzamientos.</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="https://preguntarparaacordar.typeform.com/to/B8k4SNx5" target="_blank" role="button" tabindex="0" class="my-5 text-black p-3 text-uppercase  btn btn-primary">Noticias sin spamear</a>
+                </div>
+            </div>
+        </section>
+    
+        <section id="index-faqs" class="min-vh-50 p-5 bg-white">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h1 class="text-uppercase my-5 text-black space-grotesk">FAQs</h1>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h5 id="faq-1" class="text-dark pointer" onclick="toggleCollapse('faq-1-collapse')">
+                                <span class="text-primary display-6">+</span>¿Qué significa PIS?
+                            </h5>
+                            <div class="collapse" id="faq-1-collapse">
+                                <p>PIS es el acrónimo de PESTICIDAS INTRODUCIDOS SILENCIOSAMENTE</p>
+                            </div>
+                            <h5 id="faq-2" class="text-dark pointer" onclick="toggleCollapse('faq-2-collapse')">
+                                <span class="text-primary display-6">+</span>¿Qué es PIS?</h5>
+                            <div class="collapse" id="faq-2-collapse">
+                                <p>Pesticidas Introducidos Silenciosamente (PIS) es una serie de  herramientas , datos e información que  facilitan la  reducción  del impacto de los agroquímicos desde los territorios.</p>
+                            </div>
+                            <h5 id="faq-3" class="text-dark pointer" onclick="toggleCollapse('faq-3-collapse')">
+                                <span class="text-primary display-6">+</span>¿A quién está dirigido PIS?</h5>
+                            <div class="collapse" id="faq-3-collapse">
+                                <p>En términos generales a todo el mundo pero específicamente está pensado para: comunidades afectadas, escuelas rurales, gobiernos locales, legisladores, productores agropecuarios, investigadoras/es, activistas, abogados con causas ambientalistas, etc.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <h5 id="faq-4" class="text-dark pointer" onclick="toggleCollapse('faq-4-collapse')">
+                                <span class="text-primary display-6">+</span>¿Qué están haciendo?</h5>
+                            <div class="collapse" id="faq-4-collapse">
+                                <ul>
+                                    <li>Una campaña de testeos en humanos (Buenos Aires, Argentina).</li>
+                                    <li>Un estudio científico  con los resultados de la campaña.</li>
+                                    <li>Un mapa con los resultados de varias campañas de testeos en humanos y ambientales.</li>
+                                    <li>Un repositorio con toda la jurisprudencia sobre la temática (Argentina).</li>
+                                    <li>Análisis comparativo de las normas de regulación de agroquímicos de todos los municipios de PBA.</li>
+                                    <li>Sistematización  de toda la información local relevante de los últimos censos agropecuarios.</li>
+                                    <li>Una georreferenciación de la zonificación de aplicaciones de agroquímicos de algunos municipios.</li>
+                                </ul>
+                            </div>
+                            <h5 id="faq-5" class="text-dark pointer" onclick="toggleCollapse('faq-5-collapse')">
+                                <span class="text-primary display-6">+</span>¿Cómo me entero de los próximos lanzamientos?</h5>
+                            <div class="collapse" id="faq-5-collapse">
+                                <p>Nos podés seguir en redes sociales y/o nos podés dejar  tu mail para que te mantengamos al tanto.</p>
+                            </div>
+                            <h5 id="faq-6" class="text-dark pointer" onclick="toggleCollapse('faq-6-collapse')">
+                                <span class="text-primary display-6">+</span>¿Necesitan más plata? ¿Para qué?</h5>
+                            <div class="collapse" id="faq-6-collapse">
+                                <p>Si, Para terminar esta etapa y sobre todo para  que el proyecto crezca. Queremos llevar PIS ala siguiente etapa.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <h5 id="faq-7" class="text-dark pointer" onclick="toggleCollapse('faq-7-collapse')">
+                                <span class="text-primary display-6">+</span>¿Cómo puedo donar?</h5>
+                            <div class="collapse" id="faq-7-collapse">
+                                <a href="https://donaronline.org/democracia-en-red/campana-recaudacion-proyecto-pis" target="_blank">Te dejamos acá un link para donaciones</a>
+                            </div>
+                            <h5 id="faq-8" class="text-dark pointer" onclick="toggleCollapse('faq-8-collapse')">
+                                <span class="text-primary display-6">+</span>¿Los alimentos que comemos contienen agroquímicos?</h5>
+                            <div class="collapse" id="faq-8-collapse">
+                                <p>Si, lamentablemente mucho más de lo que creemos. Y en muchos casos incluso con agroquímicos prohibidos. Ver casos <a href="https://naturaleza.ar/categoria/19/listado-de-alimentos-fumigados">https://naturaleza.ar/categoria/19/listado-de-alimentos-fumigados</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="index-donar" class="min-vh-50 p-5 text-center">
+            <h1 class="text-black display-4 strong my-5 space-grotesk text-uppercase">Donaciones</h1>
+            <div class="row">
+                <div class="col-lg-4 offset-lg-4">
+                    <h4 class="text-black">Con tu donación nos ayudás a llevar esta información a más territorios y provincias.</h4>
+                </div>
+            </div>
+            <a href="https://donaronline.org/democracia-en-red/campana-recaudacion-proyecto-pis" target="_blank" role="button" tabindex="0" class="my-5 text-black fw-bold py-3 px-5 text-uppercase  btn btn-light">Doná</a>
+        </section>
+    
+        <section id="index-orgas" class="min-vh-50 p-5 bg-white">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h4 class="text-uppercase mt-5 mb-4 text-black ">Un proyecto de</h4>
+                    <a href="https://democraciaenred.org/" target="_blank">
+                        <img class="mb-5" height="80px" src={{ url_for('static', filename='assets/img/orgas/der.png') }}>
+                    </a>
+                    <br>
+                    <h4 class="text-uppercase mt-5 text-black ">En alizanza con</h4>
+                    <div class="row">
+                        <div class="text-center col">
+                            <a href="https://www.amartya.org/ar/" target="_blank">
+                                <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/amartya.png') }}>
+                            </a>
+                        </div>
+                        <div class="text-center col">
+                            <a href="https://articulo41.org/" target="_blank">
+                                <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/art41.png') }}>
+                            </a>
+                        </div>
+                        <div class="text-center col">
+                            <a href="" target="_blank">
+                                <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/casaLobos.png') }}>
+                            </a>
+                        </div>
+                        <div class="text-center col">
+                            <a href="https://naturaleza.ar/" target="_blank">
+                                <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/naturaleza.png') }}>
+                            </a>
+                        </div>
+                        <div class="text-center col">
+                            <a href="https://reflej.ar/" target="_blank">
+                                <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/reflejar.png') }}>
+                            </a>
+                        </div>
+                        <div class="text-center col">
+                            <a href="https://simbiosis.cc/" target="_blank">
+                                <img class="px-2" height="110px" src={{ url_for('static', filename='assets/img/orgas/simbiosis.png') }}>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

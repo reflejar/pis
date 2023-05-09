@@ -10,3 +10,7 @@ services:
       - .:/app
     ports:
       - "5000:5000"
+    environment:
+      - GOOGLE_ANALYTICS_TRACKING_ID=#######
+      - URI_MAPA_NORMATIVO=http://localhost:8050/mapa-normativo
+    # command: python main.py

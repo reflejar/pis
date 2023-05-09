@@ -22,4 +22,4 @@ LABEL title "Pesticidas introducidos silenciosamente"
 
 EXPOSE 5000
 
-CMD [ "gunicorn", "main:server", "--bind", "0.0.0.0:5000", "--chdir=/app", "--timeout", "1800" ]
+CMD [ "gunicorn", "main:web", "--bind", "0.0.0.0:5000", "--chdir=/app", "--timeout", "1800" ]

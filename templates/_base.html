@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <link rel="shortcut icon" type="image/x-icon" href={{ url_for('static', filename='assets/favicon.ico') }}/>
+    <title>PIS | Pesticidas Introducidos Silenciosamente</title>
+
+
+
+    {% if GOOGLE_ANALYTICS_TRACKING_ID %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{GOOGLE_ANALYTICS_TRACKING_ID}}"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{GOOGLE_ANALYTICS_TRACKING_ID}}');
+        </script>
+    
+    {% endif %}
+
+    <link rel="stylesheet" href={{ url_for('static', filename='assets/bootstrap.min.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='assets/layout.css') }} />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav id="navbar" class="text-white navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <div class="container">
+            <a href="/">
+                <img height="80px" src={{ url_for('static', filename='assets/img/PIS_isologo_negro.png') }} alt="Isologotipo de PIS">
+            </a>
+            <button id="navbar-toggler" type="button" aria-label="Toggle navigation" class="navbar-toggler" onclick="toggleCollapse('navbar-toggler-collapse')">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar-toggler-collapse">
+                <div class="ms-auto navbar-nav nav-pills">
+                    <div class="text-end nav-item">
+                        <a class="text-white text-uppercase navitem-decoration mx-3" href="/#index-proyecto">Proyecto</a>
+                    </div>
+                    <div class="text-end nav-item">
+                        <a class="text-white text-uppercase navitem-decoration mx-3" href="/#index-testeando">Testeos</a>
+                    </div>
+                    <div class="text-end nav-item">
+                        <a class="text-white text-uppercase navitem-decoration mx-3" href="/#index-herramientas">Herramientas</a>
+                    </div>
+                    <div class="text-end nav-item">
+                        <a class="text-white text-uppercase navitem-decoration mx-3" href="/#index-faqs">FAQS</a>
+                    </div>
+                    <div class="text-end nav-item">
+                        <a class="text-white text-uppercase navitem-decoration mx-3" href="/#index-donar">Donar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer id="footer" class="text-white position-relative pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <a class="btn mx-3 btn-lg btn-floating" href="https://twitter.com/fundacionDER" target="_blank">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a class="btn mx-3 btn-lg btn-floating" href="https://www.instagram.com/democraciaenred/" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a class="btn mx-3 btn-lg btn-floating" href="https://www.facebook.com/democraciaenred" target="_blank">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a class="btn mx-3 btn-lg btn-floating" href="https://www.linkedin.com/company/democracia-en-red/" target="_blank">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleCollapse(idToShow) {
+            const el = document.getElementById(idToShow)
+            if (el.classList.contains("show")) {
+                el.classList.remove("show")
+            } else {
+                el.classList.add("show")
+            }
+        }
+    </script>
+</body>
+</html>
