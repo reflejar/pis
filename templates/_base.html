@@ -36,7 +36,7 @@
             <button id="navbar-toggler" type="button" aria-label="Toggle navigation" class="navbar-toggler" onclick="toggleCollapse('navbar-toggler-collapse')">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse show" id="navbar-toggler-collapse">
+            <div class="navbar-collapse collapse" id="navbar-toggler-collapse">
                 <div class="ms-auto navbar-nav nav-pills">
                     <div class="text-end nav-item">
                         <a class="text-white text-uppercase navitem-decoration mx-3" href="/#index-proyecto">Proyecto</a>
@@ -85,7 +85,6 @@
 
     <script>
         function toggleCollapse(idToShow) {
-            console.log(idToShow)
             const el = document.getElementById(idToShow)
             if (el.classList.contains("show")) {
                 el.classList.remove("show")
