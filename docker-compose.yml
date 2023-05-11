@@ -13,4 +13,5 @@ services:
     environment:
       - GOOGLE_ANALYTICS_TRACKING_ID=#######
       - URI_MAPA_NORMATIVO=http://localhost:8050/mapa-normativo
-    # command: python main.py
+      - URI_RANKING_AMBIENTAL=http://localhost:8050/ranking-ambiental
+    command: python main.py
