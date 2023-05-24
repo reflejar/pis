@@ -23,6 +23,12 @@ def index(): return render_template("index.html")
 @web.route("/mapa-normativo")
 def normativo(): return render_template("app.html", source=os.getenv('URI_MAPA_NORMATIVO'))
 
+@web.route("/indicadores-censo")
+def indicadores(): return render_template("app.html", source=os.getenv('URI_INDICADORES_CENSO'))
+
+@web.route("/ranking-ambiental")
+def ranking(): return render_template("app.html", source=os.getenv('URI_RANKING_AMBIENTAL'))
+
 
 # Se corre la aplicación
 if __name__ == "__main__":
