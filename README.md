@@ -1,75 +1,72 @@
-![Header](static/assets/img/ryder_isologotipos.png)
+<p align="center">
+  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
+    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  </a>
+</p>
 
-# Pesticidas introducidos silenciosamente (PIS)
+# Landing Page de DemocraciaOS
 
-Web y switch apps para proyecto "Pesticidas introducidos silenciosamente" (PIS) de Democracia en Red
+> DemocraciaOS, la web especificamente para presentar las plataformas de participación ciudadana de Democracia en Red
+> Desarrollada utilizando [Gatsby](https://www.gatsbyjs.org/) v3, framework basado en React, y [Bulma](https://bulma.io/), framework de CSS basado en Flexbox.
 
-## Contenido y Fundamentación técnica
+## 🚀 Quick start
 
-Esta web contiene la presentación y explicación del proyecto, como así tambien un mapeo y rutas de las diferentes aplicaciones desarrolladas en otras tecnologías especialmente diseñadas para el procesamiento de datos.
 
-Respecto a la disyuntiva de la elección de la tecnología de front-end ideal para este caso se decidió ir por una tecnología hibrida que pueda hacer de nexo entre los oficios de desarrollo frontend y desarrollo de ciencia de datos.
+### Para correr la aplicación:
 
-- [Flask](https://flask.palletsprojects.com/en/2.3.x/), al ser un pequeño framework desarrollado en python, es ideal para acercar los conceptos de html, css y js a cientistas de datos y para acercar terminología y sintaxis de python a desarrolladores front-end.
-
-## Setup
-
-Hay 2 maneras de preparar el entorno para desarrollo. A través de un entorno virtual de python, o a través de Docker
-
-### 1 - Entorno virtual de python (virtualenv)
-
-> #### ⚠️ Prerequisitos
-> 
-> Este entorno virtual requiere de:
-> - [Python 3](https://www.python.org/)
-> - [pip](https://www.pypi.org/)
-> - [virtualenv](https://pypi.org/project/virtualenv/)
-
-#### Instalación
-
-Abrí una terminal del sistema en el directorio raiz del proyecto, creá el entorno virtual, activalo, instalá las dependencias del proyecto y ejecutá la plataforma
-
+1. Asegurarnos de tener utilizar la versión correcta de Node. Requiere, como minimo, NodeJS 14.x 
 ```bash
-$ virtualenv env
-$ source env/bin/activate
-$ pip install -r requirements.txt
-$ python main.py
+nvm use v14.21.3
 ```
 
-#### Ejecución
-
-Abrí una terminal del sistema en el directorio raiz del proyecto, activá el entorno virtual y ejecutá la plataforma
-
-
+2. Instalar dependencias del proyecto
 ```bash
-$ source env/bin/activate
-$ python main.py
+npm install
 ```
 
-### 2 - Docker
-
-> #### ⚠️ Prerequisitos
-> 
-> Este entorno virtual requiere de:
-> - [Docker](https://docs.docker.com/engine/install/_) y (docker) compose (que en las nuevas versiones ya viene en la instalación de docker)
-
-#### Instalación
-
-Abrí una terminal del sistema en el directorio raiz del proyecto y construí la imagen de docker
-
+4. Levantar en modo desarrollo (actualiza los cambios automáticamente)
 ```bash
-$ docker compose build
+npm run develop
+```
+Se disponibiliza el sitio en [http://localhost:8000/](http://localhost:8000/)
+
+5. Generar build productivo*
+```bash
+npm run  build
+```
+Genera archivos estáticos dentro de la carpeta `build`
+
+> Se aconseja ejecutar `gatsby clean` previo a generar build productivo que limpia cache de gatsby
+
+6. Para probar el build productivo:
+```bash
+npm run  serve
+```
+Se disponibiliza el sitio en [http://localhost:9000/](http://localhost:9000/)
+
+**Nota:** Aun asi esto no es un build fiel al productivo, ya que se utiliza un plugin de Gatsby. Para ver como seria en produccion (en el caso de hacer debugs) hay que hacerlo por docker.
+
+```
+/dev/democraciaos-web$ docker build . -t der/dos:latest
+/dev/democraciaos-web$ docker run -p 9000:80 der/dos:latest
 ```
 
-#### Ejecución
 
-Abrí una terminal del sistema en el directorio raiz del proyecto y ejecutá la imagen en un contenedor
+En la carpeta `content` se encuentran los textos en formato .json de la landing para facilitar su edición.
 
-```bash
-$ docker compose up
-```
 
-## Licencia
+---
 
-El siguiente repositorio es un desarrollo de codigo abierto bajo la licencia GNU General Public License v3.0. Pueden acceder a la haciendo [click aqui](./LICENSE).
+####  Gatsby v3
 
+- [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+
+- [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+
+- [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+
+- [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+
+- [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+
+- [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)

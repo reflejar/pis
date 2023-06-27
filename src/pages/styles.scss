@@ -1,0 +1,51 @@
+// Import Font Space Grotesk
+@import url('https://fonts.googleapis.com/css?family=Space+Grotesk');
+// Import Font Poppins
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+// FontAwesome
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+@import "../vars.scss";
+
+
+
+// Import only what you need from Bulma
+@import "~bulma/bulma.sass";
+
+.list-title {
+    text-transform: uppercase;
+    letter-spacing: 3.2px;
+}
+.list {
+    list-style-type: disc;
+    color: black;
+    li {
+        margin-left: 1rem;
+    }
+}
+
+.button {
+    box-shadow: 3px 3px 5.4px 0 rgba(0, 0, 0, 0.21);
+    margin: 2rem auto;
+    display: block;
+}
+
+.has-text-underline {
+    text-decoration: underline;
+}
+
+.image.is-centered{
+    margin: 0 auto;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+hr{
+    background-color: $grey-dark;
+}
