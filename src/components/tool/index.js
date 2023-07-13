@@ -1,20 +1,23 @@
 import React from "react"
 import "./styles.scss"
 import { PopupButton } from '@typeform/embed-react'
-import presupuesto_participativo from "./assets/presupuesto_participativo.png"
-import co_construccion from "./assets/co_construccion.png"
-import consulta_publica from "./assets/consulta_publica.png"
-import seguimiento_metas from "./assets/seguimiento_metas.png";
-import votacion_autoridades from "./assets/votacion_autoridades.png";
 
+import pis_en_humanxs from "./assets/pis_en_humanxs.png"
+import zonificacion_normativa from "./assets/zonificacion_normativa.png"
+import agroquimicos_pba from "./assets/agroquimicos_pba.png"
+import censo_agropecuario from "./assets/censo_agropecuario.png"
+import jurisprudencia from "./assets/jurisprudencia.png"
+import normativa_comparada from "./assets/normativa_comparada.png"
 
 
 const images = {
-    'presupuesto_participativo': presupuesto_participativo,
-    'consulta_publica': consulta_publica,
-    'co_construccion': co_construccion,
-    'seguimiento_metas': seguimiento_metas,
-    'votacion_autoridades': votacion_autoridades,
+    pis_en_humanxs,
+    zonificacion_normativa,
+    agroquimicos_pba,
+    censo_agropecuario,
+    jurisprudencia,
+    normativa_comparada,
+
 };
 
 export default ({ data }) => {
@@ -30,11 +33,11 @@ export default ({ data }) => {
                                 <figure className="image is-hidden-desktop is-hidden-tablet">
                                     <img src={`${images[data.image]}`} alt="" />
                                 </figure>
-                                <p className="subtitle is-6 is-spaced">{data.description}</p>
+                                <p className="subtitle is-6 is-spaced">{data.description_section}</p>
                                 <div className="list-wrapper">
                                     <ul className="list">
                                         {data.features.map((feature, index) =>
-                                            <li key={index}>{feature}</li>
+                                            <li key={index} className="has-text-white">{feature}</li>
                                         )}
                                     </ul>
                                 </div>

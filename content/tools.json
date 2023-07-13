@@ -2,8 +2,9 @@
     {
         "title":"PIS en humanos",
         "explanation":"Investigación de 200 casos realizados en las localidades de Lobos, Mar Chiquita , Saladillo, Barrio Nicole (La matanza) y CABA para la detección de plaguicidas en humanos.",
-        "description": "Sistema de información geográfica (GIS) para mapear colaborativamente detección de agroquímicos en humanos, animales y ambiente.",
         "link": "https://pis.shiny.reflej.ar/",
+        "icon": "pis_en_humanxs",
+        "description_section": "Sistema de información geográfica (GIS) para mapear colaborativamente detección de agroquímicos en humanos, animales y ambiente.",
         "features": [
             "Georeferenciación anonimizada para humanos",
             "Testeos de agua de lluvia , napas , ríos.",
@@ -11,15 +12,15 @@
             "Testeos en animales.",
             "Dataset descargable"
         ],
-        "icon": "presupuesto_participativo",
-        "image": "presupuesto_participativo",
-        "id": "presupuesto_participativo"
+        "image": "pis_en_humanxs",
+        "id": "pis_en_humanxs"
     },
     {
         "title":"Mapa de zonificación normativa",
         "explanation":"Un mapa para que conozcas las restricciones de aplicación de agroquímicos en cada municipio.",
-        "description": "Sistema de información geográfica (GIS) para visualizar las restricciones de aplicación de agroquímicos de cada municipio.",
         "link": "https://pis.dash.reflej.ar/mapa-normativo",
+        "icon": "zonificacion_normativa",
+        "description_section": "Sistema de información geográfica (GIS) para visualizar las restricciones de aplicación de agroquímicos de cada municipio.",
         "features": [
             "Cursos y cuerpos de agua",
             "Localidades y parajes",
@@ -28,15 +29,15 @@
             "Zonas de exclusión y amortiguamiento",
             "Restricciones de aplicación aérea (próximamente)."
         ],
-        "icon": "consulta_publica",
-        "image": "consulta_publica",
-        "id": "consulta_publica"
+        "image": "zonificacion_normativa",
+        "id": "zonificacion_normativa"
     },
     {
         "title":"Mapa de agroquímicos en PBA",
         "explanation":"Dónde se encontró PIS - Todos los estudios de trazas de agroquímicos en un mismo mapa.",
-        "description": "Sistema de información geográfica (GIS) para mapear colaborativamente detección de agroquímicos en humanos, animales y ambiente.",
         "link": "https://pis.shiny.reflej.ar/",
+        "icon": "agroquimicos_pba",
+        "description_section": "Sistema de información geográfica (GIS) para mapear colaborativamente detección de agroquímicos en humanos, animales y ambiente.",
         "features": [
             "Georeferenciación anonimizada para humanos",
             "Testeos de agua de lluvia , napas , ríos.",
@@ -44,30 +45,30 @@
             "Testeos en animales.",
             "Dataset descargable"
         ],
-        "icon": "co_construccion",
-        "image": "co_construccion",
-        "id": "co-construccion_leyes"
+        "image": "agroquimicos_pba",
+        "id": "co-agroquimicos_pba"
     },
     {
         "title":"Censos agropecuarios",
         "explanation":"Qué está pasando en cada municipio - Datos de los censos agropecuarios para conocer qué pasa en cada territorio.",
-        "description": "Información histórica con perspectiva local sobre las características básicas de las actividades agrícolas, ganaderas.",
         "link": "https://pis.dash.reflej.ar/indicadores-censo",
+        "icon": "censo_agropecuario",
+        "description_section": "Información histórica con perspectiva local sobre las características básicas de las actividades agrícolas, ganaderas.",
         "features": [
             "Concentración de tierras",
             "Empleo y residencia rural",
             "Cultivos",
             "Prácticas orgánicas/biodinámicas/agroecológicas"
         ],
-        "icon": "seguimiento_metas",
-        "image": "seguimiento_metas",
-        "id": "seguimiento_metas"
+        "image": "censo_agropecuario",
+        "id": "censo_agropecuario"
     },
     {
         "title":"Jurisprudencia",
         "explanation":"Qué dice la justicia - Recopilación de los casos que trataron el uso de agroquímicos.",
-        "description": "Compendio jurídico sobre el uso de agroquímicos en Argentina",
         "link": "/votacionautoridades",
+        "icon": "jurisprudencia",
+        "description_section": "Compendio jurídico sobre el uso de agroquímicos en Argentina",
         "features": [
             "tools.features_5_1",
             "tools.features_5_2",
@@ -76,8 +77,34 @@
             "tools.features_5_5",
             "tools.features_5_6"
         ],
-        "icon": "votacion_autoridades",
-        "image": "votacion_autoridades",
-        "id": "votacion_autoridades"
+        "image": "jurisprudencia",
+        "id": "jurisprudencia"
+    },
+    {
+        "title":"Normativa comparada",
+        "explanation":"Cuáles son las mejores normativas y por qué - Clasificación interactiva de las ordenanzas vigentes.",
+        "link": "",
+        "icon": "normativa_comparada",
+        "description_section": "Sistematización de las normativas de regulación de agroquímicos y zonificación vigentes en PBA.",
+        "features": [
+            "Ordenanzas municipales",
+            "Registros de aplicadores , de aplicación.",
+            "Obligatoriedad e notificación de aplicaciones",
+            "Exclusión y amortiguamiento de poblados y parajes",
+            "Exclusión y amortiguamiento de escuelas rurales",
+            "Exclusión y amortiguamiento de cursos, superficies y bombas de agua."
+        ],
+        "image": "normativa_comparada",
+        "id": "normativa_comparada"
+    },
+    {
+        "title":"Caja de Herramientas",
+        "explanation":"Qué puedo hacer yo?- Preguntas y respuestas orientadas a la acción.",
+        "icon": "caja_herramientas",
+        "link": "",
+        "description_section": "",
+        "features": [],
+        "image": "",
+        "id": "caja_herramientas"
     }
 ]

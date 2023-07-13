@@ -31,7 +31,7 @@ const Home = () => {
         <Navbar/>
         <HeroSlider slides={heroSliderData}/>
         <ToolsSection tools={toolsData}/>
-        {toolsData.map((tool) => 
+        {toolsData.filter((tool) => tool.description_section !== "").map((tool) => 
             <Tool data={tool} key={'prod-d'+tool.id}/>
         )}
         <FAQsSection data={faqsData}/>    
