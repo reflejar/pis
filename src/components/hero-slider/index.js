@@ -1,6 +1,5 @@
 import React from "react"
 import Slider from "react-slick";
-import { useIntl } from "gatsby-plugin-intl"
 
 import slider1 from "./assets/slider1.jpg"
 import slider2 from "./assets/slider2.jpg"
@@ -42,7 +41,6 @@ const NextArrow = ({ className, onClick }) => {
 }
 
 export default ({ slides }) =>  {
-    const intl = useIntl()
 
     const images = {
         'customizable': customizable,
@@ -72,35 +70,15 @@ export default ({ slides }) =>  {
                     <div className={`hero-slider-item item-${index}`} style={{backgroundImage: `url(${images[slider.data.bg_image]})`}}>
                         <div className="hero-body">
                             <div className="container">
-                                {slider.type === "text" ?
-                                    <React.Fragment>
-                                        <h1 className="title-slider is-spaced ">
-                                            {intl.formatMessage({ id: slider.data.title })}
-                                        </h1>
-                                        <h2 className="subtitle is-3 is-size-3-desktop">
-                                            {intl.formatMessage({id: slider.data.subtitle})}
-                                        </h2>
-                                    </React.Fragment>
-                                :
-                                    <React.Fragment>
-                                        <h1 className="title-slider is-spaced is-hidden-touch">
-                                            {intl.formatMessage({ id: slider.data.title })}
-                                        </h1>                                        
-                                        <div className="columns">
-                                        {slider.data.assets.map((asset, index) =>
-                                            <div className="column" key={index}>
-                                                <img src={`${images[asset.icon]}`} className="slider-icon" alt=""/>
-                                                <h4 className="is-5 is-size-2-desktop">
-                                                    {intl.formatMessage({ id: asset.title})}
-                                                </h4>
-                                            </div>
-                                        )}
-                                        </div>
-                                    </React.Fragment>               
-                                }
+                                <h1 className="title-slider is-spaced ">
+                                    { slider.data.title }
+                                </h1>
+                                <h2 className="subtitle is-3 is-size-3-desktop">
+                                    {slider.data.subtitle}
+                                </h2>
                             </div>
                         </div>
-                        <span className="slider-image-description">Foto: {intl.formatMessage({ id: slider.data.image_description })}</span>
+                        <span className="slider-image-description">Foto: {slider.data.image_description }</span>
                     </div>
                 </div>             
                 )}

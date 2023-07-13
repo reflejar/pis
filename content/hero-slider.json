@@ -2,41 +2,28 @@
   {
     "type": "text",
     "data": {
-      "title": "hero_slider.title_1",
-      "subtitle": "hero_slider.subtitle_1",
+      "title": "Pesticidas Introducidos Silenciosamente",
+      "subtitle": "Información y herramientas para comprender y contrarrestar el impacto de los agroquímicos en nuestros cuerpos y comunidades.",
       "bg_image": "slider1",
-      "image_description": "hero_slider.image_description_1"
-    }
-  },
-  {
-    "type": "icons",
-    "data": {
-      "title": "hero_slider.title_2",
-      "bg_image": "slider2",
-      "image_description": "hero_slider.image_description_2",
-      "assets": [
-        {
-          "title": "hero_slider.asset_1_title",
-          "icon": "customizable"
-        },
-        {
-          "title": "hero_slider.asset_2_title",
-          "icon": "open_code"
-        },
-        {
-          "title": "hero_slider.asset_3_title",
-          "icon": "folder"
-        }
-      ]
+      "image_description": "Mar Chiquita, Buenos Aires."
     }
   },
   {
     "type": "text",
     "data": {
+      "title": "Pesticidas Introducidos Silenciosamente 2",
+      "subtitle": "Información y herramientas bla bla",
+      "bg_image": "slider2",
+      "image_description": "Mar Chiquita, Buenos Aires"
+    }
+  },
+  {
+    "type": "text",
+    "data": {
+      "title": "Pesticidas Introducidos Silenciosamente 3",
+      "subtitle": "Información y herramientas bla bla",
       "bg_image": "slider3",
-      "image_description": "hero_slider.image_description_3",
-      "title": "hero_slider.title_3",
-      "subtitle": "hero_slider.subtitle_3"
+      "image_description": "Mar Chiquita, Buenos Aires"
     }
   }
 ]

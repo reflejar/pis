@@ -1,6 +1,6 @@
 import React from "react"
 import "./styles.scss"
-import { useIntl } from "gatsby-plugin-intl"
+
 import legislatura_caba from "./assets/legislatura_caba.jpg"
 import sanmartin from "./assets/sanmartin.jpg"
 import xr from "./assets/xr.jpg"
@@ -18,13 +18,12 @@ import rosario from "./assets/rosario.jpg"
 
 
 export default () =>  {
-    const intl = useIntl()
 
     return (
         <section id="work-with" className="section work-with">
             <div className="container has-text-centered">
                 <h3 className="main-title title is-4 is-size-1-desktop">
-                    {intl.formatMessage({ id: 'work_with'})}
+                    work_with
                 </h3>
                 <div className="columns is-multiline">
                     <div className="column is-one-quarter-tablet is-one-quarter-desktop is-half-mobile">

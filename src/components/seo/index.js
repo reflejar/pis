@@ -3,8 +3,6 @@ import { string, object, arrayOf } from "prop-types";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import favicon from './assets/favicon.png'
-// import { useLocation } from '@reach/router';
-// import { useIntl } from "gatsby-plugin-intl"
 
 const SEO = ({ description, lang, meta, title, robot }) => {
     const { site } = useStaticQuery(
@@ -24,18 +22,12 @@ const SEO = ({ description, lang, meta, title, robot }) => {
       `
     )
 
-    // const location = useLocation()
-    // const intl = useIntl()
     const metaDescription = description || site.siteMetadata.description;
     const webTitle = site.siteMetadata.title;
     const metaTitle = title || 'Democracia en Red';
     const authorName = site.siteMetadata.author;
     const publisherName = site.siteMetadata.publisher;
     const googleRobot = site.siteMetadata.robot;
-
-    // const metaLang = intl.formatMessage({id: 'metaLang'})
-    // const altLang = intl.formatMessage({id: 'altLang'})
-    // lang =  intl.formatMessage({id: 'lang'})
     return (
         <Helmet
             htmlAttributes={{

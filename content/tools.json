@@ -1,0 +1,83 @@
+[
+    {
+        "title":"PIS en humanos",
+        "explanation":"Investigación de 200 casos realizados en las localidades de Lobos, Mar Chiquita , Saladillo, Barrio Nicole (La matanza) y CABA para la detección de plaguicidas en humanos.",
+        "description": "Sistema de información geográfica (GIS) para mapear colaborativamente detección de agroquímicos en humanos, animales y ambiente.",
+        "link": "https://pis.shiny.reflej.ar/",
+        "features": [
+            "Georeferenciación anonimizada para humanos",
+            "Testeos de agua de lluvia , napas , ríos.",
+            "Testeos materia orgánica y suelo.",
+            "Testeos en animales.",
+            "Dataset descargable"
+        ],
+        "icon": "presupuesto_participativo",
+        "image": "presupuesto_participativo",
+        "id": "presupuesto_participativo"
+    },
+    {
+        "title":"Mapa de zonificación normativa",
+        "explanation":"Un mapa para que conozcas las restricciones de aplicación de agroquímicos en cada municipio.",
+        "description": "Sistema de información geográfica (GIS) para visualizar las restricciones de aplicación de agroquímicos de cada municipio.",
+        "link": "https://pis.dash.reflej.ar/mapa-normativo",
+        "features": [
+            "Cursos y cuerpos de agua",
+            "Localidades y parajes",
+            "Reservas",
+            "Escuelas rurales y contactos para notificar",
+            "Zonas de exclusión y amortiguamiento",
+            "Restricciones de aplicación aérea (próximamente)."
+        ],
+        "icon": "consulta_publica",
+        "image": "consulta_publica",
+        "id": "consulta_publica"
+    },
+    {
+        "title":"Mapa de agroquímicos en PBA",
+        "explanation":"Dónde se encontró PIS - Todos los estudios de trazas de agroquímicos en un mismo mapa.",
+        "description": "Sistema de información geográfica (GIS) para mapear colaborativamente detección de agroquímicos en humanos, animales y ambiente.",
+        "link": "https://pis.shiny.reflej.ar/",
+        "features": [
+            "Georeferenciación anonimizada para humanos",
+            "Testeos de agua de lluvia , napas , ríos.",
+            "Testeos materia orgánica y suelo.",
+            "Testeos en animales.",
+            "Dataset descargable"
+        ],
+        "icon": "co_construccion",
+        "image": "co_construccion",
+        "id": "co-construccion_leyes"
+    },
+    {
+        "title":"Censos agropecuarios",
+        "explanation":"Qué está pasando en cada municipio - Datos de los censos agropecuarios para conocer qué pasa en cada territorio.",
+        "description": "Información histórica con perspectiva local sobre las características básicas de las actividades agrícolas, ganaderas.",
+        "link": "https://pis.dash.reflej.ar/indicadores-censo",
+        "features": [
+            "Concentración de tierras",
+            "Empleo y residencia rural",
+            "Cultivos",
+            "Prácticas orgánicas/biodinámicas/agroecológicas"
+        ],
+        "icon": "seguimiento_metas",
+        "image": "seguimiento_metas",
+        "id": "seguimiento_metas"
+    },
+    {
+        "title":"Jurisprudencia",
+        "explanation":"Qué dice la justicia - Recopilación de los casos que trataron el uso de agroquímicos.",
+        "description": "Compendio jurídico sobre el uso de agroquímicos en Argentina",
+        "link": "/votacionautoridades",
+        "features": [
+            "tools.features_5_1",
+            "tools.features_5_2",
+            "tools.features_5_3",
+            "tools.features_5_4",
+            "tools.features_5_5",
+            "tools.features_5_6"
+        ],
+        "icon": "votacion_autoridades",
+        "image": "votacion_autoridades",
+        "id": "votacion_autoridades"
+    }
+]

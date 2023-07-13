@@ -1,20 +1,22 @@
 import React from "react"
 import "./styles.scss"
+
 import SEO from "../components/seo"
 import Navbar from "../components/navbar"
 import HeroSlider from "../components/hero-slider"
-import heroSliderData from "../../content/hero-slider.json"
-import ProductsSection from "../components/products-section"
-import Product from "../components/product"
-import productsData from "../../content/products.json"
-import InstalationsSection from "../components/instalations-section"
-import instalationsData from "../../content/instalations.json"
+import ToolsSection from "../components/tools-section"
+import Tool from "../components/tool"
+import FAQsSection from "../components/faqs-section"
 import UsSection from "../components/us-section"
-import usData from "../../content/nosotros.json"
-import CasesSection from "../components/cases-section"
-import casesData from "../../content/cases.json"
+import DonateSection from "../components/donate-section"
 import Footer from "../components/footer"
 import WorkWithSection from "../components/work-with-section"
+
+import heroSliderData from "../../content/hero-slider.json"
+import toolsData from "../../content/tools.json"
+import faqsData from "../../content/faqs.json"
+import usData from "../../content/nosotros.json"
+import donateData from "../../content/donar.json"
 
 //Sets smooth scroll animation for anchor links
 if (typeof window !== "undefined") {
@@ -28,14 +30,14 @@ const Home = () => {
         <SEO />
         <Navbar/>
         <HeroSlider slides={heroSliderData}/>
-        <ProductsSection products={productsData}/>
-        {productsData.map((product) => 
-            <Product data={product} key={'prod-d'+product.id}/>
+        <ToolsSection tools={toolsData}/>
+        {toolsData.map((tool) => 
+            <Tool data={tool} key={'prod-d'+tool.id}/>
         )}
-        <InstalationsSection data={instalationsData}/>        
+        <FAQsSection data={faqsData}/>    
+        <DonateSection data={donateData}/>
         <UsSection data={usData}/>
         <WorkWithSection />
-        <CasesSection data={casesData}/>
         <Footer />
     </React.Fragment>
     )
