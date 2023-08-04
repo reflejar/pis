@@ -1,25 +1,17 @@
-# Stage 1
-FROM python:3.11-alpine as base
+FROM node:14-alpine AS build
 
-RUN apk update
+RUN apk add --no-cache --virtual .gyp python3 make g++
 
-ADD requirements.txt /app/requirements.txt
-RUN pip install -r /app/requirements.txt
-
-ADD . /app
 WORKDIR /app
+ENV NODE_ENV=production
 
-ARG BUILD_DATE
-ARG REVISION
-ARG VERSION
+# COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
+RUN yarn --frozen-lockfile --non-interactive
 
-LABEL created $BUILD_DATE
-LABEL version $VERSION
-LABEL revision $REVISION
+COPY . .
+RUN yarn build
 
-LABEL vendor "Democracia en Red & Reflejar"
-LABEL title "Pesticidas introducidos silenciosamente"
+FROM nginx:alpine
 
-EXPOSE 5000
-
-CMD [ "gunicorn", "main:web", "--bind", "0.0.0.0:5000", "--chdir=/app", "--timeout", "1800" ]
+COPY --from=build --chown=nginx:nginx /app/public /usr/share/nginx/html

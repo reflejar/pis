@@ -1,9 +1,4 @@
-.*
-!env
-!.pylintrc
-
-build
-npm-debug.log
-.dockerignore
-**/.git
-**/.DS_Store
+.cache/
+.github/
+node_modules/
+public/
