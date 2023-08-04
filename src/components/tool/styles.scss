@@ -5,12 +5,6 @@
 .tool {
     color: white;
     overflow: hidden;
-    .title {
-        color: white;
-    }
-    .subtitle {
-        color: white;
-    }
     .button-container {
         display: flex;
         flex-direction: row;
@@ -25,25 +19,29 @@
             color: #ccc;
         }
     }
-    &.tool-pink {
-        background-color: $pink;
+    &.tool-zonificacion_normativa {
+        background: $grey-gradient;
     }
-    &.tool-green {
-        background-color: $green;
+    &.tool-agroquimicos_pba {
+        background: linear-gradient(to right, transparent, #383838),url('./assets/coronelVidal.png'), no-repeat;
+        background-size: cover;
+      }
+
+    &.tool-censo_agropecuario {
+        background: $grey-gradient;
     }
-    &.tool-blue {
-        background-color: $blue;
+    &.tool-pis_en_humanxs {
+        background: linear-gradient(to right, transparent, #383838),url('./assets/mapaUrbano.png'), no-repeat;
+        background-size: cover;
     }
-    &.tool-purple {
-        background-color: $purple;
-    }
-    &.tool-coral {
-        background-color: $coral;
-    }
-    .is-black{
-        border: 0;
-        color: white;
-    }
+    &.tool-normativa_comparada {
+        background: linear-gradient(to left, transparent, #383838);
+    }    
+    
+    
+    &.tool-jurisprudencia {
+        background: $grey-gradient;
+    }    
     .list-wrapper{
         margin-bottom: 2rem;
     }
@@ -60,15 +58,6 @@
                 flex-basis: 0;
             }
         }
-        .image {
-            text-align: center;
-            margin-top: 1rem;
-            max-height: 500px;
-            img {
-                max-width: 100%;
-                display: inline-block;
-            }
-        }
         .button {
             margin-top: 3.5rem;
         }
@@ -81,25 +70,6 @@
                 background-color: black;
                 width: 35px;
             }
-        }
-    }
-}
-
-@include fullhd {
-    .tool {
-        .image {
-            max-height: 600px;
-            img {
-                max-width: 85%;
-            }
-        }
-    }
-}
-
-@include mobile {
-    .button-container{
-        .button{
-            margin-bottom: 0.5em;
         }
     }
 }

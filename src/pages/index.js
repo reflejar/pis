@@ -12,11 +12,9 @@ import DonateSection from "../components/donate-section"
 import Footer from "../components/footer"
 import WorkWithSection from "../components/work-with-section"
 
-import heroSliderData from "../../content/hero-slider.json"
-import toolsData from "../../content/tools.json"
-import faqsData from "../../content/faqs.json"
-import usData from "../../content/nosotros.json"
-import donateData from "../../content/donar.json"
+import toolsData from "./tools.json"
+// import faqsData from "../../content/faqs.json"
+// import donateData from "../../content/donar.json"
 
 //Sets smooth scroll animation for anchor links
 if (typeof window !== "undefined") {
@@ -29,14 +27,14 @@ const Home = () => {
     <React.Fragment>
         <SEO />
         <Navbar/>
-        <HeroSlider slides={heroSliderData}/>
+        <HeroSlider/>
         <ToolsSection tools={toolsData}/>
-        {toolsData.filter((tool) => tool.description_section !== "").map((tool) => 
+        {toolsData.filter((tool) => tool.description_section !== "").sort((a, b) => a.order - b.order).map((tool) => 
             <Tool data={tool} key={'prod-d'+tool.id}/>
         )}
-        <FAQsSection data={faqsData}/>    
-        <DonateSection data={donateData}/>
-        <UsSection data={usData}/>
+        {/* <FAQsSection />     */}
+        {/* <DonateSection data={donateData}/> */}
+        <UsSection/>
         <WorkWithSection />
         <Footer />
     </React.Fragment>

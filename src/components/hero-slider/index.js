@@ -8,6 +8,8 @@ import customizable from "./assets/customizable.svg"
 import folder from "./assets/folder.svg"
 import open_code from "./assets/open_code.svg"
 
+import slides from "./content.json"
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.scss"
@@ -40,7 +42,7 @@ const NextArrow = ({ className, onClick }) => {
     );
 }
 
-export default ({ slides }) =>  {
+export default () =>  {
 
     const images = {
         'customizable': customizable,

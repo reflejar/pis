@@ -6,14 +6,15 @@ import diy from "./assets/diy.svg"
 import standard from "./assets/standard.svg"
 import custom from "./assets/custom.svg"
 
+import data from "./content.json"
+
 const icons = {
     diy,
     custom,
     standard
 };
 
-export default (props) => {
-    const { data } = props
+export default () => {
 
     return (
         <section id="implementar" className="section faqs">

@@ -22,36 +22,42 @@ const images = {
 
 export default ({ data }) => {
 
-    return (
-        <section id={data.id} className={`hero tool tool-${data.color}`}>
-            <div className="hero-body">
-                <div className="container">
-                    <div className="text-content">
-                        <div className="columns">
-                            <div className="column is-one-third">
-                                <h4 className="title is-4 is-spaced is-size-2-desktop">{data.title}</h4>
-                                <figure className="image is-hidden-desktop is-hidden-tablet">
-                                    <img src={`${images[data.image]}`} alt="" />
+    const showImage = () => (<div className="column">
+                                <figure className="image is-hidden-mobile">
+                                    <img src={`${images[data.image]}`} alt={`Imagen de ${data.title}`} />
                                 </figure>
-                                <p className="subtitle is-6 is-spaced">{data.description_section}</p>
+                            </div>)
+
+    const showText = () => (<div className="column">
+                                <h4 className={`title is-4 is-spaced is-size-2-desktop ${data['text_style']}`}>{data.title}</h4>
+                                <p className={`subtitle is-6 is-spaced ${data['text_style']}`}>{data.description_section}</p>
                                 <div className="list-wrapper">
                                     <ul className="list">
                                         {data.features.map((feature, index) =>
-                                            <li key={index} className="has-text-white">{feature}</li>
+                                            <li key={index} className={`${data['text_style']}`}>{feature}</li>
                                         )}
                                     </ul>
                                 </div>
                                 <div className="button-container">
-                                    <PopupButton id="bkXtFW" className="button is-rounded is-medium is-black" href="#implementar">implementation</PopupButton>
+                                    <PopupButton id="" className="button is-rounded is-medium is-black" href="#implementar">Entrar</PopupButton>
                                 </div>
-                            </div>
-                            <div className="column">
-                            <figure className="image is-hidden-mobile">
-                                <img src={`${images[data.image]}`} alt="" />
-                            </figure>
-                            </div>
+                            </div>)
+
+
+    return (
+        <section id={data.id} className={`hero tool tool-${data.id}`}>
+            <div className="hero-body">
+                <div className="container">
+                    {data.image_disposition === "left" ?   
+                        <div className="columns">
+                            {showImage()}
+                            {showText()}
+                        </div> : 
+                        <div className="columns">
+                            {showText()}
+                            {showImage()}
                         </div>
-                    </div>
+                    }
                 </div>
             </div>    
         </section>

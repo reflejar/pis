@@ -12,7 +12,11 @@
             "Testeos en animales.",
             "Dataset descargable"
         ],
+        "star": true,
+        "text_style": "has-text-white",
+        "order": 4,
         "image": "pis_en_humanxs",
+        "image_disposition": "left",
         "id": "pis_en_humanxs"
     },
     {
@@ -29,7 +33,11 @@
             "Zonas de exclusión y amortiguamiento",
             "Restricciones de aplicación aérea (próximamente)."
         ],
+        "star": false,
+        "text_style": "has-text-black",
+        "order": 1,
         "image": "zonificacion_normativa",
+        "image_disposition": "right",
         "id": "zonificacion_normativa"
     },
     {
@@ -45,8 +53,12 @@
             "Testeos en animales.",
             "Dataset descargable"
         ],
+        "star": false,
+        "text_style": "has-text-white",
+        "order": 2,
         "image": "agroquimicos_pba",
-        "id": "co-agroquimicos_pba"
+        "image_disposition": "left",
+        "id": "agroquimicos_pba"
     },
     {
         "title":"Censos agropecuarios",
@@ -60,7 +72,11 @@
             "Cultivos",
             "Prácticas orgánicas/biodinámicas/agroecológicas"
         ],
+        "star": false,
+        "text_style": "has-text-black",
+        "order": 3,
         "image": "censo_agropecuario",
+        "image_disposition": "right",
         "id": "censo_agropecuario"
     },
     {
@@ -70,14 +86,17 @@
         "icon": "jurisprudencia",
         "description_section": "Compendio jurídico sobre el uso de agroquímicos en Argentina",
         "features": [
-            "tools.features_5_1",
-            "tools.features_5_2",
-            "tools.features_5_3",
-            "tools.features_5_4",
-            "tools.features_5_5",
-            "tools.features_5_6"
+            "Fallos judiciales",
+            "Resoluciones administrativas",
+            "Dictámenes",
+            "Recomendaciones de la defensoría del pueblo",
+            "Relatorías de la ONU"
         ],
+        "text_style": "has-text-black",
+        "star": false,
+        "order": 5,
         "image": "jurisprudencia",
+        "image_disposition": "right",
         "id": "jurisprudencia"
     },
     {
@@ -94,7 +113,12 @@
             "Exclusión y amortiguamiento de escuelas rurales",
             "Exclusión y amortiguamiento de cursos, superficies y bombas de agua."
         ],
+        "text_style": "has-text-white",        
+        "star": false,
+
+        "order": 6,
         "image": "normativa_comparada",
+        "image_disposition": "left",
         "id": "normativa_comparada"
     },
     {
@@ -104,6 +128,8 @@
         "link": "",
         "description_section": "",
         "features": [],
+        "star": false,
+        "order": 7,
         "image": "",
         "id": "caja_herramientas"
     }

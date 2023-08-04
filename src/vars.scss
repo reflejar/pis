@@ -28,3 +28,9 @@ $size-4: 1.75rem;
 $size-5: 1.13rem;
 $size-6: 1rem;
 $grey-dark: #4d4d4d;
+$grey-gradient: linear-gradient(90deg, #F4EFEA 0%, #DDD8D3 100%);
+
+
+.has-text-urine{
+    color: $urine!important;
+}

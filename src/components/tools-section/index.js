@@ -1,5 +1,4 @@
 import React from "react"
-import "./styles.scss"
 
 import pis_en_humanxs from "./assets/pis_en_humanxs.svg"
 import zonificacion_normativa from "./assets/zonificacion_normativa.svg"
@@ -25,22 +24,40 @@ export default ({ tools }) =>  {
     return (
         <section id="herramientas" className="section">
             <div className="container">
-                <div className="columns is-multiline is-mobile is-centered">
-                    {tools.map((tool) =>
-                        // <div key={'p-sect'+tool.id} className={`tool-item tool-item-${tool.color} column has-text-centered is-half-tablet is-half-desktop is-full-mobile`}>
-                        <div key={'p-sect'+tool.id} className={`tool-item column has-text-centered is-half-tablet is-one-third-desktop is-full-mobile`}>
-                            <figure className="image">
+                    <h1 className="title is-2 is-bold has-text-white mb-6">Nuestras herramientas</h1>
+                    {tools.filter(t=>t.star).map((tool) => <div key={'p-sect'+tool.id} className="columns is-mobile">
+                        <div className={`tool-item column is-one-third-desktop is-half-tablet is-full-mobile`}>
+                            <h1 className="title is-4 has-text-white">{tool.title}</h1>
+                            <figure className="image is-64x64">
                                 <img src={`${icons[tool.icon]}`} alt="" className={`${tool.icon}`} />
                             </figure>
-                            <h4 className="title is-spaced has-text-white">{tool.title}</h4>
+                        </div>
+                        <div className={`column is-half-tablet is-two-third-desktop is-full-mobile`}>
                             <p className="subtitle is-6 is-spaced has-text-white">{tool.explanation}</p>
                             <a className="icon is-large" href={`#${tool.id}`}>
-                                <i className="fas fa-plus fa-inverse"></i>
+                                <i className="fas fa-arrow-right fa-inverse"></i>
                             </a>
                         </div>
+                        
+                    </div>
                     )}
+                    <hr />
+                    <div className="columns is-multiline is-mobile">
+                        {tools.filter(t=>!t.star).map((tool) =>
+                            // <div key={'p-sect'+tool.id} className={`tool-item tool-item-${tool.color} column has-text-centered is-half-tablet is-half-desktop is-full-mobile`}>
+                            <div key={'p-sect'+tool.id} className={`tool-item column is-half-tablet is-one-third-desktop is-full-mobile`}>
+                                <figure className="image is-64x64 mb-5">
+                                    <img src={`${icons[tool.icon]}`} alt="" className={`${tool.icon}`} />
+                                </figure>
+                                <h4 className="title is-5 has-text-white">{tool.title}</h4>
+                                <p className="subtitle is-6 is-spaced has-text-white">{tool.explanation}</p>
+                                <a className="icon is-large" href={`#${tool.id}`}>
+                                    <i className="fas fa-arrow-right fa-inverse"></i>
+                                </a>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
         </section>
     )
 }

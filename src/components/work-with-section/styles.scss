@@ -1,6 +1,9 @@
 @import "~bulma/sass/utilities/_all.sass";
 
+@import "../../vars.scss";
+
 .work-with {
+    background-color: $cream;
     .columns {
         display: flex;
         justify-content: center;
