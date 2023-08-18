@@ -1,0 +1,52 @@
+.hero {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    background-image: url('../assets/img/mar-chiquita.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+}
+  
+
+#zonificacion-normativa {
+    background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
+}
+
+#agroquimicos {
+    background: linear-gradient(to right, transparent, #383838),url('../assets/img/tools/coronelVidal.png'), no-repeat;
+    background-size: cover;
+}
+
+#censos {
+    background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
+}
+
+#testeos {
+    background: linear-gradient(to right, transparent, #383838),url('../assets/img/tools/mapaUrbano.png'), no-repeat;
+    background-size: cover;
+}
+
+#jurisprudencia {
+    background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
+}
+#normativa {
+    background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
+}
+
+#caja-herramientas {
+    background-color: #F4EFEA;
+}
+
+#donar {
+    background-image: url('../assets/img/banner-donar.jpg');
+    background-size: cover;
+}
+
+#nosotros {
+    background-image: url('../assets/img/nosotros.png');
+    background-size: cover;
+}
