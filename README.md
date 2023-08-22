@@ -1,4 +1,4 @@
-![Header](static/assets/img/ryder_isologotipos.png)
+![Header](assets/img/ryder_isologotipos.png)
 
 # Pesticidas introducidos silenciosamente (PIS)
 
