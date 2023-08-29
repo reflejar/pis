@@ -1,9 +1,10 @@
 version: '3'
 
+
 services:
   web:
     build:
       context: .
-    image: pis-web:latest
+    image: ghcr.io/reflejar/pis-web:latest
     ports:
       - 3000:80
