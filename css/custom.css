@@ -1,4 +1,4 @@
-.hero {
+#hero {
     display: flex;
     align-items: center;
     /* justify-content: center; */
@@ -16,7 +16,7 @@
     background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
 }
 
-#agroquimicos {
+#testeos {
     background: linear-gradient(to right, transparent, #383838),url('../assets/img/tools/coronelVidal.png'), no-repeat;
     background-size: cover;
 }
@@ -25,7 +25,7 @@
     background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
 }
 
-#testeos {
+#pis-en-humanos {
     background: linear-gradient(to right, transparent, #383838),url('../assets/img/tools/mapaUrbano.png'), no-repeat;
     background-size: cover;
 }
@@ -33,8 +33,8 @@
 #jurisprudencia {
     background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
 }
-#normativa {
-    background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
+#ranking {
+    background: linear-gradient(90deg, rgba(66, 65, 63, 0.64) 100%, #000 0%);
 }
 
 #caja-herramientas {
@@ -47,6 +47,34 @@
 }
 
 #nosotros {
-    background-image: url('../assets/img/nosotros.png');
+    background-image: url('../assets/img/nosotros.png') ;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+}
+
+#alianzas {
+    background: #F4EFEA;
+}
+
+.recuadro {
+    border-radius: 21px;
+    border: 1px solid #FAF5F0;
+    padding: 3em;
+}
+
+.tool:hover h3,
+.tool:hover h4,
+.tool:hover p,
+.tool:hover u {
+    color: var(--bs-primary)!important;
+}
+
+.position-middle {
+    display:flex;
+    align-items: center
+}
+
+.gray {
+    filter: grayscale(100%);
 }
