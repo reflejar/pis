@@ -86,12 +86,23 @@
     padding: 3em;
 }
 
-.tool:hover h3,
-.tool:hover h4,
-.tool:hover p,
-.tool:hover u {
+
+
+.tool-active:hover h3,
+.tool-active:hover h4,
+.tool-active:hover p,
+.tool-active:hover u {
     color: var(--bs-primary)!important;
 }
+.tool-active:hover svg path {
+    fill: var(--bs-primary)!important;
+    /* fill: var(--bs-primary)!important; */
+}
+.tool-muted svg path {
+    fill: var(--bs-gray)!important;
+    /* fill: var(--bs-primary)!important; */
+}
+
 
 .position-middle {
     display:flex;
