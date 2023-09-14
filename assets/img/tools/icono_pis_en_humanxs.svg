@@ -1,4 +1,11 @@
-<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.5 17L14.5 53H41.5L44.5 17M11.5 17H44.5M11.5 17H8V3H47.5V17H44.5" stroke="#FAF5F0" stroke-width="2.5"/>
-<path d="M13 33.9991H19M13.5 38.4991H15.5H19.5M14 42.4991H20.5M12.5 26.4991C14.3333 25.3325 20.3 23.6991 29.5 26.4991C38.7 29.2991 42.6667 28.6664 43.5 28" stroke="#FAF5F0" stroke-width="2.5"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="m50.86,5.75H5.14v12.47h5.35l3.5,31.03h28.49l4-31.03h4.38V5.75Zm-10.58,41h-24.06l-.84-7.47h5.42v-2.5h-5.7l-.28-2.49h4.32v-2.5h-4.6l-.28-2.49h3.77v-2.5h-4.05l-.97-8.58h30.94l-3.67,28.53Zm8.08-31.03H7.64v-7.47h40.72v7.47Z"/>
 </svg>
