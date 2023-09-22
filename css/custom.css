@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     /* justify-content: center; */
+    background-image: url('../assets/img/carousel/01-camet-norte-mar-chiquita-bs-as.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -33,19 +34,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    animation: changeImage 30s infinite;
-    animation-fill-mode: forwards;
-}
-
-@keyframes changeImage {
-    0% { background-image: url('../assets/img/carousel/01-camet-norte-mar-chiquita-bs-as.jpeg'); }
-    14.2857% { background-image: url('../assets/img/carousel/02-empalme-lobos-bs-as.jpeg'); }
-    28.5714% { background-image: url('../assets/img/carousel/03-cazon-saladillo-bs-as.jpeg'); }
-    42.8571% { background-image: url('../assets/img/carousel/04-nicole-matanza-bs-as.jpeg'); }
-    57.1428% { background-image: url('../assets/img/carousel/05-atlantida-mar-chiquita-bs-as.jpeg'); }
-    71.4285% { background-image: url('../assets/img/carousel/06-caba-bs-as.jpeg'); }
-    85.7142% { background-image: url('../assets/img/carousel/07-reynoso-saladillo-bs-as.jpeg'); }
-    100% { background-image: url('../assets/img/carousel/01-camet-norte-mar-chiquita-bs-as.jpeg'); }
 }
 
 
