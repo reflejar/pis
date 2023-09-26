@@ -123,7 +123,7 @@
 
 
 
-          <section class="min-vh-100 text-dark" id="hero">
+        <section class="min-vh-100 text-dark" id="hero">
             <div class="container d-flex flex-column">
                 <div class="row">
                     <div class="col-lg-9 mt-5">
@@ -515,19 +515,9 @@
             let currentIndex = 0;
 
             function changeBackground() {
-            // Aplicar una transición suave durante 1 segundo
-            hero.style.transition = 'background-image 1s ease-in-out';
-
-            // Cambiar el background-image al siguiente en el array
-            hero.style.backgroundImage = `url('${imagePaths[currentIndex]}')`;
-
-            // Incrementar el índice o volver al principio si llegamos al final
-            currentIndex = (currentIndex + 1) % imagePaths.length;
-
-            // Eliminar la transición después de 1 segundo para evitar que se aplique a las imágenes posteriores
-            setTimeout(() => {
-                hero.style.transition = '';
-            }, 1000);
+                hero.style.backgroundImage = `url('${imagePaths[currentIndex]}')`;
+                // Incrementar el índice o volver al principio si llegamos al final
+                currentIndex = (currentIndex + 1) % imagePaths.length;
             }
 
             const intervalId = setInterval(changeBackground, 5000);        
