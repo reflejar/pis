@@ -1,8 +1,7 @@
 #hero {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
-    background-image: url('../assets/img/carousel/01-camet-norte-mar-chiquita-bs-as.jpeg');
+    background-image: url('../assets/img/carousel/Banner-01.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,6 +10,22 @@
     width: 100%;
     height: 100%;
     transition: background-image 1s ease-in-out 1s;
+}
+
+@media (max-width:767px) {
+    #hero {
+        display: flex;
+        align-items: center;
+        background-image: url('../assets/img/carousel/Banner-01-mobile.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: background-image 1s ease-in-out 1s;
+    }
 }
 
 

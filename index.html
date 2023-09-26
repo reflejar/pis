@@ -501,15 +501,30 @@
 
         <script>
             // Array con las rutas de las imágenes a pre-cargar
-            const imagePaths = [
-                'assets/img/carousel/01-camet-norte-mar-chiquita-bs-as.jpeg',
-                'assets/img/carousel/02-empalme-lobos-bs-as.jpeg',
-                'assets/img/carousel/03-cazon-saladillo-bs-as.jpeg',
-                'assets/img/carousel/04-nicole-matanza-bs-as.jpeg',
-                'assets/img/carousel/05-atlantida-mar-chiquita-bs-as.jpeg',
-                'assets/img/carousel/06-caba-bs-as.jpeg',
-                'assets/img/carousel/07-reynoso-saladillo-bs-as.jpeg'
-            ];
+            let imagePaths;
+            if (window.innerWidth <= 767) {
+                imagePaths = [
+                    'assets/img/carousel/Banner-02-mobile.jpg',
+                    'assets/img/carousel/Banner-03-mobile.jpg',
+                    'assets/img/carousel/Banner-04-mobile.jpg',
+                    'assets/img/carousel/Banner-05-mobile.jpg',
+                    'assets/img/carousel/Banner-06-mobile.jpg',
+                    'assets/img/carousel/Banner-07-mobile.jpg',
+                    'assets/img/carousel/Banner-01-mobile.jpg'
+                ];
+            } else {
+                imagePaths = [
+                    'assets/img/carousel/Banner-02.jpg',
+                    'assets/img/carousel/Banner-03.jpg',
+                    'assets/img/carousel/Banner-04.jpg',
+                    'assets/img/carousel/Banner-05.jpg',
+                    'assets/img/carousel/Banner-06.jpg',
+                    'assets/img/carousel/Banner-07.jpg',
+                    'assets/img/carousel/Banner-01.jpg'
+                ];
+            }
+
+
     
             const hero = document.getElementById('hero');
             let currentIndex = 0;
