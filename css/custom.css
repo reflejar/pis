@@ -1,7 +1,7 @@
 #hero {
     display: flex;
     align-items: center;
-    background-image: url('../assets/img/carousel/Banner-01.jpg');
+    /* background-image: url('../assets/img/carousel/01-desk-Atlantida, Mar Chiquita, Provincia de Buenos Aires.jpg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,7 +16,7 @@
     #hero {
         display: flex;
         align-items: center;
-        background-image: url('../assets/img/carousel/Banner-01-mobile.jpg');
+        /* background-image: url('../assets/img/carousel/01-mob-Atlantida, Mar Chiquita, Provincia de Buenos Aires.jpg'); */
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -106,3 +106,20 @@
 .gray {
     filter: grayscale(100%);
 }
+
+@media (max-width: 767px) {
+    .logo-mobile {
+        display: block;
+    }
+    .logo-desktop {
+        display: none;
+    }
+}
+@media (min-width: 768px) {
+    .logo-mobile {
+        display: none;
+    }
+    .logo-desktop {
+        display: block;
+    }
+  }

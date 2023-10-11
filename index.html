@@ -47,7 +47,10 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/PIS_isologo_negro.png" height="70px" alt="Isologotipo de PIS"></a>
+                <a class="navbar-brand" href="#page-top">
+                    <img src="assets/img/PIS_isologo_negro.png" height="70px" alt="Isologotipo de PIS" class="logo-desktop">
+                    <img src="assets/img/PIS_logo_mobile.png" height="30px" alt="Isologotipo de PIS" class="logo-mobile mt-1">
+                </a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -134,10 +137,59 @@
                         <div class="col-lg-6 mt-3">
                             <p class="text-white">Información y herramientas para comprender y contrarrestar el impacto de los agroquímicos en nuestros cuerpos y comunidades</p>
                         </div>
+                        <small id="ubicacion" class="text-white" style="position: absolute; bottom: 10%;">Atlantida, Mar Chiquita, Provincia de Buenos Aires</small>
                     </div>
                 </div>
             </div>
         </section>
+        <script>
+            // Array con las rutas de las imágenes a pre-cargar
+            let imagePaths;
+            if (window.innerWidth <= 767) {
+                imagePaths = [
+                    {url: 'assets/img/carousel/01-mob.jpg', title: 'Atlantida, Mar Chiquita, Provincia de Buenos Aires'},
+                    {url: 'assets/img/carousel/02-mob.jpg', title: 'Cazon, Saladillo, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/03-mob.jpg', title: 'Emiliano Reynoso, Saladillo, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/04-mob.jpg', title: 'Empalme, Lobos, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/05-mob.jpg', title: 'Camet Norte, Mar Chiquita, Provincia de Buenos',},
+                    {url: 'assets/img/carousel/06-mob.jpg', title: 'Ciudad Autonoma de Buenos Aires, Provincia de',},
+                    {url: 'assets/img/carousel/07-mob.jpg', title: 'Barrio Nicole, La matanza, Provincia de Buenos Aires',},
+                ];
+            } else {
+                imagePaths = [
+                    {url: 'assets/img/carousel/01-desk.jpg', title: 'Atlantida, Mar Chiquita, Provincia de Buenos Aires'},
+                    {url: 'assets/img/carousel/02-desk.jpg', title: 'Cazon, Saladillo, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/03-desk.jpg', title: 'Emiliano Reynoso, Saladillo, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/04-desk.jpg', title: 'Empalme, Lobos, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/05-desk.jpg', title: 'Camet Norte, Mar Chiquita, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/06-desk.jpg', title: 'Ciudad Autonoma de Buenos Aires, Provincia de Buenos Aires',},
+                    {url: 'assets/img/carousel/07-desk.jpg', title: 'Barrio Nicole, La matanza, Provincia de Buenos Aires',},
+                ];
+            }
+            var indiceAleatorio = Math.floor(Math.random() * imagePaths.length);
+    
+            const hero = document.getElementById('hero');
+            const title = document.getElementById('ubicacion');
+            title.textContent = imagePaths[indiceAleatorio].title;
+            hero.style.backgroundImage = `url('${imagePaths[indiceAleatorio].url}')`;
+            // let currentIndex = 0;
+
+            // function changeUbicacion() {
+                
+            //     // Incrementar el índice o volver al principio si llegamos al final
+            //     currentIndex = (currentIndex + 1) % imagePaths.length;
+            // }                
+
+            // function changeBackground() {
+                
+            //     setTimeout(changeUbicacion, 1500);
+            // }
+
+        
+
+            // const intervalId = setInterval(changeBackground, 5000);
+        </script>
+
 
         
         <section class="min-vh-50 bg-dark text-white" id="herramientas">
@@ -145,7 +197,7 @@
                 <h1 class="my-5 text-white">Nuestras Herramientas</h1>
                 <!-- <a href="#" class="text-decoration-none"> -->
 
-                    <div class="row mt-5 recuadro tool-muted">
+                    <div class="row mt-5 recuadro tool-muted mx-2">
                         <div class="col-lg-3 col-sm-12">
                             <h3 class=" text-muted">PIS en humanos</h3>
                             <svg width="60" height="60" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -310,8 +362,8 @@
             <div class="container py-5">
                 <div class="row position-middle">
                     <div class="col-lg-6 col-md-12">
-                        <h1 class="my-5 text-dark">Censo Agropecuario</h1>
-                        <p>información histórica con perspectiva local sobre las características básicas de las actividades agrícolas, ganaderas.</p>
+                        <h1 class="my-5 text-dark">Censos Agropecuarios</h1>
+                        <p>Información histórica con perspectiva local sobre las características básicas de las actividades agrícolas, ganaderas.</p>
                         <ul>
                             <li>Concentración de tierras</li>
                             <li>Empleo y residencia rural</li>
@@ -437,12 +489,29 @@
         <section class="min-vh-75 text-dark position-middle" id="donar">
             <div class="container py-5">
                 <div class="row text-center">
-                    <div class="col-lg-6 mx-auto">
+                    <div class="col-lg-12 mx-auto">
                         <h1 class="my-5 display-2 text-dark">DONACIONES</h1>
                         <b>¿Querés que más personas conozcan el valor de su PIS y cómo reducirlo?</b>
                         <p>Con tu donación nos ayudás a llevar esta información a más territorios y provincias.</p>
-                        <a class="poppins text-uppercase btn btn-dark px-5 mt-5" href="https://donaronline.org/democracia-en-red/campana-recaudacion-proyecto-pis" target="_blank">Donar</a>
+                        <button class="poppins text-uppercase btn btn-outline-dark px-5 mt-5 mx-3" onclick="copiarAlPortapapeles(30714167916)">COPIAR CBU BANCO</button>
+                        <button class="poppins text-uppercase btn btn-outline-dark px-5 mt-5 mx-3" onclick="copiarAlPortapapeles('speak@democracyos.io')">COPIAR MAIL MP <img src="assets/img/mp.svg" height="25px" alt="Imágen mercado pago"></button>
+                        <a class="poppins text-uppercase btn btn-dark px-5 mt-5 mx-3" href=" https://www.mercadopago.com.ar/home#from-section=menu" target="_blank">DONÁ <img src="assets/img/mp.svg" height="25px" alt="Imágen mercado pago"></a>
                     </div> 
+                    <script>
+                        function copiarAlPortapapeles(value) {
+                            // Selecciona el elemento de entrada de texto
+                            console.log(value)
+                            var elementoTemporal = document.createElement("input");
+                            elementoTemporal.value = value;
+                            document.body.appendChild(elementoTemporal);
+                            elementoTemporal.select();
+                            document.execCommand("copy");
+                            // Elimina el elemento temporal, ya que no lo necesitas más
+                            document.body.removeChild(elementoTemporal);
+                            // // Puedes mostrar un mensaje o realizar otras acciones después de copiar
+                            alert("Copiado al portapapeles: " + value);
+                        }
+                    </script>                    
                 </div>
             </div>
         </section>    
@@ -450,9 +519,9 @@
         <section class="min-vh-75 text-white position-middle" id="nosotros">
             <div class="container py-5">
                 <div class="row text-center">
-                    <div class="col-lg-6 mx-auto">
+                    <div class="col-lg-9 mx-auto">
                         <h1 class="my-5 display-2 text-white">¿QUIÉNES SOMOS?</h1>
-                        <b class="">Somos Democracia en Red, una ONG latinoamericana con base en Buenos Aires, Argentina conformada por personas activistas, programadores y profesionales de las ciencias sociales. Desde el hacer creamos soluciones de participación ciudadana con activistas para empoderar a las comunidades, redistribuir el poder y fortalecer la democracia.</b>
+                        <b>Somos Democracia en Red, una ONG latinoamericana con base en Buenos Aires, Argentina conformada por personas activistas, programadores y profesionales de las ciencias sociales. Desde el hacer creamos soluciones de participación ciudadana con activistas para empoderar a las comunidades, redistribuir el poder y fortalecer la democracia.</b>
                         <p><a href="https://democraciaenred.org">democraciaenred.org</a></p>
                         
                     </div> 
@@ -483,7 +552,8 @@
             <div class="container py-3">
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-center">
-                        <img src="assets/img/PIS_isologo_negro.png" height="50px" alt="Isologotipo de PIS">
+                        <img src="assets/img/PIS_isologo_negro.png" height="50px" alt="Isologotipo de PIS" class="logo-desktop">
+                        <img src="assets/img/PIS_logo_mobile.png" height="30px" alt="Isologotipo de PIS" class="logo-mobile mt-1">                        
                         <p class="mt-4 mx-3">PIS es un proyecto de <a href="https://democraciaenred.org" target="_blank" class="text-white">Democracia en Red</a>, una ONG latinoamericana con base en Buenos Aires, Argentina.</p>
                     </div>
                     <div class="col-md-6 text-end">
@@ -498,45 +568,6 @@
                 </div>
             </div>
         </footer>
-
-        <script>
-            // Array con las rutas de las imágenes a pre-cargar
-            let imagePaths;
-            if (window.innerWidth <= 767) {
-                imagePaths = [
-                    'assets/img/carousel/Banner-02-mobile.jpg',
-                    'assets/img/carousel/Banner-03-mobile.jpg',
-                    'assets/img/carousel/Banner-04-mobile.jpg',
-                    'assets/img/carousel/Banner-05-mobile.jpg',
-                    'assets/img/carousel/Banner-06-mobile.jpg',
-                    'assets/img/carousel/Banner-07-mobile.jpg',
-                    'assets/img/carousel/Banner-01-mobile.jpg'
-                ];
-            } else {
-                imagePaths = [
-                    'assets/img/carousel/Banner-02.jpg',
-                    'assets/img/carousel/Banner-03.jpg',
-                    'assets/img/carousel/Banner-04.jpg',
-                    'assets/img/carousel/Banner-05.jpg',
-                    'assets/img/carousel/Banner-06.jpg',
-                    'assets/img/carousel/Banner-07.jpg',
-                    'assets/img/carousel/Banner-01.jpg'
-                ];
-            }
-
-
-    
-            const hero = document.getElementById('hero');
-            let currentIndex = 0;
-
-            function changeBackground() {
-                hero.style.backgroundImage = `url('${imagePaths[currentIndex]}')`;
-                // Incrementar el índice o volver al principio si llegamos al final
-                currentIndex = (currentIndex + 1) % imagePaths.length;
-            }
-
-            const intervalId = setInterval(changeBackground, 5000);        
-        </script>
 
     </body>
 </html>
