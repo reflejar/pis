@@ -29,9 +29,9 @@
 }
 
 
-#zonificacion-normativa {
+/* #zonificacion-normativa {
     background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
-}
+} */
 
 #testeos {
     background: linear-gradient(to right, transparent, #383838),url('../assets/img/tools/coronelVidal.png'), no-repeat;
