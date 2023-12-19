@@ -51,7 +51,7 @@
     background: linear-gradient(90deg, #F4EFEA 0%, rgba(221, 216, 211, 0.64) 100%);
 }
 #ranking {
-    background: linear-gradient(90deg, rgba(66, 65, 63, 0.64) 100%, #000 0%);
+    background-color: #F4EFEA;
 }
 
 #caja-herramientas {
