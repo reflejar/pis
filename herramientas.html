@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Primary Meta Tags -->
+  <title>PIS - Pesticidas Introducidos Silenciosamente</title>
+  <meta name="title" content="PIS - Pesticidas Introducidos Silenciosamente" />
+  <meta name="description"
+    content="Información y herramientas para comprender y contrarrestar el impacto de los agroquímicos en nuestros cuerpos y comunidades" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pis.org.ar/" />
+  <meta property="og:title" content="PIS - Pesticidas Introducidos Silenciosamente" />
+  <meta property="og:description"
+    content="Información y herramientas para comprender y contrarrestar el impacto de los agroquímicos en nuestros cuerpos y comunidades" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://pis.org.ar/" />
+  <meta property="twitter:title" content="PIS - Pesticidas Introducidos Silenciosamente" />
+  <meta property="twitter:description"
+    content="Información y herramientas para comprender y contrarrestar el impacto de los agroquímicos en nuestros cuerpos y comunidades" />
+
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/custom.css" rel="stylesheet" />
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <!-- Gtag-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VVKHPQ5WKD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-VVKHPQ5WKD');
+  </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+
+<body id="page-top" class="bg-dark">
+
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#page-top">
+        <img src="assets/img/PIS_logo_mobile.png" height="20px" alt="Isologotipo de PIS">
+      </a>
+      <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item mx-4"><a class="nav-link poppins" href="index.html"><i class="fas fa-arrow-left"></i>
+              Volver a PIS</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="text-white">
+    <div class="container py-5">
+      <div class="row">
+        <h1 class="text-white is-poppins is-700">Herramientas&nbsp;&nbsp;&nbsp;<small
+            class="h4 text-warning text-size-2">v.1.0</small></h1>
+        <p class="lead is-poppins">Repositorio de Acciones de diagnóstico , acciones legales , acciones de difusión e
+          información , especialmente seleccionadas para gobiernos locales , productores, escuelas , activismos.</p>
+        <h5 class="is-poppins is-700 text-white mb-4">Categorias (filtra eligiendo la de tu interes)</h5>
+        <div class="d-flex flex-row flex-wrap gap-2">
+          <a class="btn btn-outline-light btn category-selector" id="cat-rural"><i class="fas fa-fw fa-people-group"></i>
+            Comunidad Rural</a>
+          <a class="btn btn-outline-light btn category-selector" id="cat-productores"><i class="fas fa-fw fa-tractor"></i>
+            Productores</a>
+          <a class="btn btn-outline-light btn category-selector" id="cat-derechos"><i class="fas fa-fw fa-book"></i>
+            Formación en derechos</a>
+          <a class="btn btn-outline-light btn category-selector" id="cat-mitigacion"><i class="fas fa-fw fa-hammer"></i>
+            Mitigación de daños</a>
+          <a class="btn btn-outline-light btn category-selector" id="cat-denuncias"><i
+              class="fas fa-fw fa-scale-balanced"></i> Denuncias y Amparos</a>
+          <a class="btn btn-outline-light btn category-selector" id="cat-investigacion"><i class="fas fa-fw fa-flask"></i>
+            Investigación y Análisis</a>
+          <a class="btn btn-outline-light btn category-selector" id="cat-contactos"><i
+              class="fas fa-fw fa-mobile-screen"></i> Contactos Utiles</a>
+          <a class="btn btn-outline-light btn category-selector" id="cat-pis"><img src="assets/img/PIS_logo_mobile.png"
+              class="mx-1" width="20"> Proyecto Pis</a>
+        </div>
+      </div>
+      <div id="questions-container" class="my-5 d-grid gap-2">
+
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+
+  <footer class="bg-dark text-white" id="footer">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+          <img src="assets/img/PIS_isologo_negro.png" height="50px" alt="Isologotipo de PIS" class="logo-desktop">
+          <img src="assets/img/PIS_logo_mobile.png" height="30px" alt="Isologotipo de PIS" class="logo-mobile mt-1">
+          <p class="mt-4 mx-3">PIS es un proyecto de <a href="https://democraciaenred.org" target="_blank"
+              class="text-white">Democracia en Red</a>, una ONG latinoamericana con base en Buenos Aires, Argentina.</p>
+        </div>
+        <div class="col-md-6 text-end">
+          <p class="mt-4">
+            <a href="https://linktr.ee/agroquimicospis" class="text-decoration-none" target="_blank"><i
+                class="fa fa-link text-white mx-2"></i></a>
+            <a href="https://twitter.com/fundacionDER" class="text-decoration-none" target="_blank"><i
+                class="fab fa-twitter text-white mx-2"></i></a>
+            <a href="https://www.instagram.com/democraciaenred/?hl=es-la" class="text-decoration-none"
+              target="_blank"><i class="fab fa-instagram text-white mx-2"></i></a>
+            <a href="https://democraciaenred.org/" class="text-decoration-none" target="_blank"><i
+                class="fas fa-globe text-white mx-2"></i></a>
+            <a href="mailto:contacto@democraciaenred.org" class="text-white"
+              target="_blank">contacto@democraciaenred.org</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script lang="javascript">
+    let selectedCategory = null;
+
+    const data = [
+      {
+        "order": 1,
+        "question": "¿Qué es una \"zona de exclusión\"?",
+        "answer": "Una zona de exclusión es una área en la que se prohíbe cualquier tipo de aplicación de agroquímicos. Esta se delinea desde el borde del límite urbano hasta la distancia en metros que establezca la ordenanza municipal vigente.",
+        "cat-rural": true,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 2,
+        "question": "¿Qué se puede producir en una zona de exclusión?",
+        "answer": "En los lotes ubicados dentro de una zona de exclusión no se permite realizar ninguna producción agropecuaria que implique el uso de ningún tipo de pesticida y/o producto fitosanitario. Las alternativas de producción en estos son la agroecología, la ganadería tradicional, o mejor aún, la ganadería regenerativa.",
+        "cat-rural": false,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 3,
+        "question": "¿Qué es la producción agroecológica?",
+        "answer": "La producción agroecológica se centra en reducir la dependencia de insumos externos, como agroquímicos, y en su lugar, aprovechar los procesos naturales y el conocimiento tradicional para promover la resiliencia de los sistemas agrícolas frente a los desafíos ambientales y climáticos. Para más información visita: https://www.renama.org/que-es-la-agroecologia/",
+        "cat-rural": true,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 4,
+        "question": "¿Qué es el manejo regenerativo?",
+        "answer": "El manejo regenerativo es un enfoque agrícola que busca restaurar y mejorar la salud de los ecosistemas agropecuarios y naturales mediante prácticas que promueven la regeneración del suelo, la biodiversidad y la captura de carbono. Algunas de ellas son la rotación de cultivos, la siembra directa, el uso de cubiertas vegetales, la agroforestería y la gestión holística del pastoreo.  Para más información sobre agricultura y ganadería regenerativa visita: https://ovis21.com/",
+        "cat-rural": true,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 5,
+        "question": "¿Qué  es una \"zona buffer\" o  \"de amortiguamiento\"?",
+        "answer": "Una zona buffer o de amortiguamiento es una área  en la que sólo está permitida la aplicación de agroquímicos bajo estrictas pautas",
+        "cat-rural": true,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 6,
+        "question": "¿Cómo se puede producir en una zona  buffer o de amortiguamiento?",
+        "answer": "Las formas en las que se puede producir (o no)  dentro de una zona \"buffer\" o \"de amortiguamiento\" varía según la normativa local de cada municipio. Usualmente las pautas de restricción suelen indicar:\n-Una determinada velocidad de los vientos\n-El origen de los vientos (deben ser provenientes desde la zona resguardada hacia la zona rural)\n-Una elevada humedad relativa \n-Bajas temperatura (No mayores a 25°C.)\n-Aplicaciones sólo bajo receta agronómica válida \n-Permitir solo ciertos tipos de agroquímicos. Como por ejemplo de banda verde y/o azul (clase toxicológica IV, SENASA).\nPodes verificar como es en cada caso de la Provincia de Buenos Aires accediendo a  la normativa del distrito en: https://ranking.pis.org.ar/",
+        "cat-rural": false,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": true
+      },
+      {
+        "order": 7,
+        "question": "¿Qué son las banderas de viento?",
+        "answer": "Las banderas de viento son mangas aeronáuticas que demarcan la línea agronómica de la zona de amortiguamiento entre el área urbana y las zonas de cultivo, indicando los bordes de las áreas habilitadas para la aplicación terrestre de agroquímicos. Estas banderas están diseñadas para inflarse y señalar la dirección opuesta a la población cuando los vientos alcanzan una velocidad adecuada, generalmente entre 5 y 15 kilómetros por hora.",
+        "cat-rural": true,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": true,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 8,
+        "question": "¿Qué son las barreras forestales?",
+        "answer": "Las barreras forestales son plantaciones en línea de árboles y arbustos ubicadas  de forma opuesta a la dirección predominante del viento con el fin de  alterar su curso. Son una intervención táctica para la protección del ambiente en las comunidades rurales, entre otros efectos se destacan por filtrar contaminantes transportados por el aire como pesticidas, patógenos y compuestos orgánicos volátiles.",
+        "cat-rural": true,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": true,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 9,
+        "question": "¿Cómo se pueden implementar barrera forestales?",
+        "answer": "El institutito Nacional de Tecnología Agropecuaria posee un instructivo, para acceder a información en profundidad sobre barreras forestales en:  https://www.researchgate.net/profile/Mastrandrea-Ciro-2/publication/342752121_Cortinas_forestales_rompevientos_y_amortiguadoras_de_deriva_de_agroquimicos/links/5f04dcd5299bf1881608e8ee/Cortinas-forestales-rompevientos-y-amortiguadoras-de-deriva-de-agroquimicos.pdf",
+        "cat-rural": true,
+        "cat-productores": true,
+        "cat-derechos": true,
+        "cat-mitigacion": true,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 10,
+        "question": "Soy productor y quiero tener buenas prácticas en el uso de agroquímicos ¿Dónde puedo informarme?",
+        "answer": "Para acceder a información sobre buenas prácticas accede a la guía de uso del INTA:  https://www.argentina.gob.ar/sites/default/files/script-tmp-inta-_guia_para_uso_de_plaguicidas_web_.pdf",
+        "cat-rural": false,
+        "cat-productores": true,
+        "cat-derechos": false,
+        "cat-mitigacion": true,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 11,
+        "question": "Soy productor y nose que hacer con los envases de los agroquímicos utilizados en mi campo. ¿Existe alguna deposición segura de estos residuos?",
+        "answer": "Para la recuperación de los envases de productos fitosanitarios seguí los pasos en la web de  Campo Limpio [https://www.campolimpio.org.ar/].  Podes depositarlos en los Centros de Almacenamiento Transitorios (CATs) o esperar la fecha de recolección en tu zona. Más información en la web.",
+        "cat-rural": false,
+        "cat-productores": true,
+        "cat-derechos": false,
+        "cat-mitigacion": true,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 12,
+        "question": "Soy un vecino y quiero hacer un afiche mostrando las distancias de protección de mi localidad/poblado ¿Dónde puedo solicitarlo?",
+        "answer": "Si querés solicitar un AFICHE de tu poblado o localidad  escribinos a contacto@democraciaenred.org",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": true
+      },
+      {
+        "order": 13,
+        "question": "Quiero comprar frutas y/o verduras agroecológicas de productores de cercanía ¿Dónde puedo hacerlo?",
+        "answer": "Existen distintas redes donde podes acceder a frutas o verduras agroecológicas: \n- elclick.com.ar/\n- ...\n\nPara sumar la información sobre más redes de comercio agroecológico comunícate a contacto@democraciaenred.org",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 14,
+        "question": "Estoy enfermo y sospecho que es por la exposición/intoxicación de agroquímicos ¿Qué puedo hacer?",
+        "answer": "Si estás enfermo y sospechas que es debido a la exposición o intoxicación por agroquímicos, te recomendamos que te realices un testeo para confirmarlo. A continuación, encontrarás información sobre los diferentes tipos de testeos disponibles y dónde puedes realizarlos. Si crees que necesitas asesoramiento médico especializado, visita el Consultorio de Salud Ambiental del Hospital Italiano en [https://www.hospitalitaliano.org.ar/#!/home/medioambiente/noticia/164722].",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 15,
+        "question": "¿Cómo puedo monitorear la exposición a agroquímicos?",
+        "answer": "La mejor manera de monitorear y medir la exposición a agroquímicos es a través de testeos. Existen diversos tipos tanto en humanos como en el ambiente. En humanos, los principales testeos son los  de orina, sangre, materia fecal y los de genotoxicidad. Mientras que en el ambiente, se realizan testeos de agua, miel,  suelo y sedimentos.",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 16,
+        "question": "¿Dónde puedo testear presencia de agroquímicos en orina?",
+        "answer": "Podes testear la presencia de agroquímicos en orina en: https://farestaie.com.ar/analisis-agroquimicos/",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 17,
+        "question": "¿Dónde puedo testear la presencia de agroquímicos en sangre?",
+        "answer": "Podes testear la presencia de agroquímicos en sangre en: https://farestaie.com.ar/analisis-agroquimicos/",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 18,
+        "question": "¿Dónde puedo hacer un testeo de  genotoxicidad?",
+        "answer": "No disponemos de información específica sobre dónde se pueden realizar testeos de genotoxicidad para particulares. Sin embargo, estamos trabajando en una campaña de testeos de genotoxicidad y estaremos encantados de brindarte más información a medida que avancemos en el proyecto. Para cualquier consulta sobre de estos testeos, no dudes en contactarnos a contacto@democraciaenred.org.",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 19,
+        "question": "¿Dónde puedo testear presencia de agroquímicos en agua?",
+        "answer": "A la hora de hacer testeos de trazas de agroquímicos en agua es bueno medirlo no solo en un único tipo de muestra. Es recomendable hacerlo en: A) agua de lluvia, B) agua de pozo, C) agua de red  y D) agua provenientes de ríos, cursos u otras superficies.\nPodes testear la presencia de agroquímicos en agua en:   INTA Balcarce: https://inta.gob.ar/balcarce/servicios & FARESTAIE: https://farestaie.com.ar/analisis-agroquimicos/",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 20,
+        "question": "¿Dónde puedo testear presencia de agroquímicos en miel?",
+        "answer": "Podes testear la presencia de agroquímicos en miel en:  INTA rafaela : https://inta.gob.ar/rafaela , INTA Balcarce: https://inta.gob.ar/balcarce/servicios   & FARESTAIE: https://www.farestaie.com.ar/laboratorios/analisis-de-alimentos/apicola",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 21,
+        "question": "¿Dónde puedo testear presencia de agroquímicos en suelo o tierra?",
+        "answer": "Podes testear la presencia de agroquímicos en suelo o tierra en INTA Balcarce: https://inta.gob.ar/balcarce/servicios & FARESTAIE: https://farestaie.com.ar/analisis-agroquimicos/",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": true,
+        "cat-contactos": true,
+        "cat-pis": false
+      },
+      {
+        "order": 22,
+        "question": "Hice un testeo de agroquímicos y me gustaría compartir de manera anónima el resultado. ¿Cómo hago?",
+        "answer": "Si tenes un resultado positivo de un análisis de agroquimicos ingresa a este formulario [https://docs.google.com/forms/d/e/1FAIpQLSeB0yNZPLNQxbWD-cJKVa96haz74oWVOGEPOZDCUBHEdHb4gg/viewform]  para sumarlo al mapeo colaborativo que hacemos en TESTEOS >linkear herramienta<",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 23,
+        "question": "¿Dónde se pueden ver mapeados distintos análisis de detección de agroquímicos?",
+        "answer": "Entra a  [https://testeos.pis.org.ar]. TESTEOS es una mapeo GIS\ncolaborativo de detecciones de agroquímicos en humanos, animales, agua, sedimentos y material vegetal. Con más de 200 testeos provenientes distintas fuentes verificadas.",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": true
+      },
+      {
+        "order": 24,
+        "question": "¿Existen otros mapeos socio-ambientales para consultar?",
+        "answer": "Además de RANKING (mapeo de normativa comparada) y TESTEOS (mapeo colaborativo de detecciones de agroquímicos) te recomendamos visitar:\n\n- Atlas de Justicia Ambiental  - https://ejatlas.org/\n(Mapeo de conflictos socioambientales a nivel internacional)\nhttps://cartografiasinteractivas.com.ar/mapaextractivista/\n\n- Mapa del agronegocio en la provincia de Buenos Aires LICH-EH | UNSAM CONICET  - https://cartografiasinteractivas.com.ar/mapaextractivista/\n(Mapeo de impactos socioambientales derivadas de la matriz agraria y su conflictividad)\n\n-Mapa de Normativa Municipal de la Provincia de Buenos Aires\nhttps://www.gba.gob.ar/desarrollo_agrario/sustentabilidad_y_medio_ambiente/ota/marco_normativo/normativa_municipal",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": true,
+        "cat-pis": true
+      },
+      {
+        "order": 25,
+        "question": "¿Dónde se puede consultar la jurisprudencia o información sobre fallos legales sobre agroquímicos?",
+        "answer": "Toda la jurisprudencia nacionales sobre agroquímicos está disponible en: https://jurisprudencia.pis.org.ar/ .  Un compendio jurídico sobre el uso de agroquímicos en la Argentina. Podrás encontrar fallos judiciales, resoluciones, administrativas, dictámenes y más.",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": true,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": true
+      },
+      {
+        "order": 26,
+        "question": "Queremos llevar adelante un amparo o una acción legal ¿Qué debemos hacer?",
+        "answer": "Si estás pensando llevar adelante una acción legal te recomendamos:\n\n1. Contactar un abogado, idealmente especialista en temas ambientales.\n2. Ponerte en contacto con otros territorios que ya hayan iniciado acciones judiciales o amparos similares. \n3. Establecer comunicación con otras personas del territorio que sean víctimas de la problemática ambiental.\nPara asesoramiento específico o más información, comunicate con nosotros a contacto@democraciaenred.org.",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": true,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": false
+      },
+      {
+        "order": 27,
+        "question": "¿Cómo puedo acceder a los datos de indicadores de los últimos Censos Agropecuarios?",
+        "answer": "Podes acceder a todas visualizaciones y análisis de los principales indicadores de los últimos tres Censos Agropecuarios sistematizados por municipio (1988, 2002 y 2012) en https://censos.pis.org.ar/. Vas a encontrar información histórica con perspectiva local de las dimensiones:  a) Concentración de tierras, b) Modo de producción y c) Empleo y residencia.",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": true
+      },
+      {
+        "order": 28,
+        "question": "¿Dónde puedo leer noticias sobre el Proyecto PIS?",
+        "answer": "Para leer noticias, resultados y avances del Proyecto PIS ingresa al Linktree (https://linktr.ee/agroquimicospis). Para enterarte de todas las novedades seguí a Democracia en Red en las redes. En Instagram @democraciaenred y en X-Twitter @fundacionDER",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": true,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": true
+      },
+      {
+        "order": 29,
+        "question": "¿Dónde puedo ver los resultados del Proyecto PIS?",
+        "answer": "Te dejamos a continuación distintos enlaces para ver algunos resultados de las investigaciones realizadas en el marco del proyecto PIS: \n-Informe de difusión resultados PIS. [PIS - Informe CABA.v1.2.pdf]\n-Resultados LOBOS [https://www.instagram.com/p/CxTx4ERv8NY/]\n-Resultados SALADILLO [https://www.instagram.com/p/CxeIsivpOOI/]\n-Resultados CABA [https://www.instagram.com/p/C1CUyFMOfB1/]\n-Resultados MAR CHIQUITA [https://www.instagram.com/p/C0U3y1EPCWZ/]\n-Resultados LA MATANZA [https://www.instagram.com/p/CxwGBBGJeQj/]",
+        "cat-rural": true,
+        "cat-productores": false,
+        "cat-derechos": false,
+        "cat-mitigacion": false,
+        "cat-denuncias": false,
+        "cat-investigacion": false,
+        "cat-contactos": false,
+        "cat-pis": true
+      }
+    ];
+
+    const categories = {
+      "cat-rural": "Comunidad Rural",
+      "cat-productores": "Productores",
+      "cat-derechos": "Formación en derechos",
+      "cat-mitigacion": "Mitigación de daños",
+      "cat-denuncias": "Denuncias y Amparos",
+      "cat-investigacion": "Investigación y Análisis",
+      "cat-contactos": "Contactos Útiles",
+      "cat-pis": "PIS"
+    };
+
+    const categoryIcons = {
+      "cat-rural": "fa-people-group",
+      "cat-productores": "fa-tractor",
+      "cat-derechos": "fa-book",
+      "cat-mitigacion": "fa-hammer",
+      "cat-denuncias": "fa-scale-balanced",
+      "cat-investigacion": "fa-flask",
+      "cat-contactos": "fa-mobile-screen",
+      "cat-pis": "fa-globe"
+    };
+
+    function renderQuestions() {
+      data.forEach((item, index) => {
+        let categoriesHtml = '';
+        for (const [key, value] of Object.entries(categories)) {
+          if (item[key] && key != 'cat-pis') {
+            categoriesHtml += `<i data-bs-toggle="tooltip" data-bs-title="${value}" class="fas fa-lg fa-fw px-1 ${categoryIcons[key]}"></i>`;
+          } else if (item[key] && key == 'cat-pis') {
+            categoriesHtml += `<img data-bs-toggle="tooltip" data-bs-title="Contactos Utiles" src="assets/img/PIS_logo_mobile.png" src="assets/img/PIS_logo_mobile.png" width="25">`;
+          }
+        }
+
+        const questionBoxHtml = `
+          <div class="question-box ${Object.keys(categories).filter(key => item[key]).join(' ')}">
+            <div class="d-flex flex-row align-items-center question-header is-clickable" data-bs-toggle="collapse" href="#question-${item.order}">
+              <div class="pe-3">
+                <i class="icon-toggle fas fa-angle-up fa-lg"></i>
+              </div>
+              <div class="flex-grow-1 fs-6 is-600 is-poppins">
+                ${item.question}
+              </div>
+              <div class="text-primary ms-2 d-flex flex-row align-items-center">
+                ${categoriesHtml}
+              </div>
+            </div>
+            <div class="collapse" id="question-${item.order}">
+              <hr>
+              ${item.answer}
+            </div>
+          </div>
+        `;
+
+        $('#questions-container').append(questionBoxHtml);
+      });
+      // initialize tooltips
+      $('[data-bs-toggle="tooltip"]').tooltip();
+      
+    }
+
+    // on document ready...
+    $(document).ready(function () {
+      // render questions
+      renderQuestions();
+   
+      // when a question is clicked, toggle the icon
+      $('.question-header').on('click', function () {
+        console.log('click')
+        $(this).find('.icon-toggle').toggleClass('fa-angle-down fa-angle-up');
+      });
+   
+      // when a category is clicked, filter questions
+      $('.category-selector').click(function () {
+        var category = $(this).attr('id');
+        // if the category was already selected, unselect it
+        if (selectedCategory === category) {
+          selectedCategory = null;
+          $('.question-box').show();
+          $('.category-selector').removeClass('active');
+          return;
+        }
+        selectedCategory = category;
+        // hide all questions and show only the selected category
+        $('.question-box').hide();
+        $('.question-box.' + category).show();
+        // add active class to selected category
+        $('.category-selector').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+
+
+
+
+  </script>
+</body>
+
+</html>
