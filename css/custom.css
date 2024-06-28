@@ -123,3 +123,79 @@
         display: block;
     }
   }
+
+.is-poppins {
+    font-family: "Poppins", "Space Grotesk",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+
+.is-space-grotesk {
+    font-family: "Space Grotesk", "Poppins",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+}
+
+.is-100 {
+    font-weight: 100;
+}
+
+.is-200 {
+    font-weight: 200;
+}
+
+.is-300 {
+    font-weight: 300;
+}
+
+.is-400 {
+    font-weight: 400;
+}
+
+.is-500 {
+    font-weight: 500;
+}
+
+.is-600 {
+    font-weight: 600;
+}
+
+.is-700 {
+    font-weight: 700;
+}
+
+.is-800 {
+    font-weight: 800;
+}
+
+.is-900 {
+    font-weight: 900;
+}
+
+#afiches-gallery .card{
+    border-radius: 0;
+    border:0;
+    background-color: transparent;
+}
+
+#afiches-gallery .card-img-top{
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border: 0;
+}
+
+#afiches-gallery .card-body{
+    background-color: #464748;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.question-box{
+    padding: 15px;
+    border: 1px solid #FFF;
+    border-radius: 10px;;
+}
+
+.question-box .question-header{
+    
+}
+
+.is-clickable{
+    cursor: pointer;
+}
